@@ -14,7 +14,8 @@
 */
 
 /* Creación de la base de datos */
-create database hoteles_ese;
+DROP DATABASE IF EXISTS hoteles_ese;
+CREATE DATABASE hoteles_ese;
 use hoteles_ese;
 
 /* Creación de las tablas */
@@ -282,6 +283,6 @@ CREATE TABLE VALORACIONES (
 INSERT INTO `HOTELES_ESE`.`VALORACIONES`(`ID`, `DESCRIPCION`, `PUNTUACION`, `FECHA`, `HOTELES_ID`, `USUARIOS_CORREO`)
 VALUES (NULL, 'El mejor hotel en el que he estado', '5', '2019-05-10 00:00:00', '1', 'robertofernandezromero61@gmail.com');
 INSERT INTO `HOTELES_ESE`.`VALORACIONES`(`ID`, `DESCRIPCION`, `PUNTUACION`, `FECHA`, `HOTELES_ID`, `USUARIOS_CORREO`)
-VALUES (NULL, 'El mejor hotel en el que he estado', '5', '2019-05-23 00:00:00', '2', 'mercedes.florido@iespoligonosur.org');
+VALUES (NULL, 'El peor hotel en el que he estado', '1', '2019-05-23 00:00:00', '2', 'mercedes.florido@iespoligonosur.org');
 INSERT INTO `HOTELES_ESE`.`VALORACIONES`(`ID`, `DESCRIPCION`, `PUNTUACION`, `FECHA`, `HOTELES_ID`, `USUARIOS_CORREO`)
-VALUES (NULL, 'El mejor hotel en el que he estado', '5', '2019-05-29 00:00:00', '5', 'diego.fernandez@iespoligonosur.org');
+VALUES (NULL, 'El Wi-Fi era muy fácil de hackear', '5', '2019-05-29 00:00:00', '5', 'diego.fernandez@iespoligonosur.org');
