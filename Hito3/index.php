@@ -82,6 +82,19 @@
 
 					<!-- Botones para abrir la ventana de login y de registro -->
 					<form class="form-inline">
+						<?php
+							session_start();
+							if (isset($_SESSION["usuario"])) {
+						?>
+
+						<a href="#" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['usuario']?>!">
+							<img src="./images/usuario.png" width="35" height="35">
+						</a>
+
+						<?php
+							} else {
+						?>
+
 						<a href="#" data-toggle="tooltip" data-html="true" title="¡Inicia sesión y haz tu reserva!">
 							<input class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#entrar" type="button" value="Login">
 						</a>
@@ -89,6 +102,10 @@
 						<a href="#" data-toggle="tooltip" data-html="true" title="¡Regístrate para poder reservar!">
 							<input class="btn btn-warning btn-sm" data-toggle="modal" data-target="#registro" type="button" value="Regístrate">
 						</a>
+
+						<?php
+							}
+						?>
 					</form>
 				</nav>
 			</header>
@@ -190,6 +207,11 @@
 								<div class="form-group">
 									<label>Contraseña:</label>
 									<input type="password" name="password" class="form-control">
+								</div>
+
+								<div class="form-group">
+									<label>Tipo:</label>
+									<input type="radio" name="">
 								</div>
 							</div>
 
