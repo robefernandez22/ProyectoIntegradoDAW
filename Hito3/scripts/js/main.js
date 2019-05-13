@@ -5,4 +5,7 @@ $(document).ready(function() {
 		container: 'body'
 	});
 
+	// Vemos las imágenes de los distintos hoteles que haya para meterlas en el carrusel
+	
+
 });
