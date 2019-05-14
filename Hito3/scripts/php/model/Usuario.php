@@ -10,13 +10,19 @@
 		private $password;
 		private $tipo;
 
-		function __construct($nombre, $apellidos, $correo, $password, $tipo) {
+		function __construct($fila) {
 
-			$this->nombre = $nombre;
-			$this->apellidos = $apellidos;
-			$this->correo = $correo;
-			$this->password = $password;
-			$this->tipo = $tipo;
+			$this->correo = $fila["correo"];
+			$this->nombre = $fila["nombre"];
+			$this->apellidos = $fila["apellidos"];
+			$this->password = $fila["password"];
+			$this->tipo = $fila["tipo"];
+
+		}
+
+		public function getCorreo() {
+
+			return $this->correo;
 
 		}
 
@@ -32,9 +38,9 @@
 
 		}
 
-		public function getCorreo() {
+		public function getPassword() {
 
-			return $this->correo;
+			return $this->password;
 
 		}
 
@@ -47,32 +53,28 @@
 		public static function buscarUsuario($correo) {
 
 			$conexion = Conexion::conexionBD();
-			$sql = "SELECT * FROM usuarios WHERE correo LIKE '$correo'";
+
+			$sql = "SELECT nombre, apellidos, correo, password, tipo
+			FROM usuarios WHERE correo LIKE '".$correo."'";
+
 			$resultado = $conexion->query($sql);
+
 			$fila = $resultado->fetch();
+
 			return $fila;
 
 		}
 
-		public function insertarUsuario() {
+		public static function insertarUsuario($correo, $nombre, $apellidos, $password, $tipo) {
 
-			if (self::verificarUsuario($this->correo, $this->password) == null) {
+			$conexion = Conexion::conexionBD();
 
-				// $conexion = Conexion::conexionBD();
+			$sql = "INSERT INTO usuarios(correo, nombre, apellidos, password, tipo)
+			VALUES('".$correo."', '".$nombre."', '".$apellidos."', '".$password."', '".$tipo."')";
 
-				// $sql = "INSERT INTO usuarios(nombre, apellidos, correo, password, tipo)
-				// VALUES('".$this->nombre."', '".$this->apellidos."', '".$this->correo."', '".$this->password."', '".$this->tipo."')";
+			$resultado = $conexion->exec($sql);
 
-				// $conexion->exec($sql);
-
-				echo "el usuario no existe";
-				echo "<br>".$this->password;
-
-			} else {
-
-				echo "el usuario existe";
-
-			}			
+			return $resultado;
 
 		}
 
@@ -80,8 +82,8 @@
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "SELECT * FROM usuarios
-			WHERE correo LIKE '$correo' AND password LIKE '$password'";
+			$sql = "SELECT nombre, apellidos, correo, password, tipo
+			FROM usuarios WHERE correo LIKE '".$correo."' AND password LIKE '".$password."'";
 
 			$resultado = $conexion->query($sql);
 

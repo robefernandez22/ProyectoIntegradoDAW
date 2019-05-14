@@ -1,3 +1,8 @@
+<?php
+	error_reporting(E_ALL ^ E_NOTICE);
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,44 +12,36 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Título de la página -->
-		<title>Hoteles ESE - Inicio</title>
+		<title>Administración - Inicio</title>
 		<!-- Favicon -->
-		<link rel="shortcut icon" type="favicon/ico" href="./images/favicon.ico">
+		<link rel="shortcut icon" type="favicon/ico" href="../../../images/favicon.ico">
 
 		<!-- CSS principal -->
-		<link rel="stylesheet" type="text/css" href="./style/main.css">
+		<link rel="stylesheet" type="text/css" href="../../../style/main.css">
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" type="text/css" href="./lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css">
 
 		<!-- Librería jQuery -->
-		<script src="./lib/jquery-3.4.0.min.js"></script>
+		<script src="../../../lib/jquery-3.4.0.min.js"></script>
 		<!-- Popper Script. Librería necesaria para que funcionen los elementos tooltip de Bootstrap -->
-		<script src="./lib/popper.min.js"></script>
+		<script src="../../../lib/popper.min.js"></script>
 		<!-- Bootstrap Script -->
-		<script src="./lib/bootstrap.min.js"></script>
+		<script src="../../../lib/bootstrap.min.js"></script>
 		<!-- Script principal -->
-		<script src="./scripts/js/main.js"></script>
+		<script src="../../js/main.js"></script>
 	</head>
 
 	<body>
 
 		<!-- Contenedor principal -->
 		<main class="container-fluid">
-			<!-- Contenedor para el aviso de Cookies -->
-			<div class="alert alert-dismissible fade show alert-primary fixed-bottom text-center">
-				<p>¡Aviso! Usamos <strong>Cookies</strong> para mejorar la experiencia del usuario. Pero tranquil@, <strong>tus datos están seguros</strong>.<br>Consulta <strong><a href="http://www.interior.gob.es/politica-de-cookies" target="_blank">aquí</a></strong> la política de <strong>Cookies</strong>.</p>
-				<button type="button" class="close" data-dismiss="alert">
-					<span>X</span>
-				</button>
-			</div>
-
 			<!-- Cabecera de la página -->
 			<header class="row">
 				<!-- Menú -->
-				<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+				<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top col-md-12">
 					<!-- Logotipo -->
-					<a class="navbar-brand" href="./index.html">
-						<img src="./images/logo.jpg" width="120" height="55">
+					<a class="navbar-brand" href="./vistaAdmin.php">
+						<img src="../../../images/logo.jpg" width="120" height="55">
 					</a>
 
 					<!-- Botón que desplegará el menú cuando este no se vea debido al tamaño del dispositivo
@@ -57,38 +54,39 @@
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="navbar-nav">
 							<li class="nav-item active">
-								<a href="./index.html" class="nav-link">Inicio</a>
+								<a href="./vistaAdmin.php" class="nav-link">Inicio</a>
 							</li>
 
 							<li class="nav-item">
-								<a href="./content/reservar.html" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar reservas realizadas y/o canceladas">Reservas</a>
 							</li>
 
 							<li class="nav-item">
-								<a href="./content/opiniones.html" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
+								<a href="../controller/" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar usuarios">Usuarios</a>
 							</li>
 
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros</a>
+							<li class="nav-item">
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar opiniones">Opiniones</a>
+							</li>
 
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./content/conocenos.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
-									<a class="dropdown-item" href="./content/trabaja.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
-								</div>
+							<li class="nav-item">
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar habitaciones">Habitaciones</a>
+							</li>
+
+							<li class="nav-item">
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
 							</li>
 						</ul>
 					</div>
 
-					<!-- Botones para abrir la ventana de login y de registro -->
-					<form class="form-inline">
-						<a href="#" data-toggle="tooltip" data-html="true" title="¡Inicia sesión y haz tu reserva!">
-							<input class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#entrar" type="button" value="Login">
-						</a>
+					<a href="../controller/verDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
+					</a>
 
-						<a href="#" data-toggle="tooltip" data-html="true" title="¡Regístrate para poder reservar!">
-							<input class="btn btn-warning btn-sm" data-toggle="modal" data-target="#registro" type="button" value="Regístrate">
-						</a>
-					</form>
+					<a href="../controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
+						<img src="../../../images/salir.svg" width="50" height="55">
+					</a>
+
 				</nav>
 			</header>
 
