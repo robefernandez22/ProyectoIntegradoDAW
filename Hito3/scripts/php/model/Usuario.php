@@ -58,10 +58,25 @@
 			FROM usuarios WHERE correo LIKE '".$correo."'";
 
 			$resultado = $conexion->query($sql);
-
 			$fila = $resultado->fetch();
-
 			return $fila;
+
+		}
+
+		public static function devolverUsuarios() {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT correo, nombre, apellidos, password, tipo FROM usuarios";
+			
+			$resultado = $conexion->query($sql);
+
+			$usuarios = [];
+			while ($registros = $resultado->fetch()) {
+				$usuarios[] = new Usuario($registros);
+			}
+
+			return $usuarios;
 
 		}
 
@@ -73,7 +88,6 @@
 			VALUES('".$correo."', '".$nombre."', '".$apellidos."', '".$password."', '".$tipo."')";
 
 			$resultado = $conexion->exec($sql);
-
 			return $resultado;
 
 		}
@@ -88,7 +102,6 @@
 			$resultado = $conexion->query($sql);
 
 			$fila = $resultado->fetch();
-
 			return $fila;
 
 		}

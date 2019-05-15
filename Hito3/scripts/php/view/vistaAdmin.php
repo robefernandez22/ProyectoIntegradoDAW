@@ -1,5 +1,5 @@
 <?php
-	error_reporting(E_ALL ^ E_NOTICE);
+	// error_reporting(E_ALL ^ E_NOTICE);
 	session_start();
 ?>
 
@@ -62,7 +62,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="../controller/" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar usuarios">Usuarios</a>
+								<a href="../controller/verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar usuarios">Usuarios</a>
 							</li>
 
 							<li class="nav-item">
@@ -79,7 +79,7 @@
 						</ul>
 					</div>
 
-					<a href="../controller/verDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="./vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
@@ -89,33 +89,6 @@
 
 				</nav>
 			</header>
-
-			<!-- Carrusel de imágenes -->
-			<section class="row justify-content-center mt-5">
-				<div class="col-md-9 mt-5">
-					<div class="carousel slide" id="carrusel" data-ride="carousel">
-						<div class="carousel-inner text-center">
-							<!-- <div class="carousel-item active">
-								<img class="w-100 d-block" src="./images/logo.jpg" alt="Primer elemento">
-							</div> -->
-						</div>
-
-						<a class="carousel-control-prev" href="#carrusel" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Anterior</span>
-						</a>
-
-						<a class="carousel-control-next" href="#carrusel" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Siguiente</span>
-						</a>
-
-						<ol class="carousel-indicators">
-							<li data-target="#carrusel" data-slide-to="0" class="active"></li>
-						</ol>
-					</div>
-				</div>
-			</section>
 
 			<!-- Ventana modal para hacer login -->
 			<section class="modal" id="entrar">

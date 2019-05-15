@@ -4,9 +4,9 @@
 
 	$fila = Usuario::buscarUsuario($_POST["correo"]);
 
-	if ($fila == 0) {
+	if ($fila == null) {
 
-		$usuario = Usuario::insertarUsuario($_POST["correo"], $_POST["nombre"], $_POST["apellidos"], md5($_POST["password"]), $_POST["tipo"]);
+		$usuario = Usuario::insertarUsuario($_POST["correo"], $_POST["nombre"], $_POST["apellidos"], base64_encode($_POST["password"]), $_POST["tipo"]);
 		if ($usuario == 1) {
 
 			echo "Usuario insertado correctamente.";

@@ -10,7 +10,7 @@
 
 	} else {
 
-		$fila = Usuario::verificarUsuario($_POST["correo"], md5($_POST["password"]));
+		$fila = Usuario::verificarUsuario($_POST["correo"], base64_encode($_POST["password"]));
 		if ($fila == 0) {
 
 			echo "Contraseña incorrecta.";
