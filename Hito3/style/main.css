@@ -15,3 +15,9 @@ img#usuario {
 	margin-right: 20px;
 
 }
+
+span.obligatorio {
+
+	color: red;
+
+}

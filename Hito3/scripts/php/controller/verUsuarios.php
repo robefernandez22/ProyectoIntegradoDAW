@@ -1,6 +1,6 @@
 <?php
 
-	require_once "Usuario.php";
+	require_once "../model/Usuario.php";
 	$data = Usuario::devolverUsuarios();
 
 	foreach ($data as $value) {

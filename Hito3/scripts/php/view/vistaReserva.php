@@ -11,37 +11,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Título de la página -->
-		<title>Hoteles ESE - Inicio</title>
+		<title>Reservas</title>
 		<!-- Favicon -->
-		<link rel="shortcut icon" type="favicon/ico" href="./images/favicon.ico">
+		<link rel="shortcut icon" type="favicon/ico" href="../../../images/favicon.ico">
 
 		<!-- CSS principal -->
-		<link rel="stylesheet" type="text/css" href="./style/main.css">
+		<link rel="stylesheet" type="text/css" href="../../../style/main.css">
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" type="text/css" href="./lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css">
 
 		<!-- Librería jQuery -->
-		<script src="./lib/jquery-3.4.0.min.js"></script>
+		<script src="../../../lib/jquery-3.4.0.min.js"></script>
 		<!-- Popper Script. Librería necesaria para que funcionen los elementos tooltip de Bootstrap -->
-		<script src="./lib/popper.min.js"></script>
+		<script src="../../../lib/popper.min.js"></script>
 		<!-- Bootstrap Script -->
-		<script src="./lib/bootstrap.min.js"></script>
+		<script src="../../../lib/bootstrap.min.js"></script>
 		<!-- Script principal -->
-		<script src="./scripts/js/main.js"></script>
+		<script src="../../js/main.js"></script>
 	</head>
 
 	<body>
 
 		<!-- Contenedor principal -->
 		<main class="container-fluid">
-			<!-- Contenedor para el aviso de Cookies -->
-			<div class="alert alert-dismissible fade alert-primary fixed-bottom text-center">
-				<p>¡Aviso! Usamos <strong>Cookies</strong> para mejorar la experiencia del usuario. Pero tranquil@, <strong>tus datos están seguros</strong>.<br>Consulta <strong><a href="http://www.interior.gob.es/politica-de-cookies" target="_blank">aquí</a></strong> la política de <strong>Cookies</strong>.</p>
-				<button type="button" class="close" data-dismiss="alert">
-					<span id="cookies">X</span>
-				</button>
-			</div>
-
 			<!-- Cabecera de la página -->
 			<header class="row">
 				<!-- Menú -->
@@ -53,31 +45,31 @@
 					</button>
 					
 					<!-- Logotipo -->
-					<a class="navbar-brand" href="./index.php">
-						<img src="./images/logo.jpg" width="120" height="55">
+					<a class="navbar-brand" href="../../../index.php">
+						<img src="../../../images/logo.jpg" width="120" height="55">
 					</a>
 
 					<!-- Diferentes opciones del menú -->
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a href="../../../index.php" class="nav-link">Inicio</a>
+							</li>
+
 							<li class="nav-item active">
-								<a href="./index.php" class="nav-link">Inicio</a>
+								<a href="./vistaReserva.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
 							</li>
 
 							<li class="nav-item">
-								<a href="./scripts/php/view/vistaReserva.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
-							</li>
-
-							<li class="nav-item">
-								<a href="./content/opiniones.html" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
+								<a href="./vistaOpiniones.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
 							</li>
 
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros</a>
 
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./content/conocenos.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
-									<a class="dropdown-item" href="./content/trabaja.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
+									<a class="dropdown-item" href="./vistaConocenos.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
+									<a class="dropdown-item" href="./vistaTrabaja.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
 								</div>
 							</li>
 						</ul>
@@ -98,12 +90,12 @@
 						<?php
 							} else {
 						?>
-						<a href="./scripts/php/view/vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
-							<img src="./images/usuario.png" width="50" height="50" id="usuario">
+						<a href="./scripts/php/controller/verDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+							<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 						</a>
 
 						<a href="./scripts/php/controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
-							<img src="./images/salir.svg" width="50" height="50">
+							<img src="../../../images/salir.svg" width="50" height="50">
 						</a>
 						<?php
 							}
@@ -112,32 +104,25 @@
 				</nav>
 			</header>
 
-			<!-- Carrusel de imágenes -->
-			<section class="row justify-content-center mt-5">
-				<div class="col-md-9 mt-5">
-					<div class="carousel slide" id="carrusel" data-ride="carousel">
-						<div class="carousel-inner text-center">
-							<!-- <div class="carousel-item active">
-								<img class="w-100 d-block" src="./images/logo.jpg" alt="Primer elemento">
-							</div> -->
-						</div>
+			<?php
+				if (!isset($_SESSION["nombreUsuario"])) {
+			?>
 
-						<a class="carousel-control-prev" href="#carrusel" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Anterior</span>
-						</a>
+			<header class="row justify-content-center mt-5">
+				<h3 class="text-center mt-5">No has iniciado sesión.<br>Por favor, <a href="#" id="inicia">inicia sesión</a> o <a href="#" id="registrar">regístrate</a> para poder reservar.</h3>
+			</header>
 
-						<a class="carousel-control-next" href="#carrusel" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Siguiente</span>
-						</a>
+			<?php
+				} else {
+			?>
 
-						<ol class="carousel-indicators">
-							<li data-target="#carrusel" data-slide-to="0" class="active"></li>
-						</ol>
-					</div>
-				</div>
-			</section>
+			<header class="row justify-content-center mt-5">
+				<h3 class="text-center mt-5">Has iniciado sesión.</h3>
+			</header>
+
+			<?php
+				}
+			?>
 
 			<!-- Ventana modal para hacer login -->
 			<section class="modal" id="entrar">
@@ -151,7 +136,7 @@
 							<span data-dismiss="modal">X</span>
 						</div>
 
-						<form method="post" action="./scripts/php/controller/verificarUsuario.php">
+						<form method="post" action="../controller/verificarUsuario.php">
 							<div class="modal-body">
 								<div class="form-group">
 									<span class="obligatorio">*</span><label>Email:</label>
@@ -190,7 +175,7 @@
 							<span data-dismiss="modal">X</span>
 						</div>
 
-						<form method="post" action="./scripts/php/controller/altaUsuario.php">
+						<form method="post" action="../controller/altaUsuario.php">
 							<div class="modal-body">
 								<div class="form-group">
 									<span class="obligatorio">*</span><label>Nombre:</label>
