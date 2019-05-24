@@ -1,5 +1,5 @@
 <?php
-	// error_reporting(E_ALL ^ E_NOTICE);
+	error_reporting(E_ALL ^ E_NOTICE);
 	session_start();
 	require_once "../model/Usuario.php";
 	$datos = Usuario::buscarUsuario($_SESSION["correoUsuario"]);
@@ -82,14 +82,13 @@
 						</ul>
 					</div>
 
-					<a href="../controller/verDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="./vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
 					<a href="../controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
 						<img src="../../../images/salir.svg" width="50" height="55">
 					</a>
-
 				</nav>
 			</header>
 
@@ -97,58 +96,58 @@
 				<h1 class="text-center text-capitalize mt-5">Tus datos personales</h1>
 			</header>
 
-			<section class="row justify-content-center mt-5">
-				<div class="col-md-4">
-					<div class="list-group">
-						<a class="list-group-item list-group-item-action active" data-toggle="list" data-target="#correo">Correo</a>
-						<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#nombre">Nombre</a>
-						<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#apellidos">Apellidos</a>
-						<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#password">Cambiar contraseña</a>
+			<form method="post" action="../controller/setDatos.php" id="setDatos">
+				<section class="row justify-content-center mt-5">
+					<div class="col-md-4">
+						<div class="list-group">
+							<a class="list-group-item list-group-item-action active" data-toggle="list" data-target="#correo">Correo</a>
+							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#nombre">Nombre</a>
+							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#apellidos">Apellidos</a>
+							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#password">Cambiar contraseña</a>
+						</div>
 					</div>
-				</div>
 
-				<div class="col-md-4">
-					<div class="tab-content">
-						<div class="tab-pane fade show active" id="correo">
-							<form method="post" action="../controller/setDatos.php">
+					<div class="col-md-4">
+						<div class="tab-content">
+							<div class="tab-pane fade show active" id="correo">
 								<div class="form-group">
 									<input type="email" name="correo" class="form-control" value="<?php echo $_SESSION['correoUsuario'];?>">
 								</div>
-							</form>
-						</div>
+							</div>
 
-						<div class="tab-pane fade show" id="nombre">
-							<form method="post" action="../controller/setDatos.php">
+							<div class="tab-pane fade show" id="nombre">
 								<div class="form-group">
 									<input type="text" name="nombre" class="form-control" value="<?php echo $_SESSION['nombreUsuario'];?>">
 								</div>
-							</form>
-						</div>
+							</div>
 
-						<div class="tab-pane fade show" id="apellidos">
-							<form method="post" action="../controller/setDatos.php">
+							<div class="tab-pane fade show" id="apellidos">
 								<div class="form-group">
 									<input type="text" name="apellidos" class="form-control" value="<?php echo $usuario->getApellidos();?>">
 								</div>
-							</form>
-						</div>
+							</div>
 
-						<div class="tab-pane fade show" id="password">
-							<form method="post" action="../controller/setDatos.php">
+							<div class="tab-pane fade show" id="password">
 								<div class="form-group">
-									<label>Introduce tu password actual:</label>
+									<label>Introduce tu contraseña actual:</label>
 									<input type="password" name="passwordActual" class="form-control" autofocus>
 								</div>
 
 								<div class="form-group">
-									<label>Introduce tu nueva password:</label>
+									<label>Introduce tu nueva contraseña:</label>
 									<input type="password" name="passwordNueva" class="form-control">
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+
+				<section class="row justify-content-center mt-5">
+					<div class="col-md-8">
+						<input type="submit" name="setDatos" class="btn btn-primary" value="Guardar" disabled="true">
+					</div>
+				</section>
+			</form>
 		</main>
 
 	</body>

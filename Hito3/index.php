@@ -19,6 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="./style/main.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" type="text/css" href="./lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./lib/floating-labels.css">
 
 		<!-- Librería jQuery -->
 		<script src="./lib/jquery-3.4.0.min.js"></script>
@@ -69,15 +70,15 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="./content/opiniones.html" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
 							</li>
 
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros</a>
 
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./content/conocenos.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
-									<a class="dropdown-item" href="./content/trabaja.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
+									<a class="dropdown-item" href="" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
+									<a class="dropdown-item" href="" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
 								</div>
 							</li>
 						</ul>
@@ -144,23 +145,20 @@
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content">
 						<div class="modal-header bg-primary text-white">
-							<div class="modal-title">
-								Inicia sesión
-							</div>
-
-							<span data-dismiss="modal">X</span>
+							<div class="modal-title">Inicia sesión</div>
+							<span data-dismiss="modal" class="cerrarVentana">X</span>
 						</div>
 
-						<form method="post" action="./scripts/php/controller/verificarUsuario.php">
+						<form method="post" action="./scripts/php/controller/verificarUsuario.php" class="form-signin" id="inicio">
 							<div class="modal-body">
-								<div class="form-group">
-									<span class="obligatorio">*</span><label>Email:</label>
-									<input type="email" name="correo" class="form-control" autofocus required>
+								<div class="form-label-group">
+									<input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
+									<label for="inputEmail"><span class="obligatorio">*</span>Dirección de correo electrónico</label>
 								</div>
 
-								<div class="form-group">
-									<span class="obligatorio">*</span><label>Contraseña:</label>
-									<input type="password" name="password" class="form-control" required>
+								<div class="form-label-group">
+									<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
+									<label for="password"><span class="obligatorio">*</span>Contraseña</label>
 								</div>
 
 								<div class="form-group">
@@ -170,7 +168,7 @@
 							</div>
 
 							<div class="modal-footer text-right">
-								<a href="">¿Has olvidado tu contraseña?</a>
+								<a href="./scripts/php/controller/passwordOlvidada.php">¿Has olvidado tu contraseña?</a>
 								<input type="submit" name="entrar" class="btn btn-primary" value="Entrar">
 							</div>
 						</form>
@@ -183,33 +181,30 @@
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content">
 						<div class="modal-header bg-warning text-white">
-							<div class="modal-title">
-								Registro
-							</div>
-
-							<span data-dismiss="modal">X</span>
+							<div class="modal-title">Registro</div>
+							<span data-dismiss="modal" class="cerrarVentana">X</span>
 						</div>
 
-						<form method="post" action="./scripts/php/controller/altaUsuario.php">
+						<form method="post" action="./scripts/php/controller/altaUsuario.php" class="form-signin">
 							<div class="modal-body">
-								<div class="form-group">
-									<span class="obligatorio">*</span><label>Nombre:</label>
-									<input type="text" name="nombre" class="form-control" autofocus>
+								<div class="form-label-group">
+									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autofocus>
+									<label for="nombre"><span class="obligatorio">*</span>Nombre</label>
 								</div>
 
-								<div class="form-group">
-									<span class="obligatorio">*</span><label>Apellidos:</label>
-									<input type="text" name="apellidos" class="form-control">
+								<div class="form-label-group">
+									<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos">
+									<label for="apellidos"><span class="obligatorio">*</span>Apellidos</label>
 								</div>
 
-								<div class="form-group">
-									<span class="obligatorio">*</span><label>Correo Electrónico:</label>
-									<input type="email" name="correo" class="form-control">
+								<div class="form-label-group">
+									<input type="email" id="inputEmail1" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
+									<label for="inputEmail1"><span class="obligatorio">*</span>Dirección de correo electrónico</label>
 								</div>
 
-								<div class="form-group">
-									<span class="obligatorio">*</span><label>Contraseña:</label>
-									<input type="password" name="password" class="form-control">
+								<div class="form-label-group">
+									<input type="password" id="password1" name="password" class="form-control" placeholder="Contraseña">
+									<label for="password1"><span class="obligatorio">*</span>Contraseña</label>
 								</div>
 
 								<!-- El usuario que se registre aquí siempre será de tipo usuario,

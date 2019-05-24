@@ -106,6 +106,12 @@
 
 		}
 
+		public static function actualizarUsuario($correo, $nombre, $apellidos, $password) {
+
+			
+
+		}
+
 	}
 
 ?>

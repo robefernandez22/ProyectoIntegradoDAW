@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 	// Comprobamos si el usuario aceptó las cookies, de ser así no volvemos a mostrar el aviso de estas
 	$("span#cookies").click(function() {
-		setCookie("Nombre", "Roberto");
+		setCookie("Nombre", "nombre");
 	});
 
 	// Cuando se envie el formulario, verificamos si tiene activado el check de recordar
@@ -24,15 +24,15 @@ $(document).ready(function() {
 
 	//
 	$("a#inicia").click(function() {
-
 		$("#entrar").modal("show");
-
 	});
 
 	$("a#registrar").click(function() {
-
 		$("#registro").modal("show");
+	});
 
+	$("form#setDatos input").on("keydown", function() {
+		$("form#setDatos input[type='submit']").removeAttr("disabled");
 	});
 
 });
