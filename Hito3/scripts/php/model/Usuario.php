@@ -106,9 +106,27 @@
 
 		}
 
-		public static function actualizarUsuario($correo, $nombre, $apellidos, $password) {
+		public static function actualizarUsuario($correoAnterior, $correoNuevo, $nombre, $apellidos) {
 
-			
+			$conexion = Conexion::conexionBD();
+
+			$sql = "UPDATE usuarios SET correo = '".$correoNuevo."', nombre = '".$nombre."', apellidos = '".$apellidos."'
+			WHERE correo LIKE '".$correoAnterior."'";
+
+			$resultado = $conexion->exec($sql);
+			return $resultado;
+
+		}
+
+		public static function setPassword($correo, $passwordAnterior, $passwordNueva) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "UPDATE usuarios SET password = '".base64_encode($passwordNueva)."' 
+			WHERE correo LIKE '".$correo."' AND password LIKE '".base64_encode($passwordAnterior)."'";
+
+			$resultado = $conexion->exec($sql);
+			return $resultado;
 
 		}
 

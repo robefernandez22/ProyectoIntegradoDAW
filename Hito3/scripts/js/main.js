@@ -31,8 +31,14 @@ $(document).ready(function() {
 		$("#registro").modal("show");
 	});
 
-	$("form#setDatos input").on("keydown", function() {
-		$("form#setDatos input[type='submit']").removeAttr("disabled");
+	$("form#setDatos input").on("keyup", function() {
+
+		if ($(this).val() != "") {
+			$("form#setDatos input[type='submit']").removeAttr("disabled");
+		} else {
+			$("form#setDatos input[type='submit']").attr("disabled", "true");
+		}
+
 	});
 
 });

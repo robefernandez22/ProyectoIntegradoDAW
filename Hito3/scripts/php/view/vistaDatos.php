@@ -73,10 +73,6 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar habitaciones">Habitaciones</a>
-							</li>
-
-							<li class="nav-item">
 								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
 							</li>
 						</ul>
@@ -131,11 +127,6 @@
 								<div class="form-group">
 									<label>Introduce tu contraseña actual:</label>
 									<input type="password" name="passwordActual" class="form-control" autofocus>
-								</div>
-
-								<div class="form-group">
-									<label>Introduce tu nueva contraseña:</label>
-									<input type="password" name="passwordNueva" class="form-control">
 								</div>
 							</div>
 						</div>

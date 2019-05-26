@@ -29,6 +29,17 @@
 		<script src="../../../lib/bootstrap.min.js"></script>
 		<!-- Script principal -->
 		<script src="../../js/main.js"></script>
+
+		<style>
+			th, td {
+				padding: 10px;
+				text-align: center;
+			}
+
+			table {
+				margin: auto;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -70,10 +81,6 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar habitaciones">Habitaciones</a>
-							</li>
-
-							<li class="nav-item">
 								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
 							</li>
 						</ul>
@@ -86,97 +93,41 @@
 					<a href="../controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
 						<img src="../../../images/salir.svg" width="50" height="55">
 					</a>
-
 				</nav>
 			</header>
 
-			<!-- Ventana modal para hacer login -->
-			<section class="modal" id="entrar">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header bg-primary text-white">
-							<div class="modal-title">
-								Inicia sesión
-							</div>
+			<header class="row justify-content-center mt-5">
+				<input class="btn btn-primary btn-sm mr-2 mt-5 text-left" data-toggle="modal" data-target="#entrar" type="button" value="Añadir Usuario">
+				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica usuarios</h3>
+			</header>
 
-							<span data-dismiss="modal">X</span>
-						</div>
+			<section class="row justify-content-center mt-5">
+				<div class="col-md-12">
+					<table border="1">
+						<tr>
+							<th>Correo</th>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th colspan="2">Opciones</th>
+						</tr>
+						<?php
+							foreach ($data as $usuarios) {
+						?>
 
-						<form method="post" action="./scripts/php/controller/verificarUsuario.php">
-							<div class="modal-body">
-								<div class="form-group">
-									<label>Email:</label>
-									<input type="email" name="correo" class="form-control" autofocus required>
-								</div>
+						<tr>
+							<td><?=$usuarios->getCorreo()?></td>
+							<td><?=$usuarios->getNombre()?></td>
+							<td><?=$usuarios->getApellidos()?></td>
+							<td>Modificar</td>
+							<td>Eliminar</td>
+						</tr>
 
-								<div class="form-group">
-									<label>Contraseña:</label>
-									<input type="password" name="password" class="form-control" required>
-								</div>
-
-								<div class="form-group">
-									<label>Recordar</label>
-									<input type="checkbox" name="recordar">
-								</div>
-							</div>
-
-							<div class="modal-footer text-right">
-								<input type="submit" name="entrar" class="btn btn-primary" value="Entrar">
-							</div>
-						</form>
-					</div>
-				</div>
-			</section>
-
-			<!-- Ventana modal para registrarse -->
-			<section class="modal" id="registro">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header bg-warning text-white">
-							<div class="modal-title">
-								Registro
-							</div>
-
-							<span data-dismiss="modal">X</span>
-						</div>
-
-						<form method="post" action="./scripts/php/controller/altaUsuario.php">
-							<div class="modal-body">
-								<div class="form-group">
-									<label>Nombre:</label>
-									<input type="text" name="nombre" class="form-control" autofocus>
-								</div>
-
-								<div class="form-group">
-									<label>Apellidos:</label>
-									<input type="text" name="apellidos" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label>Correo Electrónico:</label>
-									<input type="email" name="correo" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label>Contraseña:</label>
-									<input type="password" name="password" class="form-control">
-								</div>
-
-								<!-- El usuario que se registre aquí siempre será de tipo usuario,
-								nunca de tipo administrador o por el estilo, por lo que mandamos el tipo
-								en un campo oculto -->
-								<input type="hidden" name="tipo" value="U">
-							</div>
-
-							<div class="modal-footer text-right">
-								<input type="submit" name="registro" class="btn btn-warning" value="Registrarse">
-							</div>
-						</form>
-					</div>
+						<?php
+							}
+						?>
+					</table>
 				</div>
 			</section>
 		</main>
-
 	</body>
-
 </html>
