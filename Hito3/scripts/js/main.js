@@ -16,7 +16,7 @@ $(document).ready(function() {
 	});
 
 	// Cuando se envie el formulario, verificamos si tiene activado el check de recordar
-	$("section#entrar form").submit(function() {
+	$("form").submit(function() {
 
 
 
@@ -38,6 +38,13 @@ $(document).ready(function() {
 		} else {
 			$("form#setDatos input[type='submit']").attr("disabled", "true");
 		}
+
+	});
+
+	$("input[value='Eliminar']").click(function() {
+
+		$("span#correo").text($(this).parent().parent().find("input").val());
+		$("form#accion input[value='']").val($(this).parent().parent().find("input").val());
 
 	});
 

@@ -1,11 +1,3 @@
-<?php
-	error_reporting(E_ALL ^ E_NOTICE);
-	session_start();
-	require_once "../model/Usuario.php";
-	$datos = Usuario::buscarUsuario($_SESSION["correoUsuario"]);
-	$usuario = new Usuario($datos);
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -57,7 +49,7 @@
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a href="./vistaAdmin.php" class="nav-link">Inicio</a>
+								<a href="../view/vistaAdmin.php" class="nav-link">Inicio</a>
 							</li>
 
 							<li class="nav-item">
@@ -65,11 +57,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="../controller/" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar usuarios">Usuarios</a>
-							</li>
-
-							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar opiniones">Opiniones</a>
+								<a href="./verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar usuarios">Usuarios</a>
 							</li>
 
 							<li class="nav-item">
@@ -78,7 +66,7 @@
 						</ul>
 					</div>
 
-					<a href="./vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="./vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $usuario->getNombre();?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
@@ -107,13 +95,13 @@
 						<div class="tab-content">
 							<div class="tab-pane fade show active" id="correo">
 								<div class="form-group">
-									<input type="email" name="correo" class="form-control" value="<?php echo $_SESSION['correoUsuario'];?>">
+									<input type="email" name="correo" class="form-control" value="<?php echo $usuario->getCorreo();?>">
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="nombre">
 								<div class="form-group">
-									<input type="text" name="nombre" class="form-control" value="<?php echo $_SESSION['nombreUsuario'];?>">
+									<input type="text" name="nombre" class="form-control" value="<?php echo $usuario->getNombre();?>">
 								</div>
 							</div>
 

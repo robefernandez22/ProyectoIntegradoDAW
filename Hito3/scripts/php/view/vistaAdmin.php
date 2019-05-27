@@ -1,5 +1,4 @@
 <?php
-	error_reporting(E_ALL ^ E_NOTICE);
 	session_start();
 ?>
 
@@ -20,6 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="../../../style/main.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../lib/floating-labels.css">
 
 		<!-- Librería jQuery -->
 		<script src="../../../lib/jquery-3.4.0.min.js"></script>
@@ -66,16 +66,12 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar opiniones">Opiniones</a>
-							</li>
-
-							<li class="nav-item">
 								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
 							</li>
 						</ul>
 					</div>
 
-					<a href="./vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="../controller/setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 

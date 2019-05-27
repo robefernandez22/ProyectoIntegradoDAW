@@ -90,11 +90,11 @@
 							if (!isset($_SESSION["nombreUsuario"])) {
 						?>
 						<a href="#" data-toggle="tooltip" data-html="true" title="¡Inicia sesión y haz tu reserva!">
-							<input class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#entrar" type="button" value="Login">
+							<input class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#entrar" type="button" value="Entrar">
 						</a>
 
 						<a href="#" data-toggle="tooltip" data-html="true" title="¡Regístrate para poder reservar!">
-							<input class="btn btn-warning btn-sm" data-toggle="modal" data-target="#registro" type="button" value="Regístrate">
+							<input class="btn btn-warning btn-sm" data-toggle="modal" data-target="#registro" type="button" value="Registrarse">
 						</a>
 						<?php
 							} else {
@@ -112,33 +112,6 @@
 					</form>
 				</nav>
 			</header>
-
-			<!-- Carrusel de imágenes -->
-			<section class="row justify-content-center mt-5">
-				<div class="col-md-9 mt-5">
-					<div class="carousel slide" id="carrusel" data-ride="carousel">
-						<div class="carousel-inner text-center">
-							<!-- <div class="carousel-item active">
-								<img class="w-100 d-block" src="./images/logo.jpg" alt="Primer elemento">
-							</div> -->
-						</div>
-
-						<a class="carousel-control-prev" href="#carrusel" data-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Anterior</span>
-						</a>
-
-						<a class="carousel-control-next" href="#carrusel" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Siguiente</span>
-						</a>
-
-						<ol class="carousel-indicators">
-							<li data-target="#carrusel" data-slide-to="0" class="active"></li>
-						</ol>
-					</div>
-				</div>
-			</section>
 
 			<!-- Ventana modal para hacer login -->
 			<section class="modal" id="entrar">
@@ -221,7 +194,5 @@
 				</div>
 			</section>
 		</main>
-
 	</body>
-
 </html>

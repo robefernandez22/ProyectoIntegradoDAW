@@ -106,12 +106,12 @@
 
 		}
 
-		public static function actualizarUsuario($correoAnterior, $correoNuevo, $nombre, $apellidos) {
+		public static function actualizarUsuario($correo, $nombre, $apellidos) {
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "UPDATE usuarios SET correo = '".$correoNuevo."', nombre = '".$nombre."', apellidos = '".$apellidos."'
-			WHERE correo LIKE '".$correoAnterior."'";
+			$sql = "UPDATE usuarios SET nombre = '".$nombre."', apellidos = '".$apellidos."'
+			WHERE correo LIKE '".$correo."'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;
@@ -124,6 +124,17 @@
 
 			$sql = "UPDATE usuarios SET password = '".base64_encode($passwordNueva)."' 
 			WHERE correo LIKE '".$correo."' AND password LIKE '".base64_encode($passwordAnterior)."'";
+
+			$resultado = $conexion->exec($sql);
+			return $resultado;
+
+		}
+
+		public static function eliminarUsuario($correo) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "DELETE FROM usuarios WHERE correo LIKE '".$correo."'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;
