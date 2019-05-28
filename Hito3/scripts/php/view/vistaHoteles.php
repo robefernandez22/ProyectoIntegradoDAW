@@ -122,7 +122,7 @@
 								<td><?=$hoteles->getNombre()?></td>
 								<td>
 									<a href="./verHabitaciones.php?id=<?=base64_encode($hoteles->getId())?>">
-										<?=$hoteles->getHabitaciones($hoteles->getId())?>
+										<?=$hoteles->getHabitaciones()?>
 									</a>
 								</td>
 								<td><?=$hoteles->getCiudad()?></td>

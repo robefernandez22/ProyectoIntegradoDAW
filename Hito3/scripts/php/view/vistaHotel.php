@@ -24,6 +24,9 @@
 		<script src="../../../lib/bootstrap.min.js"></script>
 		<!-- Script principal -->
 		<script src="../../js/main.js"></script>
+
+		<link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+		<script src="cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 	</head>
 
 	<body>
@@ -80,7 +83,7 @@
 				<h1 class="text-center text-capitalize mt-5">Hotel <?=$hotel->getNombre()?></h1>
 			</header>
 
-			<form method="post" action="./setHotel.php" id="setDatos">
+			<form method="post" action="./setHotel.php" enctype="multipart/form-data">
 				<section class="row justify-content-center mt-5">
 					<div class="col-md-4">
 						<div class="list-group">
@@ -92,6 +95,8 @@
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#codPostal">Código postal</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#estrellas">Estrellas</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#extras">Extras</a>
+							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#imagenes">Imágenes</a>
+							<input type="submit" name="setDatos" class="btn btn-success" value="Guardar">
 						</div>
 					</div>
 
@@ -160,13 +165,41 @@
 									<label class="form-check-label" for="wifi">Wi-Fi</label>
 								</div>
 							</div>
-						</div>
-					</div>
-				</section>
 
-				<section class="row justify-content-center mt-5">
-					<div class="col-md-8">
-						<input type="submit" name="setDatos" class="btn btn-primary" value="Guardar">
+							<div class="tab-pane fade show" id="imagenes">
+								<div class="form-group">
+									<label for="imagen">Añade imágenes al hotel</label>
+									<input type="file" id="imagen" name="imagen" class="form-control-file">
+								</div>
+
+								<div class="row">
+									<?php
+										if ($hotel->getImagenes() == null) {
+									?>
+
+									<strong><p class="text-center">El hotel no tiene imágenes por el momento.</p></strong>
+
+									<?php
+										} else {
+											foreach ($hotel->getImagenes() as $key => $image) {
+									?>
+
+									<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+										<a href="<?=$image?>" class="fancybox" rel="ligthbox">
+											<img src="<?=$image?>" class="zoom img-fluid">
+										</a>
+									</div>
+									
+									<!-- <img class="d-block w-100" src="<?php echo $image;?>">
+									<a href="./eliminarImagen.php?id=<?=$image?>&hotelId=<?=$hotel->getId()?>">Eliminar imagen</a> -->
+
+									<?php
+											}
+										}
+									?>
+								</div>
+							</div>
+						</div>
 					</div>
 				</section>
 				<input type="hidden" name="id" value="<?=$hotel->getId()?>">

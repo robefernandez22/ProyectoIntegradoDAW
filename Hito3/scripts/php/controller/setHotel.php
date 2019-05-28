@@ -23,7 +23,15 @@
 		$aire = "S";
 	}
 
-	$hotel = Hoteles::actualizarHotel($_POST["id"], $_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $aire, $wifi);
-	header("Location: ./verHoteles.php");
+	if ($_FILES["imagen"]["name"] != "") {
+		$nombre_img = $_FILES["imagen"]["name"];
+		$ruta = "../../../images/".$nombre_img;
+		move_uploaded_file($_FILES["imagen"]["tmp_name"], $ruta);
+		Hoteles::insertarImagen($_POST["id"], $ruta);
+	}
+
+	Hoteles::actualizarHotel($_POST["id"], $_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $aire, $wifi);
+
+	header("Location: ./buscarHotel.php?id=".base64_encode($_POST["id"]));
 
 ?>

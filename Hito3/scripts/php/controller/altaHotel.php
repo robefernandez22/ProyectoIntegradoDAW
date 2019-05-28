@@ -23,7 +23,7 @@
 		$aire = "S";
 	}
 
-	$hotel = Hoteles::insertarHotel(null, $_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $aire, $wifi);
+	$hotel = Hoteles::insertarHotel($_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $aire, $wifi);
 	if ($hotel == 1) {
 		header("Location: ./verHoteles.php");
 	} else {
