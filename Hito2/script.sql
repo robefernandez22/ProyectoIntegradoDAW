@@ -24,13 +24,12 @@ use hoteles_ese;
 CREATE TABLE HOTELES (
     id                   INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
     nombre               VARCHAR(50) NOT NULL,
-    descripcion          VARCHAR(100) NOT NULL,
+    descripcion          VARCHAR(100),
     ciudad               VARCHAR(50) NOT NULL,
     calle                VARCHAR(50) NOT NULL,
     numero               INTEGER NOT NULL,
     cod_postal           INTEGER NOT NULL,
     estrellas            INTEGER NOT NULL,
-    num_habitaciones     INTEGER NOT NULL,
     garaje               CHAR(1) NOT NULL,
     piscina              CHAR(1) NOT NULL,
     wifi                 CHAR(1) NOT NULL,
@@ -58,7 +57,7 @@ CREATE TABLE IMAGENES_HOTELES (
     id            INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
     img_path      VARCHAR(20) NOT NULL,
     hoteles_id    INTEGER NOT NULL,
-    FOREIGN KEY (hoteles_id) REFERENCES hoteles (id)
+    FOREIGN KEY (hoteles_id) REFERENCES hoteles (id) ON DELETE CASCADE
 );
 
 /* Inserción en la tabla IMAGENES_HOTELES */
@@ -80,7 +79,7 @@ CREATE TABLE HABITACIONES (
     vistas                  CHAR(1) NOT NULL,
     television              CHAR(1) NOT NULL,
     hoteles_id              INTEGER NOT NULL,
-    FOREIGN KEY (hoteles_id) REFERENCES hoteles (id)
+    FOREIGN KEY (hoteles_id) REFERENCES hoteles (id) ON DELETE CASCADE
 );
 
 /* Inserciones en la tabla HABITACIONES */
@@ -150,7 +149,7 @@ CREATE TABLE IMAGENES_HABITACIONES (
     id                INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
     img_path          VARCHAR(20) NOT NULL,
     habitaciones_id   INTEGER NOT NULL,
-    FOREIGN KEY (habitaciones_id) REFERENCES habitaciones (id)
+    FOREIGN KEY (habitaciones_id) REFERENCES habitaciones (id) ON DELETE CASCADE
 );
 
 /* Inserción en la tabla IMAGENES_HABITACIONES */
@@ -188,7 +187,7 @@ CREATE TABLE TIPOS_PENSIONES (
     descripcion   VARCHAR(30) NOT NULL,
     precio        FLOAT NOT NULL,
     hoteles_id    INTEGER NOT NULL,
-    FOREIGN KEY (hoteles_id) REFERENCES hoteles (id)
+    FOREIGN KEY (hoteles_id) REFERENCES hoteles (id) ON DELETE CASCADE
 );
 
 /* Inserciones en la tabla TIPOS_PENSIONES */
@@ -221,8 +220,8 @@ CREATE TABLE RESERVAS (
     num_personas				 INTEGER NOT NULL,
     usuarios_correo              VARCHAR(100) NOT NULL,
     tipos_pensiones_id           INTEGER NOT NULL,
-    FOREIGN KEY (usuarios_correo) REFERENCES usuarios (correo),
-    FOREIGN KEY (tipos_pensiones_id) REFERENCES tipos_pensiones (id)
+    FOREIGN KEY (usuarios_correo) REFERENCES usuarios (correo) ON DELETE CASCADE,
+    FOREIGN KEY (tipos_pensiones_id) REFERENCES tipos_pensiones (id) ON DELETE CASCADE
 );
 
 /* Inserciones en la tabla RESERVAS */
@@ -246,8 +245,8 @@ VALUES (NULL, '2019-05-03 00:00:00', '2019-05-20 00:00:00',
 CREATE TABLE RESERVAS_HABITACIONES (
     reservas_id       INTEGER NOT NULL,
     habitaciones_id   INTEGER NOT NULL,
-    FOREIGN KEY (reservas_id) REFERENCES reservas (id),
-    FOREIGN KEY (habitaciones_id) REFERENCES habitaciones (id)
+    FOREIGN KEY (reservas_id) REFERENCES reservas (id) ON DELETE CASCADE,
+    FOREIGN KEY (habitaciones_id) REFERENCES habitaciones (id) ON DELETE CASCADE
 );
 
 /* Inserciones en la tabla RESERVAS_HABITACIONES */
@@ -268,8 +267,8 @@ CREATE TABLE VALORACIONES (
     fecha             DATE NOT NULL,
     hoteles_id        INTEGER NOT NULL,
     usuarios_correo   VARCHAR(100) NOT NULL,
-    FOREIGN KEY (hoteles_id) REFERENCES hoteles (id),
-    FOREIGN KEY (usuarios_correo) REFERENCES usuarios (correo)
+    FOREIGN KEY (hoteles_id) REFERENCES hoteles (id) ON DELETE CASCADE,
+    FOREIGN KEY (usuarios_correo) REFERENCES usuarios (correo) ON DELETE CASCADE
 );
 
 /* Inserciones en la tabla VALORACIONES */
