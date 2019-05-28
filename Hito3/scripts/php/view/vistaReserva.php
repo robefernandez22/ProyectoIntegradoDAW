@@ -60,6 +60,10 @@
 								<a href="./vistaReserva.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
 							</li>
 
+							<li class="nav-item">
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
+							</li>
+
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros</a>
 
@@ -86,11 +90,11 @@
 						<?php
 							} else {
 						?>
-						<a href="./scripts/php/controller/verDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+						<a href="../controller/setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
 							<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 						</a>
 
-						<a href="./scripts/php/controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
+						<a href="../controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
 							<img src="../../../images/salir.svg" width="50" height="50">
 						</a>
 						<?php
@@ -154,6 +158,8 @@
 								<a href="">¿Has olvidado tu contraseña?</a>
 								<input type="submit" name="entrar" class="btn btn-primary" value="Entrar">
 							</div>
+
+							<input type="hidden" name="pagina" value="../view/vistaReserva.php">
 						</form>
 					</div>
 				</div>

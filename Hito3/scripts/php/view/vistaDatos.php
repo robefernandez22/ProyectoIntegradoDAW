@@ -47,6 +47,10 @@
 
 					<!-- Diferentes opciones del menú -->
 					<div class="collapse navbar-collapse" id="menu">
+						<?php
+							if ($usuario->getTipo() == "Administrador") {	
+						?>
+
 						<ul class="navbar-nav">
 							<li class="nav-item">
 								<a href="../view/vistaAdmin.php" class="nav-link">Inicio</a>
@@ -61,12 +65,43 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
+								<a href="./verHoteles.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
 							</li>
 						</ul>
+
+						<?php
+							} else {
+						?>
+
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a href="../../../index.php" class="nav-link">Inicio</a>
+							</li>
+
+							<li class="nav-item">
+								<a href="./scripts/php/view/vistaReserva.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
+							</li>
+
+							<li class="nav-item">
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
+							</li>
+
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros</a>
+
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
+									<a class="dropdown-item" href="" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
+								</div>
+							</li>
+						</ul>
+
+						<?php
+							}
+						?>
 					</div>
 
-					<a href="./vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $usuario->getNombre();?>!">
+					<a href="./setUsuario.php?id=<?=base64_encode($usuario->getCorreo())?>" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $usuario->getNombre();?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
@@ -80,14 +115,13 @@
 				<h1 class="text-center text-capitalize mt-5">Tus datos personales</h1>
 			</header>
 
-			<form method="post" action="../controller/setDatos.php" id="setDatos">
+			<form method="post" action="./setDatos.php" id="setDatos">
 				<section class="row justify-content-center mt-5">
 					<div class="col-md-4">
 						<div class="list-group">
 							<a class="list-group-item list-group-item-action active" data-toggle="list" data-target="#correo">Correo</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#nombre">Nombre</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#apellidos">Apellidos</a>
-							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#password">Cambiar contraseña</a>
 						</div>
 					</div>
 
@@ -95,7 +129,7 @@
 						<div class="tab-content">
 							<div class="tab-pane fade show active" id="correo">
 								<div class="form-group">
-									<input type="email" name="correo" class="form-control" value="<?php echo $usuario->getCorreo();?>">
+									<input type="email" readonly name="correo" class="form-control-plaintext" value="<?php echo $usuario->getCorreo();?>">
 								</div>
 							</div>
 
@@ -110,20 +144,13 @@
 									<input type="text" name="apellidos" class="form-control" value="<?php echo $usuario->getApellidos();?>">
 								</div>
 							</div>
-
-							<div class="tab-pane fade show" id="password">
-								<div class="form-group">
-									<label>Introduce tu contraseña actual:</label>
-									<input type="password" name="passwordActual" class="form-control" autofocus>
-								</div>
-							</div>
 						</div>
 					</div>
 				</section>
 
 				<section class="row justify-content-center mt-5">
 					<div class="col-md-8">
-						<input type="submit" name="setDatos" class="btn btn-primary" value="Guardar" disabled="true">
+						<input type="submit" name="setDatos" class="btn btn-primary" value="Guardar">
 					</div>
 				</section>
 			</form>

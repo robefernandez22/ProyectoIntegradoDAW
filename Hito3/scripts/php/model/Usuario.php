@@ -46,7 +46,11 @@
 
 		public function getTipo() {
 
-			return $this->tipo;
+			if ($this->tipo == "A") {
+				return "Administrador";
+			} else {
+				return "Usuario";
+			}
 
 		}
 

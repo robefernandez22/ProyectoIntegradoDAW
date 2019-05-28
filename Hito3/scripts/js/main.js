@@ -17,9 +17,6 @@ $(document).ready(function() {
 
 	// Cuando se envie el formulario, verificamos si tiene activado el check de recordar
 	$("form").submit(function() {
-
-
-
 	});
 
 	//
@@ -31,20 +28,10 @@ $(document).ready(function() {
 		$("#registro").modal("show");
 	});
 
-	$("form#setDatos input").on("keyup", function() {
-
-		if ($(this).val() != "") {
-			$("form#setDatos input[type='submit']").removeAttr("disabled");
-		} else {
-			$("form#setDatos input[type='submit']").attr("disabled", "true");
-		}
-
-	});
-
 	$("input[value='Eliminar']").click(function() {
 
-		$("span#correo").text($(this).parent().parent().find("input").val());
-		$("form#accion input[value='']").val($(this).parent().parent().find("input").val());
+		$("span#identificador").text($(this).parent().parent().find("input.valor").val());
+		$("form#accion input[value='']").val($(this).parent().parent().find("input.identificador").val());
 
 	});
 

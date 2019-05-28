@@ -1,14 +1,20 @@
 <?php
 
+	session_start();
 	require_once "../model/Usuario.php";
-
 	$fila = Usuario::buscarUsuario($_POST["correo"]);
 
 	if ($fila == null) {
 
 		$usuario = Usuario::insertarUsuario($_POST["correo"], $_POST["nombre"], $_POST["apellidos"], base64_encode($_POST["password"]), $_POST["tipo"]);
 		if ($usuario == 1) {
-			header("Location: ".$_POST["pagina"]);
+			if (isset($_POST["pagina"])) {
+				header("Location: ".$_POST["pagina"]);
+			} else {
+				$_SESSION["correo"] = $_POST["correo"];
+				$_SESSION["password"] = $_POST["password"];
+				header("Location: ./verificarUsuario.php");
+			}
 		} else {
 			echo "Ha ocurrido algún error.";
 		}

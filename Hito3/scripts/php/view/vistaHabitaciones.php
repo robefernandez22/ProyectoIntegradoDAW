@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Título de la página -->
-		<title>Administración - Usuarios</title>
+		<title>Administración - Habitaciones</title>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="favicon/ico" href="../../../images/favicon.ico">
 
@@ -57,28 +57,28 @@
 								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar reservas realizadas y/o canceladas">Reservas</a>
 							</li>
 
-							<li class="nav-item active">
-								<a href="../controller/verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Crea, busca, elimina y modifica usuarios">Usuarios</a>
+							<li class="nav-item">
+								<a href="../controller/verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar usuarios">Usuarios</a>
 							</li>
 
-							<li class="nav-item">
-								<a href="./verHoteles.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Crea, busca, elimina y modifica usuarios">Hoteles</a>
+							<li class="nav-item active">
+								<a href="./verHoteles.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
 							</li>
 						</ul>
 					</div>
 
-					<a href="./vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="./setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
-					<a href="../controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
+					<a href="./cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
 						<img src="../../../images/salir.svg" width="50" height="55">
 					</a>
 				</nav>
 			</header>
 
 			<header class="row justify-content-center mt-5">
-				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica usuarios</h3>
+				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica habitaciones</h3>
 			</header>
 
 			<section class="row justify-content-center mt-5">
@@ -87,41 +87,43 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th scope="col"><input class="btn btn-primary btn-sm mr-2 text-left" data-toggle="modal" data-target="#aniadir" type="button" value="Añadir"></th>
+								<th scope="col">
+									<input class="btn btn-primary btn-sm mr-2 text-left" data-toggle="modal" data-target="#aniadir" type="button" value="Añadir">
+								</th>
 
-									<?php
-										if ($data != null) {
-									?>
+								<?php
+									if (isset($data) && $data != null) {
+								?>
 
-									<th scope="col">Correo</th>
-									<th scope="col">Nombre</th>
-									<th scope="col">Apellidos</th>
-									<th scope="col">Tipo</th>
-									<th scope="col" colspan="2">Opciones</th>
+								<th scope="col">Descripción</th>
+								<th scope="col">Precio Noche</th>
+								<th scope="col">Camas</th>
+								<th scope="col" colspan="2">Opciones</th>
 
-									<?php
-										} else {
-											echo "<p class='text-center'>No hay usuarios por el momento.</p>";
-										}
-									?>
-								</tr>
-							</thead>
+								<?php
+									} else {
+										echo "<p class='text-center'>No hay habitaciones en este hotel por el momento.</p>";
+									}
+								?>
+							</tr>
+						</thead>
 
-							<tbody>
+						<tbody>
 
 							<?php
-								foreach ($data as $usuarios) {
+								if (isset($data)) {
+									foreach ($data as $habitaciones) {
 							?>
 
 							<tr>
-								<input type="hidden" name="correo" class="valor" value="<?=$usuarios->getCorreo()?>">
+								<input type="hidden" name="id" class="valor" value="<?=$habitaciones->getId()?>">
+								<input type="hidden" name="id" class="identificador" value="<?=$habitaciones->getId()?>">
 								<td></td>
-								<td><?=$usuarios->getCorreo()?></td>
-								<td><?=$usuarios->getNombre()?></td>
-								<td><?=$usuarios->getApellidos()?></td>
-								<td><?=$usuarios->getTipo()?></td>
+								<td><?=$habitaciones->getDescripcion()?></td>
+								<td><?=$habitaciones->getPrecioNoche()?></td>
+								<td><?=$habitaciones->getCamas()?></td>
 								<td>
-									<a href="./setUsuario.php?id=<?=base64_encode($usuarios->getCorreo())?>">
+									<a href="./buscarHabitacion.php?id=<?=base64_encode($habitaciones->getId())?>">
 										<input class="btn btn-warning btn-sm mr-2 text-left" data-toggle="modal" data-target="#modificar" type="button" value="Modificar">
 									</a>
 								</td>
@@ -129,28 +131,29 @@
 							</tr>
 
 							<?php
+									}
 								}
 							?>
-							</tbody>
-						</table>
-					</div>
+						</tbody>
+					</table>
 				</div>
 			</section>
 
-			<!-- Ventana modal para eliminar usuarios -->
+			<!-- Ventana modal para eliminar habitaciones -->
 			<section class="modal" id="eliminar">
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content">
 						<div class="modal-header bg-danger text-white">
-							<div class="modal-title">Eliminar usuario</div>
+							<div class="modal-title">Eliminar habitación</div>
 							<span data-dismiss="modal">X</span>
 						</div>
 
-						<form method="post" action="./eliminarUsuario.php" class="form-signin" id="accion">
-							<input type="hidden" class="identificador" name="correo" value="">
+						<form method="post" action="./eliminarHabitacion.php" class="form-signin" id="accion">
+							<input type="hidden" name="id" value="">
+							<input type="hidden" name="hotelId" value="<?=$habitaciones->getHotelId()?>">
 							<div class="modal-body">
 								<div class="form-label-group">
-									<p>¿Está seguro de que desea eliminar al usuario con el correo <b><span id="identificador"></span></b>?</p>
+									<p>¿Está seguro/a de que desea eliminar la habitación con el ID <b><span id="identificador"></span></b>?</p>
 								</div>
 							</div>
 
@@ -163,50 +166,56 @@
 				</div>
 			</section>
 
-			<!-- Ventana modal para añadir usuario -->
+			<!-- Ventana modal para añadir habitaciones -->
 			<section class="modal" id="aniadir">
 				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content">
 						<div class="modal-header bg-primary text-white">
-							<div class="modal-title">Añadir usuario</div>
+							<div class="modal-title">Añadir habitación</div>
 							<span data-dismiss="modal">X</span>
 						</div>
 
-						<form method="post" action="./altaUsuario.php" class="form-signin">
+						<form method="post" action="./altaHabitacion.php" class="form-signin">
+							<input type="hidden" name="hotelId" value="<?=$habitaciones->getHotelId()?>">
 							<div class="modal-body">
-								<div class="form-label-group">
-									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autofocus>
-									<label for="nombre"><span class="obligatorio">*</span>Nombre</label>
-								</div>
-
-								<div class="form-label-group">
-									<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos">
-									<label for="apellidos"><span class="obligatorio">*</span>Apellidos</label>
-								</div>
-
-								<div class="form-label-group">
-									<input type="email" id="inputEmail1" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
-									<label for="inputEmail1"><span class="obligatorio">*</span>Dirección de correo electrónico</label>
-								</div>
-
-								<div class="form-label-group">
-									<input type="password" id="password1" name="password" class="form-control" placeholder="Contraseña">
-									<label for="password1"><span class="obligatorio">*</span>Contraseña</label>
-								</div>
-
 								<div class="form-group">
-									<label><span class="obligatorio">*</span>Tipo</label><br>
-									<input type="radio" name="tipo" value="U"><label>Usuario</label><br>
-									<input type="radio" name="tipo" value="A"><label>Administrador</label>
+									<label for="descripcion">Descripción</label>
+									<select multiple class="form-control" id="descripcion" name="descripcion">
+										<option value="Individual">Individual</option>
+										<option value="Doble">Doble</option>
+										<option value="Familiar">Familiar</option>
+									</select>
+								</div>
+
+								<div class="form-label-group">
+									<input type="number" id="numHabitacion" name="numHabitacion" class="form-control" placeholder="Número de la habitación" min="1" required>
+									<label for="numHabitacion"><span class="obligatorio">*</span>Número de la habitación</label>
+								</div>
+
+								<div class="form-label-group">
+									<input type="number" id="numPlanta" name="numPlanta" class="form-control" placeholder="Planta en la que se encuentra la habitación" required>
+									<label for="numPlanta"><span class="obligatorio">*</span>Planta en la que se encuentra la habitación</label>
+								</div>
+
+								<div class="form-label-group">
+									<input type="number" id="precioNoche" name="precioNoche" class="form-control" placeholder="Precio de cada noche" min="1" required>
+									<label for="precioNoche"><span class="obligatorio">*</span>Precio de cada noche</label>
+								</div>
+
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input" value="television" name="television" id="television">
+									<label class="form-check-label" for="television">Televisión</label>
+								</div>
+
+								<div class="form-check">
+									<input type="checkbox" class="form-check-input" value="vistas" name="vistas" id="vistas">
+									<label class="form-check-label" for="vistas">Vistas</label>
 								</div>
 							</div>
 
 							<div class="modal-footer text-right">
 								<input type="submit" name="registro" class="btn btn-primary" value="Añadir">
 							</div>
-
-							<!-- Campo de texto oculto que mandamos al controlador 'altaUsuario' para que luego nos redireccione de nuevo aquí -->
-							<input type="hidden" name="pagina" value="verUsuarios.php">
 						</form>
 					</div>
 				</div>

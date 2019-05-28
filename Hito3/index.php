@@ -99,7 +99,7 @@
 						<?php
 							} else {
 						?>
-						<a href="./scripts/php/view/vistaDatos.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+						<a href="./scripts/php/controller/setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
 							<img src="./images/usuario.png" width="50" height="50" id="usuario">
 						</a>
 
