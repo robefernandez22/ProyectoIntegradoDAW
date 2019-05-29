@@ -100,7 +100,7 @@
 						?>
 					</div>
 
-					<a href="./setUsuario.php?id=<?=base64_encode($usuario->getCorreo())?>" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $usuario->getNombre();?>!">
+					<a href="./setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 

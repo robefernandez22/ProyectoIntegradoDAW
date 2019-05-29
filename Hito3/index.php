@@ -1,7 +1,6 @@
 <?php
 	session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -136,7 +135,7 @@
 
 								<div class="form-group">
 									<label>Recordar</label>
-									<input type="checkbox" name="recordar">
+									<input type="checkbox" name="recordar" id="recordar">
 								</div>
 							</div>
 

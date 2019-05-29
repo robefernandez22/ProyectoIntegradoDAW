@@ -97,7 +97,7 @@
 									<th scope="col">Nombre</th>
 									<th scope="col">Apellidos</th>
 									<th scope="col">Tipo</th>
-									<th scope="col" colspan="2">Opciones</th>
+									<th scope="col" colspan="3">Opciones</th>
 
 									<?php
 										} else {
@@ -114,18 +114,30 @@
 							?>
 
 							<tr>
-								<input type="hidden" name="correo" class="valor" value="<?=$usuarios->getCorreo()?>">
-								<td></td>
-								<td><?=$usuarios->getCorreo()?></td>
-								<td><?=$usuarios->getNombre()?></td>
-								<td><?=$usuarios->getApellidos()?></td>
-								<td><?=$usuarios->getTipo()?></td>
-								<td>
-									<a href="./setUsuario.php?id=<?=base64_encode($usuarios->getCorreo())?>">
-										<input class="btn btn-warning btn-sm mr-2 text-left" data-toggle="modal" data-target="#modificar" type="button" value="Modificar">
-									</a>
-								</td>
+								<form class="form-signin" method="post" action="">
+									<input type="hidden" name="correo" class="valor" value="<?=$usuarios->getCorreo()?>">
+									<td></td>
+									<td><?=$usuarios->getCorreo()?></td>
+									<td><input type="text" name="nombre" class="form-control" value="<?=$usuarios->getNombre()?>"></td>
+									<td><input type="text" name="apellidos" class="form-control" value="<?=$usuarios->getApellidos()?>"></td>
+									<td>
+										<div class="form-check">
+											<input type="radio" class="form-check-input" value="administrador" name="tipo" <?php if($usuarios->getTipo() == "Administrador"){echo "checked";}?>>
+											<label class="form-check-label" for="garaje">Administrador</label>
+										</div>
+										<div class="form-check">
+											<input type="radio" class="form-check-input" value="garaje" name="tipo" <?php if($usuarios->getTipo() == "Usuario"){echo "checked";}?>>
+											<label class="form-check-label" for="garaje">Usuario</label>
+										</div>
+									</td>
+									<td>
+										<a href="./setUsuario.php?id=<?=base64_encode($usuarios->getCorreo())?>">
+											<input class="btn btn-warning btn-sm mr-2 text-left" data-toggle="modal" data-target="#modificar" type="button" value="Modificar">
+										</a>
+									</td>
+								</form>
 								<td><input class="btn btn-danger btn-sm mr-2 text-left" data-toggle="modal" data-target="#eliminar" type="button" value="Eliminar"></td>
+								<td><a href="">Cambiar contraseña</a></td>
 							</tr>
 
 							<?php
