@@ -78,10 +78,11 @@
 			</header>
 
 			<?php
-				if (isset($_GET["accion"])) {
+				if (isset($_GET["actualizacion"])) {
+					if ($_GET["actualizacion"] == "correcta") {
 			?>
 
-			<div class="alert alert-success text-center" role="alert">
+			<div class="alert alert-success text-center mt-5" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -91,6 +92,10 @@
 			<?php
 				}
 			?>
+
+			<header class="row justify-content-center">
+				<h3 class="text-center mt-5">Modificando hotel <strong><?=$hotel->getNombre()?></strong></h3>
+			</header>
 
 			<form method="post" action="./setHotel.php">
 				<section class="row justify-content-center mt-5">

@@ -6,54 +6,63 @@
 	$fila = 0;
 	$correo = "";
 
-	if (isset($_SESSION["correo"])) {
-		$fila = Usuario::buscarUsuario($_SESSION["correo"]);
-		$correo = $_SESSION["correo"];
-	} else {
-		$fila = Usuario::buscarUsuario($_POST["correo"]);
-		$correo = $_POST["correo"];
-	}
+	try {
 
-	if ($fila == 0) {
-
-		echo "Usuario no registrado.";
-
-	} else {
-
-		if (isset($_SESSION["password"])) {
-			$fila = Usuario::verificarUsuario($correo, base64_encode($_SESSION["password"]));			
+		if (isset($_SESSION["correo"])) {
+			$fila = Usuario::buscarUsuario($_SESSION["correo"]);
+			$correo = $_SESSION["correo"];
 		} else {
-			$fila = Usuario::verificarUsuario($correo, base64_encode($_POST["password"]));
+			$fila = Usuario::buscarUsuario($_POST["correo"]);
+			$correo = $_POST["correo"];
 		}
-
-		unset($_SESSION["password"]);
-		unset($_SESSION["correo"]);
 
 		if ($fila == 0) {
 
-			echo "Contraseña incorrecta.";
+			echo "Usuario no registrado.";
 
 		} else {
 
-			$usuario = new Usuario($fila);
-			$_SESSION["nombreUsuario"] = $usuario->getNombre();
-			$_SESSION["correoUsuario"] = $correo;
+			if (isset($_SESSION["password"])) {
+				$fila = Usuario::verificarUsuario($correo, base64_encode($_SESSION["password"]));			
+			} else {
+				$fila = Usuario::verificarUsuario($correo, base64_encode($_POST["password"]));
+			}
 
-			if ($usuario->getTipo() == "Usuario") {
+			unset($_SESSION["password"]);
+			unset($_SESSION["correo"]);
 
-				if (isset($_POST["pagina"])) {
-					header("Location: " . $_POST["pagina"]);
-				} else {
-					header("Location: ../../../index.php");
-				}
+			if ($fila == 0) {
+
+				echo "Contraseña incorrecta.";
 
 			} else {
 
-				header("Location: ../view/vistaAdmin.php");
+				$usuario = new Usuario($fila);
+				$_SESSION["nombreUsuario"] = $usuario->getNombre();
+				$_SESSION["correoUsuario"] = $correo;
+				$_SESSION["tipoUsuario"] = $usuario->getTipo();
+
+				if ($usuario->getTipo() == "Usuario") {
+
+					if (isset($_POST["pagina"])) {
+						header("Location: " . $_POST["pagina"]);
+					} else {
+						header("Location: ../../../index.php");
+					}
+
+				} else {
+
+					header("Location: ../view/vistaAdmin.php");
+
+				}
 
 			}
 
 		}
+
+	} catch(Exception $e) {
+
+		header("Location:../view/vistaErrores.php?error=".$e->getCode());
 
 	}
 

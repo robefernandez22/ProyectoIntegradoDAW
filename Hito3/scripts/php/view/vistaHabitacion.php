@@ -141,6 +141,9 @@
 				<section class="row justify-content-center mt-5">
 					<div class="col-md-8">
 						<input type="submit" name="setDatos" class="btn btn-primary" value="Guardar">
+						<a href="./verHabitaciones.php?idHotel=<?=base64_encode($habitacion->getHotelId())?>">
+							<input type="button" class="btn btn-warning" value="Cancelar">
+						</a>
 					</div>
 				</section>
 				<input type="hidden" name="id" value="<?=$habitacion->getId()?>">

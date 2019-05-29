@@ -30,8 +30,14 @@
 		Hoteles::insertarImagen($_POST["id"], $ruta);
 	}
 
-	Hoteles::actualizarHotel($_POST["id"], $_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $aire, $wifi);
+	$actualizacion = Hoteles::actualizarHotel($_POST["id"], $_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $aire, $wifi);
 
-	header("Location: ./buscarHotel.php?id=".base64_encode($_POST["id"])."&accion=actualizacion");
+	if ($actualizacion == 1) {
+		$estado = "correcta";
+	} else {
+		$estado = "igual";
+	}
+
+	// header("Location: ./buscarHotel.php?id=".base64_encode($_POST["id"])."&actualizacion=".$estado);
 
 ?>

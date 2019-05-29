@@ -125,12 +125,13 @@
 				}
 			?>
 
+			<header class="row justify-content-center mt-5">
+				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica usuarios</h3>
+			</header>
+
 			<section class="row justify-content-center mt-5">
 				<form class="form-signin" method="post" action="./setDatos.php">
-					<div class="text-center mb-4">
-						<h1 class="h3 mb-3 font-weight-normal">Tus datos personales</h1>
-					</div>
-
+					<input type="hidden" name="redireccion" value="vistaDatos.php">
 					<div class="form-label-group">
 						<input type="email" id="correo" name="correo" class="form-control-plaintext" placeholder="Correo electrónico" value="<?php echo $usuario->getCorreo();?>" readonly>
 						<label for="correo">Correo electrónico</label>
@@ -146,7 +147,7 @@
 						<label for="apellidos">Apellidos</label>
 					</div>
 
-					<p><a href="">Cambiar contraseña</a></p>
+					<p><a href="./setPassword.php?id=<?=base64_encode($usuarios->getCorreo())?>">Cambiar contraseña</a></p>
 					<input type="submit" name="setDatos" class="btn btn-success mt-5" value="Guardar">
 				</form>
 			</section>

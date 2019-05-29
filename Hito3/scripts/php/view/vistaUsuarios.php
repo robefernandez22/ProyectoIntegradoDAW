@@ -77,6 +77,21 @@
 				</nav>
 			</header>
 
+			<?php
+				if (isset($_GET["accion"])) {
+			?>
+
+			<div class="alert alert-success text-center" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>¡Bien!</strong> Datos actualizados correctamente.
+			</div>
+
+			<?php
+				}
+			?>
+
 			<header class="row justify-content-center mt-5">
 				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica usuarios</h3>
 			</header>
@@ -108,38 +123,44 @@
 							</thead>
 
 							<tbody>
-
 							<?php
 								foreach ($data as $usuarios) {
 							?>
-
-							<tr>
-								<form class="form-signin" method="post" action="">
-									<input type="hidden" name="correo" class="valor" value="<?=$usuarios->getCorreo()?>">
-									<td></td>
-									<td><?=$usuarios->getCorreo()?></td>
-									<td><input type="text" name="nombre" class="form-control" value="<?=$usuarios->getNombre()?>"></td>
-									<td><input type="text" name="apellidos" class="form-control" value="<?=$usuarios->getApellidos()?>"></td>
+								<tr>
+									<form class="form-signin" method="post" action="./setDatos.php">
+										<td>
+											<input type="hidden" name="correo" value="<?=$usuarios->getCorreo()?>">
+										</td>
+										<td>
+											<?=$usuarios->getCorreo()?>
+										</td>
+										<td>
+											<input type="text" name="nombre" class="form-control" value="<?=$usuarios->getNombre()?>">
+										</td>
+										<td>
+											<input type="text" name="apellidos" class="form-control" value="<?=$usuarios->getApellidos()?>">
+										</td>
+										<td>
+											<div class="form-check">
+												<input type="radio" class="form-check-input" value="administrador" name="tipo" <?php if($usuarios->getTipo() == "Administrador"){echo "checked";}?>>
+												<label class="form-check-label" for="garaje">Administrador</label>
+											</div>
+											<div class="form-check">
+												<input type="radio" class="form-check-input" value="garaje" name="tipo" <?php if($usuarios->getTipo() == "Usuario"){echo "checked";}?>>
+												<label class="form-check-label" for="garaje">Usuario</label>
+											</div>
+										</td>
+										<td>
+											<input type="submit" class="btn btn-warning btn-sm mr-2 text-left" value="Modificar">
+										</td>
+									</form>
 									<td>
-										<div class="form-check">
-											<input type="radio" class="form-check-input" value="administrador" name="tipo" <?php if($usuarios->getTipo() == "Administrador"){echo "checked";}?>>
-											<label class="form-check-label" for="garaje">Administrador</label>
-										</div>
-										<div class="form-check">
-											<input type="radio" class="form-check-input" value="garaje" name="tipo" <?php if($usuarios->getTipo() == "Usuario"){echo "checked";}?>>
-											<label class="form-check-label" for="garaje">Usuario</label>
-										</div>
+										<input class="btn btn-danger btn-sm mr-2 text-left" data-toggle="modal" data-target="#eliminar" type="button" value="Eliminar">
 									</td>
 									<td>
-										<a href="./setUsuario.php?id=<?=base64_encode($usuarios->getCorreo())?>">
-											<input class="btn btn-warning btn-sm mr-2 text-left" data-toggle="modal" data-target="#modificar" type="button" value="Modificar">
-										</a>
+										<a href="./setPassword.php?id=<?=base64_encode($usuarios->getCorreo())?>">Cambiar contraseña</a>
 									</td>
-								</form>
-								<td><input class="btn btn-danger btn-sm mr-2 text-left" data-toggle="modal" data-target="#eliminar" type="button" value="Eliminar"></td>
-								<td><a href="">Cambiar contraseña</a></td>
-							</tr>
-
+								</tr>
 							<?php
 								}
 							?>

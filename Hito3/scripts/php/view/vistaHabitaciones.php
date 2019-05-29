@@ -123,7 +123,7 @@
 								<td><?=$habitaciones->getPrecioNoche()?></td>
 								<td><?=$habitaciones->getCamas()?></td>
 								<td>
-									<a href="./buscarHabitacion.php?id=<?=base64_encode($habitaciones->getId())?>">
+									<a href="./buscarHabitacion.php?idHabitacion=<?=base64_encode($habitaciones->getId())?>">
 										<input class="btn btn-warning btn-sm mr-2 text-left" data-toggle="modal" data-target="#modificar" type="button" value="Modificar">
 									</a>
 								</td>

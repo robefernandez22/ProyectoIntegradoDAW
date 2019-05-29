@@ -8,11 +8,11 @@
 
 				$conexion = new PDO("mysql:host=localhost;dbname=hoteles_ese;charset=utf8", "root", "");
 				$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+			
 			} catch(PDOException $e) {
-
-				die("Error en la línea <b>" . $e->getCode() . "</b><br>Que dice lo siguiente: <b>" . $e->getMessage()."</b>");
-
+				
+				die("Error. Código del error: " . $e->getCode()."<br>Mensaje de error: " . $e->getMessage());
+			
 			}
 
 			return $conexion;

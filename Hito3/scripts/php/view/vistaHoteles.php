@@ -99,7 +99,7 @@
 								<th scope="col">Habitaciones</th>
 								<th scope="col">Ciudad</th>
 								<th scope="col">Dirección</th>
-								<th scope="col" colspan="2">Opciones</th>
+								<th scope="col" colspan="3">Opciones</th>
 
 								<?php
 									} else {
@@ -121,7 +121,7 @@
 								<td></td>
 								<td><?=$hoteles->getNombre()?></td>
 								<td>
-									<a href="./verHabitaciones.php?id=<?=base64_encode($hoteles->getId())?>">
+									<a href="./verHabitaciones.php?idHotel=<?=base64_encode($hoteles->getId())?>">
 										<?=$hoteles->getHabitaciones()?>
 									</a>
 								</td>
@@ -133,6 +133,9 @@
 									</a>
 								</td>
 								<td><input class="btn btn-danger btn-sm mr-2 text-left" data-toggle="modal" data-target="#eliminar" type="button" value="Eliminar"></td>
+								<td>
+									<a href="./cargarOpiniones.php?id=<?=base64_encode($hoteles->getId())?>">Ver opiniones</a>
+								</td>
 							</tr>
 
 							<?php

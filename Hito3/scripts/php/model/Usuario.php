@@ -110,7 +110,7 @@
 
 		}
 
-		public static function actualizarUsuario($correo, $nombre, $apellidos) {
+		public static function actualizarUsuario($correo, $nombre, $apellidos, $tipo = "A") {
 
 			$conexion = Conexion::conexionBD();
 
