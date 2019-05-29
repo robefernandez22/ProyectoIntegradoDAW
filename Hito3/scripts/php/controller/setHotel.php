@@ -32,6 +32,6 @@
 
 	Hoteles::actualizarHotel($_POST["id"], $_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $aire, $wifi);
 
-	header("Location: ./buscarHotel.php?id=".base64_encode($_POST["id"]));
+	header("Location: ./buscarHotel.php?id=".base64_encode($_POST["id"])."&accion=actualizacion");
 
 ?>

@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="../../../style/main.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../lib/floating-labels.css">
 
 		<!-- Librería jQuery -->
 		<script src="../../../lib/jquery-3.4.0.min.js"></script>
@@ -24,9 +25,6 @@
 		<script src="../../../lib/bootstrap.min.js"></script>
 		<!-- Script principal -->
 		<script src="../../js/main.js"></script>
-
-		<link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-		<script src="cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 	</head>
 
 	<body>
@@ -79,11 +77,22 @@
 				</nav>
 			</header>
 
-			<header class="row justify-content-center mt-5">
-				<h1 class="text-center text-capitalize mt-5">Hotel <?=$hotel->getNombre()?></h1>
-			</header>
+			<?php
+				if (isset($_GET["accion"])) {
+			?>
 
-			<form method="post" action="./setHotel.php" enctype="multipart/form-data">
+			<div class="alert alert-success text-center" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>¡Bien!</strong> Datos actualizados correctamente.
+			</div>
+
+			<?php
+				}
+			?>
+
+			<form method="post" action="./setHotel.php">
 				<section class="row justify-content-center mt-5">
 					<div class="col-md-4">
 						<div class="list-group">
@@ -96,73 +105,81 @@
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#estrellas">Estrellas</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#extras">Extras</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#imagenes">Imágenes</a>
-							<input type="submit" name="setDatos" class="btn btn-success" value="Guardar">
+							<input type="submit" name="guardar" value="Guardar" class="btn btn-success">							
 						</div>
 					</div>
 
 					<div class="col-md-4">
 						<div class="tab-content">
 							<div class="tab-pane fade show active" id="nombre">
-								<div class="form-group">
-									<input type="text" name="nombre" class="form-control" value="<?=$hotel->getNombre()?>">
+								<div class="form-label-group">
+									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" value="<?=$hotel->getNombre()?>">
+									<label for="nombre">Nombre</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="descripcion">
 								<div class="form-group">
-									<textarea name="descripcion" class="form-control" placeholder="Descripción"><?=$hotel->getDescripcion()?></textarea>
+									<textarea name="descripcion" placeholder="Descripción" class="form-control"><?=$hotel->getDescripcion()?></textarea>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="ciudad">
-								<div class="form-group">
-									<input type="text" name="ciudad" class="form-control" value="<?=$hotel->getCiudad()?>">
+								<div class="form-label-group">
+									<input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ciudad" value="<?=$hotel->getCiudad()?>">
+									<label for="ciudad">Ciudad</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="calle">
-								<div class="form-group">
-									<input type="text" name="calle" class="form-control" value="<?=$hotel->getCalle()?>">
+								<div class="form-label-group">
+									<input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" value="<?=$hotel->getCalle()?>">
+									<label for="calle">Calle</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="numero">
-								<div class="form-group">
-									<input type="number" name="numero" class="form-control" value="<?=$hotel->getNumero()?>">
+								<div class="form-label-group">
+									<input type="number" id="numero" name="numero" class="form-control" placeholder="Número" value="<?=$hotel->getNumero()?>">
+									<label for="numero">Número</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="codPostal">
-								<div class="form-group">
-									<input type="number" name="codPostal" class="form-control" value="<?=$hotel->getCodPostal()?>">
+								<div class="form-label-group">
+									<input type="number" id="codPostal" name="codPostal" placeholder="Código Postal" class="form-control" value="<?=$hotel->getCodPostal()?>">
+									<label for="codPostal">Código Postal</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="estrellas">
-								<div class="form-group">
-									<input type="number" name="estrellas" class="form-control" value="<?=$hotel->getEstrellas()?>">
+								<div class="form-label-group">
+									<input type="number" id="estrellas" name="estrellas" placeholder="Estrellas" class="form-control" value="<?=$hotel->getEstrellas()?>">
+									<label for="estrellas">Estrellas</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="extras">
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="garaje" name="garaje" id="garaje" <?php if($hotel->getGaraje() == "S"){echo "checked";}?>>
-									<label class="form-check-label" for="garaje">Garaje</label>
-								</div>
+								<div class="form-label-group">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="garaje" name="garaje" id="garaje" <?php if($hotel->getGaraje() == "S"){echo "checked";}?>>
+										<label class="form-check-label" for="garaje">Garaje</label>
+									</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="piscina" name="piscina" id="piscina" <?php if($hotel->getPiscina() == "S"){echo "checked";}?>>
-									<label class="form-check-label" for="piscina">Piscina</label>
-								</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="piscina" name="piscina" id="piscina" <?php if($hotel->getPiscina() == "S"){echo "checked";}?>>
+										<label class="form-check-label" for="piscina">Piscina</label>
+									</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="aire" name="aire" id="aire" <?php if($hotel->getAire() == "S"){echo "checked";}?>>
-									<label class="form-check-label" for="aire">Aire Acondicionado</label>
-								</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="aire" name="aire" id="aire" <?php if($hotel->getAire() == "S"){echo "checked";}?>>
+										<label class="form-check-label" for="aire">Aire Acondicionado</label>
+									</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="wifi" name="wifi" id="wifi" <?php if($hotel->getWifi() == "S"){echo "checked";}?>>
-									<label class="form-check-label" for="wifi">Wi-Fi</label>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="wifi" name="wifi" id="wifi" <?php if($hotel->getWifi() == "S"){echo "checked";}?>>
+										<label class="form-check-label" for="wifi">Wi-Fi</label>
+									</div>
 								</div>
 							</div>
 
@@ -202,6 +219,7 @@
 						</div>
 					</div>
 				</section>
+
 				<input type="hidden" name="id" value="<?=$hotel->getId()?>">
 			</form>
 		</main>

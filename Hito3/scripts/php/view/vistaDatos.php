@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="../../../style/main.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../lib/floating-labels.css">
 
 		<!-- Librería jQuery -->
 		<script src="../../../lib/jquery-3.4.0.min.js"></script>
@@ -35,9 +36,7 @@
 				<!-- Menú -->
 				<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top col-md-12">
 					<!-- Logotipo -->
-					<a class="navbar-brand" href="./vistaAdmin.php">
-						<img src="../../../images/logo.jpg" width="120" height="55">
-					</a>
+					<img src="../../../images/logo.jpg" width="120" height="55">
 
 					<!-- Botón que desplegará el menú cuando este no se vea debido al tamaño del dispositivo
 					en el que se esté viendo -->
@@ -111,51 +110,46 @@
 				</nav>
 			</header>
 
-			<header class="row justify-content-center mt-5">
-				<h1 class="text-center text-capitalize mt-5">Tus datos personales</h1>
-			</header>
+			<?php
+				if (isset($_GET["accion"])) {
+			?>
 
-			<form method="post" action="./setDatos.php" id="setDatos">
-				<section class="row justify-content-center mt-5">
-					<div class="col-md-4">
-						<div class="list-group">
-							<a class="list-group-item list-group-item-action active" data-toggle="list" data-target="#correo">Correo</a>
-							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#nombre">Nombre</a>
-							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#apellidos">Apellidos</a>
-						</div>
+			<div class="alert alert-success text-center" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong>¡Bien!</strong> Datos actualizados correctamente.
+			</div>
+
+			<?php
+				}
+			?>
+
+			<section class="row justify-content-center mt-5">
+				<form class="form-signin" method="post" action="./setDatos.php">
+					<div class="text-center mb-4">
+						<h1 class="h3 mb-3 font-weight-normal">Tus datos personales</h1>
 					</div>
 
-					<div class="col-md-4">
-						<div class="tab-content">
-							<div class="tab-pane fade show active" id="correo">
-								<div class="form-group">
-									<input type="email" readonly name="correo" class="form-control-plaintext" value="<?php echo $usuario->getCorreo();?>">
-								</div>
-							</div>
-
-							<div class="tab-pane fade show" id="nombre">
-								<div class="form-group">
-									<input type="text" name="nombre" class="form-control" value="<?php echo $usuario->getNombre();?>">
-								</div>
-							</div>
-
-							<div class="tab-pane fade show" id="apellidos">
-								<div class="form-group">
-									<input type="text" name="apellidos" class="form-control" value="<?php echo $usuario->getApellidos();?>">
-								</div>
-							</div>
-						</div>
+					<div class="form-label-group">
+						<input type="email" id="correo" name="correo" class="form-control-plaintext" placeholder="Correo electrónico" value="<?php echo $usuario->getCorreo();?>" readonly>
+						<label for="correo">Correo electrónico</label>
 					</div>
-				</section>
 
-				<section class="row justify-content-center mt-5">
-					<div class="col-md-8">
-						<input type="submit" name="setDatos" class="btn btn-primary" value="Guardar">
+					<div class="form-label-group">
+						<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" value="<?php echo $usuario->getNombre();?>">
+						<label for="nombre">Nombre</label>
 					</div>
-				</section>
-			</form>
+
+					<div class="form-label-group">
+						<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" value="<?php echo $usuario->getApellidos();?>">
+						<label for="apellidos">Apellidos</label>
+					</div>
+
+					<p><a href="">Cambiar contraseña</a></p>
+					<input type="submit" name="setDatos" class="btn btn-success mt-5" value="Guardar">
+				</form>
+			</section>
 		</main>
-
 	</body>
-
 </html>
