@@ -111,22 +111,22 @@
 			</header>
 
 			<?php
-				if (isset($_GET["accion"])) {
+				if (isset($_GET["actualizacion"])) {
+					if ($_GET["actualizacion"] == 1) {
 			?>
 
-			<div class="alert alert-success text-center" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+			<div class="alert alert-success text-center mt-5" role="alert">
 				<strong>¡Bien!</strong> Datos actualizados correctamente.
+				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" aria-hidden="true">&times;</a>
 			</div>
 
 			<?php
+					}
 				}
 			?>
 
 			<header class="row justify-content-center mt-5">
-				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica usuarios</h3>
+				<h3 class="text-center text-capitalize mt-5">Tus datos</h3>
 			</header>
 
 			<section class="row justify-content-center mt-5">
@@ -147,8 +147,13 @@
 						<label for="apellidos">Apellidos</label>
 					</div>
 
-					<p><a href="./setPassword.php?id=<?=base64_encode($usuarios->getCorreo())?>">Cambiar contraseña</a></p>
-					<input type="submit" name="setDatos" class="btn btn-success mt-5" value="Guardar">
+					<div class="form-group">
+						<a href="./setPassword.php?id=<?=base64_encode($usuario->getCorreo())?>">Cambiar contraseña</a>
+					</div>
+
+					<div class="form-group">
+						<input type="submit" name="setDatos" class="btn btn-success" value="Guardar">
+					</div>
 				</form>
 			</section>
 		</main>

@@ -78,7 +78,7 @@
 			</header>
 
 			<header class="row justify-content-center mt-5">
-				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica habitaciones</h3>
+				<h3 class="text-center text-capitalize mt-5">Habitaciones del hotel <?=$hotel->getNombre()?></h3>
 			</header>
 
 			<section class="row justify-content-center mt-5">

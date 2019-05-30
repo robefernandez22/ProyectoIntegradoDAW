@@ -37,20 +37,20 @@ CREATE TABLE HOTELES (
 );
 
 /* Inserciones en la tabla HOTELES */
-INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `NUM_HABITACIONES`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
-VALUES (NULL, 'Monterrey Costa', 'Hotel en primera línea de playa', 'Cádiz', 'Paseo Costa de la Luz', '55', '11550', '3', '45', 'S', 'N', 'S', 'S');
+INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
+VALUES (NULL, 'Monterrey Costa', 'Hotel en primera línea de playa', 'Cádiz', 'Paseo Costa de la Luz', '55', '11550', '3', 'S', 'N', 'S', 'S');
 
-INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `NUM_HABITACIONES`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
-VALUES (NULL, 'Hotel Polígono Sur', 'Hotel en el mejor barrio de Sevilla', 'Sevilla', 'Calle Esclava del Señor', '2', '41013', '5', '100', 'S', 'S', 'S', 'S');
+INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
+VALUES (NULL, 'Hotel Polígono Sur', 'Hotel en el mejor barrio de Sevilla', 'Sevilla', 'Calle Esclava del Señor', '2', '41013', '5', 'S', 'S', 'S', 'S');
 
-INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `NUM_HABITACIONES`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
-VALUES (NULL, 'Hotel 3', 'Ejemplo de descripción del Hotel 3', 'Madrid', 'Av. de Concha Espina', '1', '28036', '5', '200', 'S', 'S', 'S', 'S');
+INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
+VALUES (NULL, 'Hotel 3', 'Ejemplo de descripción del Hotel 3', 'Madrid', 'Av. de Concha Espina', '1', '28036', '5', 'S', 'S', 'S', 'S');
 
-INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `NUM_HABITACIONES`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
-VALUES (NULL, 'Design Plus Bex Hotel', 'Ejemplo de descripción del Hotel 4', 'Las Palmas de Gran Canaria', 'Calle León y Castillo', '330', '35007', '4', '120', 'S', 'S', 'S', 'S');
+INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
+VALUES (NULL, 'Design Plus Bex Hotel', 'Ejemplo de descripción del Hotel 4', 'Las Palmas de Gran Canaria', 'Calle León y Castillo', '330', '35007', '4', 'S', 'S', 'S', 'S');
 
-INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `NUM_HABITACIONES`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
-VALUES (NULL, 'Hotel Zenit Barcelona', 'Ejemplo de descripción del Hotel 5', 'Barcelona', 'Carrer de Santaló', '8', '08021', '5', '320', 'N', 'S', 'S', 'S');
+INSERT INTO `HOTELES_ESE`.`HOTELES` (`ID`, `NOMBRE`, `DESCRIPCION`, `CIUDAD`, `CALLE`, `NUMERO`, `COD_POSTAL`, `ESTRELLAS`, `GARAJE`, `PISCINA`, `WIFI`, `AIRE_ACONDICIONADO`)
+VALUES (NULL, 'Hotel Zenit Barcelona', 'Ejemplo de descripción del Hotel 5', 'Barcelona', 'Carrer de Santaló', '8', '08021', '5', 'N', 'S', 'S', 'S');
 
 /* Creación de la tabla IMAGENES_HOTELES */
 CREATE TABLE IMAGENES_HOTELES (
@@ -60,12 +60,12 @@ CREATE TABLE IMAGENES_HOTELES (
 );
 
 /* Inserción en la tabla IMAGENES_HOTELES */
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, 'C:\\hoteles\\img1.jpg', '1');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, 'C:\\hoteles\\img2.jpg', '1');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, 'C:\\hoteles\\img3.jpg', '2');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, 'C:\\hoteles\\img4.jpg', '2');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, 'C:\\hoteles\\img5.jpg', '3');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, 'C:\\hoteles\\img6.jpg', '3');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img1.jpg', '1');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img2.jpg', '1');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img3.jpg', '2');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img4.jpg', '2');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img5.jpg', '3');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img6.jpg', '3');
 
 /* Creación de la tabla HABITACIONES */
 CREATE TABLE HABITACIONES (

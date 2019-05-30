@@ -78,22 +78,22 @@
 			</header>
 
 			<?php
-				if (isset($_GET["accion"])) {
+				if (isset($_GET["actualizacion"])) {
+					if ($_GET["actualizacion"] == 1) {
 			?>
 
-			<div class="alert alert-success text-center" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<strong>¡Bien!</strong> Datos actualizados correctamente.
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Usuario actualizado correctamente.
+				<a href="./delVariable.php?controlador=./verUsuarios.php" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
+					}
 				}
 			?>
 
 			<header class="row justify-content-center mt-5">
-				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica usuarios</h3>
+				<h3 class="text-center text-capitalize mt-5">Crea, elimina y modifica usuarios</h3>
 			</header>
 
 			<section class="row justify-content-center mt-5">

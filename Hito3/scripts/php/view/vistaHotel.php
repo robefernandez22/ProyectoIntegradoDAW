@@ -79,17 +79,16 @@
 
 			<?php
 				if (isset($_GET["actualizacion"])) {
-					if ($_GET["actualizacion"] == "correcta") {
+					if ($_GET["actualizacion"] == 1) {
 			?>
 
 			<div class="alert alert-success text-center mt-5" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
 				<strong>¡Bien!</strong> Datos actualizados correctamente.
+				<a href="./delVariable.php?controlador=./buscarHotel.php?id=<?=base64_encode($hotel->getId())?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
+					}
 				}
 			?>
 
@@ -224,7 +223,6 @@
 						</div>
 					</div>
 				</section>
-
 				<input type="hidden" name="id" value="<?=$hotel->getId()?>">
 			</form>
 		</main>

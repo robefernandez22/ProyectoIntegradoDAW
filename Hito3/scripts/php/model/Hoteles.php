@@ -53,12 +53,6 @@
 
 		}
 
-		public function getNumHabitaciones() {
-
-			return $this->num_habitaciones;
-
-		}
-
 		public function getCiudad() {
 
 			return $this->ciudad;

@@ -77,6 +77,21 @@
 				</nav>
 			</header>
 
+			<?php
+				if (isset($_GET["actualizacion"])) {
+					if ($_GET["actualizacion"] == 1) {
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Hotel eliminado correctamente.
+				<a href="./delVariable.php?controlador=./verHoteles.php" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					}
+				}
+			?>
+
 			<header class="row justify-content-center mt-5">
 				<h3 class="text-center text-capitalize mt-5">Crea, busca, elimina y modifica hoteles</h3>
 			</header>

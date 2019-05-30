@@ -78,7 +78,6 @@
 					<a href="../controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
 						<img src="../../../images/salir.svg" width="50" height="55">
 					</a>
-
 				</nav>
 			</header>
 
