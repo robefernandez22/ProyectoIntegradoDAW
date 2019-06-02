@@ -114,8 +114,8 @@
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "UPDATE usuarios SET nombre = '".$nombre."', apellidos = '".$apellidos."'
-			WHERE correo LIKE '".$correo."'";
+			$sql = "UPDATE usuarios SET nombre = '$nombre', apellidos = '$apellidos', tipo = '$tipo'
+			WHERE correo LIKE '$correo'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;

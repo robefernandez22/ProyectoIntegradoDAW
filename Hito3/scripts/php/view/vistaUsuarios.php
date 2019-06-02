@@ -84,7 +84,29 @@
 
 			<div class="alert alert-success text-center mt-5" role="alert">
 				<strong>¡Bien!</strong> Usuario actualizado correctamente.
-				<a href="./delVariable.php?controlador=./verUsuarios.php" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+				<a href="./delVariable.php?controlador=./verUsuarios.php&variable=actualizacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					}
+				} elseif (isset($_GET["eliminacion"])) {
+					if ($_GET["eliminacion"] == 1) {
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Usuario eliminado correctamente.
+				<a href="./delVariable.php?controlador=./verUsuarios.php&variable=eliminacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					}
+				} elseif (isset($_GET["aniadir"])) {
+					if ($_GET["aniadir"] == 1) {
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Usuario añadido correctamente.
+				<a href="./delVariable.php?controlador=./verUsuarios.php&variable=aniadir" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
@@ -128,9 +150,8 @@
 							?>
 								<tr>
 									<form class="form-signin" method="post" action="./setDatos.php">
-										<td>
-											<input type="hidden" name="correo" value="<?=$usuarios->getCorreo()?>">
-										</td>
+										<input type="hidden" class="valor identificador" name="correo" value="<?=$usuarios->getCorreo()?>">
+										<td></td>
 										<td>
 											<?=$usuarios->getCorreo()?>
 										</td>
@@ -142,12 +163,12 @@
 										</td>
 										<td>
 											<div class="form-check">
-												<input type="radio" class="form-check-input" value="administrador" name="tipo" <?php if($usuarios->getTipo() == "Administrador"){echo "checked";}?>>
-												<label class="form-check-label" for="garaje">Administrador</label>
+												<input type="radio" id="amdin" class="form-check-input" value="A" name="tipo" <?php if($usuarios->getTipo() == "Administrador"){echo "checked";}?>>
+												<label class="form-check-label" for="admin">Administrador</label>
 											</div>
 											<div class="form-check">
-												<input type="radio" class="form-check-input" value="garaje" name="tipo" <?php if($usuarios->getTipo() == "Usuario"){echo "checked";}?>>
-												<label class="form-check-label" for="garaje">Usuario</label>
+												<input type="radio" id="usuario" class="form-check-input" value="U" name="tipo" <?php if($usuarios->getTipo() == "Usuario"){echo "checked";}?>>
+												<label class="form-check-label" for="usuario">Usuario</label>
 											</div>
 										</td>
 										<td>

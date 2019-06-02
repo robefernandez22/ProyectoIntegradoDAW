@@ -25,6 +25,10 @@
 		<script src="../../../lib/bootstrap.min.js"></script>
 		<!-- Script principal -->
 		<script src="../../js/main.js"></script>
+
+		<!-- Librerías necesarias para FancyBox -->
+		<script src="../../../lib/fancybox/jquery.fancybox.min.js"></script>
+		<link rel="stylesheet" href="../../../lib/fancybox/jquery.fancybox.min.css" type="text/css" media="screen">
 	</head>
 
 	<body>
@@ -193,7 +197,7 @@
 									<input type="file" id="imagen" name="imagen" class="form-control-file">
 								</div>
 
-								<div class="row">
+								<div class="row" id="galeria">
 									<?php
 										if ($hotel->getImagenes() == null) {
 									?>
@@ -206,8 +210,8 @@
 									?>
 
 									<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-										<a href="<?=$image?>" class="fancybox" rel="ligthbox">
-											<img src="<?=$image?>" class="zoom img-fluid">
+										<a href="<?=$image?>" rel="gallery">
+											<img src="<?=$image?>" width="70" height="70">
 										</a>
 									</div>
 									

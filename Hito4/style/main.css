@@ -1,0 +1,35 @@
+a, span {
+
+	cursor: pointer;
+
+}
+
+div.carousel {
+
+	margin: auto;
+
+}
+
+img#usuario {
+
+	margin-right: 20px;
+
+}
+
+span.obligatorio {
+
+	color: red;
+
+}
+
+th, td {
+
+	padding: 10px;
+
+}
+
+table {
+
+	margin: auto;
+
+}

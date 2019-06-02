@@ -54,18 +54,17 @@ VALUES (NULL, 'Hotel Zenit Barcelona', 'Ejemplo de descripción del Hotel 5', 'B
 
 /* Creación de la tabla IMAGENES_HOTELES */
 CREATE TABLE IMAGENES_HOTELES (
-    img_path      VARCHAR(20) NOT NULL PRIMARY KEY,
+    img_path      VARCHAR(200) NOT NULL PRIMARY KEY,
     hoteles_id    INTEGER NOT NULL,
     FOREIGN KEY (hoteles_id) REFERENCES hoteles (id) ON DELETE CASCADE
 );
 
 /* Inserción en la tabla IMAGENES_HOTELES */
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img1.jpg', '1');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img2.jpg', '1');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img3.jpg', '2');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img4.jpg', '2');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img5.jpg', '3');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('C:\\hoteles\\img6.jpg', '3');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel1.jpg', '1');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel2.jpg', '2');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel3.jpg', '3');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel4.jpg', '4');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel5.jpg', '5');
 
 /* Creación de la tabla HABITACIONES */
 CREATE TABLE HABITACIONES (
@@ -170,15 +169,17 @@ CREATE TABLE USUARIOS (
 
 /* Inserciones en la tabla USUARIOS */
 INSERT INTO `HOTELES_ESE`.`USUARIOS`(`CORREO`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `TIPO`)
-VALUES ('clara.mesa@iespoligonosur.org', 'Clara', 'Mesa Fonseca', 'disenioInterfaces', 'A');
+VALUES ('admin@gmail.com', 'Administrador', 'Administrador', 'YWRtaW4=', 'A');
 INSERT INTO `HOTELES_ESE`.`USUARIOS`(`CORREO`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `TIPO`)
-VALUES ('concepcion.guisado@iespoligonosur.org', 'Concepción', 'Guisado Jurado', 'desarrolloServidor', 'A');
+VALUES ('clara.mesa@iespoligonosur.org', 'Clara', 'Mesa Fonseca', 'ZGlzZW5pb0ludGVyZmFjZXM=', 'U');
 INSERT INTO `HOTELES_ESE`.`USUARIOS`(`CORREO`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `TIPO`)
-VALUES ('robertofernandezromero61@gmail.com', 'Roberto', 'Fernández Romero', 'alumnoDAW', 'U');
+VALUES ('concepcion.guisado@iespoligonosur.org', 'Concepción', 'Guisado Jurado', 'ZGVzYXJyb2xsb1NlcnZpZG9y', 'U');
 INSERT INTO `HOTELES_ESE`.`USUARIOS`(`CORREO`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `TIPO`)
-VALUES ('mercedes.florido@iespoligonosur.org', 'Mercedes', 'Florido Berrocal', 'desarrolloCliente', 'U');
+VALUES ('robertofernandezromero61@gmail.com', 'Roberto', 'Fernández Romero', 'YWx1bW5vREFX', 'U');
 INSERT INTO `HOTELES_ESE`.`USUARIOS`(`CORREO`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `TIPO`)
-VALUES ('diego.fernandez@iespoligonosur.org', 'Diego Jesús', 'Fernández Raposo', 'despliegueWeb', 'U');
+VALUES ('mercedes.florido@iespoligonosur.org', 'Mercedes', 'Florido Berrocal', 'ZGVzYXJyb2xsb0NsaWVudGU=', 'U');
+INSERT INTO `HOTELES_ESE`.`USUARIOS`(`CORREO`, `NOMBRE`, `APELLIDOS`, `PASSWORD`, `TIPO`)
+VALUES ('diego.fernandez@iespoligonosur.org', 'Diego Jesús', 'Fernández Raposo', 'ZGVzcGxpZWd1ZVdlYg==', 'U');
 
 /* Creación de la tabla TIPOS_PENSIONES */
 CREATE TABLE TIPOS_PENSIONES (
