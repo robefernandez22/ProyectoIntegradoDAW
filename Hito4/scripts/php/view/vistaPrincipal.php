@@ -1,7 +1,3 @@
-<?php
-	session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,36 +7,44 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Título de la página -->
-		<title>Reservar</title>
+		<title>Hoteles ESE - Inicio</title>
 		<!-- Favicon -->
-		<link rel="shortcut icon" type="favicon/ico" href="../../../images/favicon.ico">
+		<link rel="shortcut icon" type="favicon/ico" href="./images/favicon.ico">
 
 		<!-- CSS principal -->
-		<link rel="stylesheet" type="text/css" href="../../../style/main.css">
-		<!-- CSS Bootstrap -->
-		<link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../../../lib/floating-labels.css">
+		<link rel="stylesheet" type="text/css" href="./style/main.css">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" type="text/css" href="./lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./lib/floating-labels.css">
 
 		<!-- Librería jQuery -->
-		<script src="../../../lib/jquery-3.4.0.min.js"></script>
+		<script src="./lib/jquery-3.4.0.min.js"></script>
 		<!-- Popper Script. Librería necesaria para que funcionen los elementos tooltip de Bootstrap -->
-		<script src="../../../lib/popper.min.js"></script>
+		<script src="./lib/popper.min.js"></script>
 		<!-- Bootstrap Script -->
-		<script src="../../../lib/bootstrap.min.js"></script>
+		<script src="./lib/bootstrap.min.js"></script>
 		<!-- Script principal -->
-		<script src="../../js/main.js"></script>
+		<script src="./scripts/js/main.js"></script>
 	</head>
 
 	<body>
 
 		<!-- Contenedor principal -->
 		<main class="container-fluid">
+			<!-- Contenedor para el aviso de Cookies -->
+			<div class="alert alert-dismissible fade alert-primary fixed-bottom text-center">
+				<p>¡Aviso! Usamos <strong>Cookies</strong> para mejorar la experiencia del usuario. Pero tranquil@, <strong>tus datos están seguros</strong>.<br>Consulta <strong><a href="http://www.interior.gob.es/politica-de-cookies" target="_blank">aquí</a></strong> la política de <strong>Cookies</strong>.</p>
+				<button type="button" class="close" data-dismiss="alert">
+					<span id="cookies">X</span>
+				</button>
+			</div>
+
 			<!-- Cabecera de la página -->
 			<header class="row">
 				<!-- Menú -->
 				<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">					
 					<!-- Logotipo -->
-					<img src="../../../images/logo.jpg" width="120" height="55">
+					<img src="./images/logo.jpg" width="120" height="55">
 
 					<!-- Botón que desplegará el menú cuando este no se vea debido al tamaño del dispositivo
 					en el que se esté viendo -->
@@ -51,12 +55,12 @@
 					<!-- Diferentes opciones del menú -->
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a href="../../../index.php" class="nav-link">Inicio</a>
+							<li class="nav-item active">
+								<a href="./index.php" class="nav-link">Inicio</a>
 							</li>
 
-							<li class="nav-item active">
-								<a href="./vistaReserva.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
+							<li class="nav-item">
+								<a href="./scripts/php/view/vistaReserva.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
 							</li>
 
 							<li class="nav-item">
@@ -67,8 +71,8 @@
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros</a>
 
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./vistaConocenos.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
-									<a class="dropdown-item" href="./vistaTrabaja.html" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
+									<a class="dropdown-item" href="" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
+									<a class="dropdown-item" href="" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
 								</div>
 							</li>
 						</ul>
@@ -89,12 +93,12 @@
 						<?php
 							} else {
 						?>
-						<a href="../controller/setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?=$_SESSION['nombreUsuario']?>!">
-							<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
+						<a href="./scripts/php/controller/setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+							<img src="./images/usuario.png" width="50" height="50" id="usuario">
 						</a>
 
-						<a href="../controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
-							<img src="../../../images/salir.svg" width="50" height="50">
+						<a href="./scripts/php/controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
+							<img src="./images/salir.svg" width="50" height="50">
 						</a>
 						<?php
 							}
@@ -102,6 +106,40 @@
 					</form>
 				</nav>
 			</header>
+
+			<?php
+				if (isset($_GET["not_found"])) {
+			?>
+
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> No has podido iniciar sesión, los datos que has introducido no existen.
+				<a href="./scripts/php/controller/delVariable.php?controlador=../../../index.php&variable=not_found" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+				} elseif(isset($_GET["password"])) {
+			?>
+
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> No has podido iniciar sesión, la contraseña que has introducido es incorrecta.
+				<a href="./scripts/php/controller/delVariable.php?controlador=../../../index.php&variable=password" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php	
+				} elseif(isset($_GET["login"])) {
+			
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Has iniciado sesión correctamente.
+				<button type="button" class="close" data-dismiss="alert">
+					<span>X</span>
+				</button>
+			</div>
+
+			<?php
+				} 
+			?>
 
 			<!-- Ventana modal para hacer login -->
 			<section class="modal" id="entrar">
@@ -112,7 +150,7 @@
 							<span data-dismiss="modal" class="cerrarVentana">X</span>
 						</div>
 
-						<form method="post" action="../controller/verificarUsuario.php" class="form-signin" id="inicio">
+						<form method="post" action="./scripts/php/controller/verificarUsuario.php" class="form-signin" id="inicio">
 							<div class="modal-body">
 								<div class="form-label-group">
 									<input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
@@ -148,7 +186,7 @@
 							<span data-dismiss="modal" class="cerrarVentana">X</span>
 						</div>
 
-						<form method="post" action="../controller/altaUsuario.php" class="form-signin">
+						<form method="post" action="./scripts/php/controller/altaUsuario.php" class="form-signin">
 							<div class="modal-body">
 								<div class="form-label-group">
 									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autofocus>

@@ -5,27 +5,45 @@
 	class Reservas {
 
 		private $id;
+		private $usuarios_correo;
 		private $fecha_reserva;
 		private $fecha_entrada;
 		private $fecha_salida;
 		private $num_personas;
-		private $usuarios_correo;
-		private $tipos_pensiones_id;
+		private $nombre_hotel;
+		private $descripcion_hab;
+		private $num_habitacion;
+		private $num_planta;
+		private $precio_noche;
+		private $num_camas;
+		private $descripcion_pension;
+		private $precio_pension;
 
 		function __construct($fila) {
 
-			$this->id = $fila["id"];
-			$this->fecha_reserva = $fila["fecha_reserva"];
-			$this->fecha_entrada = $fila["fecha_entrada"];
-			$this->fecha_salida = $fila["fecha_salida"];
-			$this->num_personas = $fila["num_personas"];
-			$this->usuarios_correo = $fila["usuarios_correo"];
-			$this->tipos_pensiones_id = $fila["tipos_pensiones_id"];
+			$this->id = $fila[0];
+			$this->usuarios_correo = $fila[1];
+			$this->fecha_reserva = $fila[2];
+			$this->fecha_entrada = $fila[3];
+			$this->fecha_salida = $fila[4];
+			$this->num_personas = $fila[5];
+			$this->nombre_hotel = $fila[6];
+			$this->descripcion_hab = $fila[7];
+			$this->num_habitacion = $fila[8];
+			$this->num_planta = $fila[9];
+			$this->precio_noche = $fila[10];
+			$this->num_camas = $fila[11];
+			$this->descripcion_pension = $fila[12];
+			$this->precio_pension = $fila[13];
 
 		}
 
 		public function getId() {
 			return $this->id;
+		}
+
+		public function getUsuariosCorreo() {
+			return $this->usuarios_correo;
 		}
 
 		public function getFechaReserva() {
@@ -44,19 +62,50 @@
 			return $this->num_personas;
 		}
 
-		public function getUsuariosCorreo() {
-			return $this->usuarios_correo;
+		public function getNombreHotel() {
+			return $this->nombre_hotel;
 		}
 
-		public function getTiposPensionesId() {
-			return $this->tipos_pensiones_id;
+		public function getDescripcionHab() {
+			return $this->descripcion_hab;
 		}
 
-		public static function devolverReservas() {
+		public function getNumHabitacion() {
+			return $this->num_habitacion;
+		}
+
+		public function getNumPlanta() {
+			return $this->num_planta;
+		}
+
+		public function getPrecioNocheHab() {
+			return $this->precio_noche;
+		}
+
+		public function getNumCamas() {
+			return $this->num_camas;
+		}
+
+		public function getDescPension() {
+			return $this->descripcion_pension;
+		}
+
+		public function getPrecioPension() {
+			return $this->precio_pension;
+		}
+
+		public static function getReservas() {
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "SELECT * FROM reservas";
+			$sql = "SELECT R.ID, U.CORREO, R.FECHA_RESERVA, R.FECHA_ENTRADA, R.FECHA_SALIDA, R.NUM_PERSONAS, 
+			HO.NOMBRE, HA.DESCRIPCION, HA.NUM_HABITACION, HA.NUM_PLANTA, HA.PRECIO_NOCHE, HA.NUM_CAMAS, TP.DESCRIPCION, TP.PRECIO
+			FROM USUARIOS U, RESERVAS R, HOTELES HO, HABITACIONES HA, TIPOS_PENSIONES TP, RESERVAS_HABITACIONES RH
+			WHERE U.CORREO LIKE R.USUARIOS_CORREO
+			AND R.ID = RH.RESERVAS_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HA.ID = RH.HABITACIONES_ID
+			AND TP.ID = R.TIPOS_PENSIONES_ID";
 			
 			$resultado = $conexion->query($sql);
 
@@ -66,6 +115,39 @@
 			}
 
 			return $reservas;
+
+		}
+
+		public function getPension() {
+			
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT descripcion FROM tipos_pensiones WHERE id = '$this->tipos_pensiones_id'";
+			$resultado = $conexion->query($sql);
+			$fila = $resultado->fetch();
+			return $fila;
+
+		}
+
+		public function getHotel() {
+			
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT nombre FROM hoteles WHERE id = '$this->tipos_pensiones_id'";
+			$resultado = $conexion->query($sql);
+			$fila = $resultado->fetch();
+			return $fila;
+
+		}
+
+		public static function cancelarReserva($idReserva) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "DELETE FROM reservas WHERE id = '$idReserva'";
+
+			$resultado = $conexion->exec($sql);
+			return $resultado;
 
 		}
 

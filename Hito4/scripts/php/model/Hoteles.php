@@ -140,6 +140,22 @@
 
 		}
 
+		public static function getAllImagenes() {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT * FROM imagenes_hoteles";
+			$resultado = $conexion->query($sql);
+
+			$imagenes = [];
+			while ($registros = $resultado->fetch()) {
+				$imagenes[] = $registros["img_path"];
+			}
+
+			return $imagenes;
+
+		}
+
 		public static function buscarHotel($id) {
 
 			$conexion = Conexion::conexionBD();
