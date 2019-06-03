@@ -56,11 +56,11 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="../controller/verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar usuarios">Usuarios</a>
+								<a href="../controller/verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Crea, busca, elimina y modifica usuarios">Usuarios</a>
 							</li>
 
-							<li class="nav-item active">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
+							<li class="nav-item">
+								<a href="./verHoteles.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Crea, busca, elimina y modifica usuarios">Hoteles</a>
 							</li>
 						</ul>
 					</div>
@@ -81,17 +81,17 @@
 			?>
 
 			<div class="alert alert-success text-center mt-5" role="alert">
-				<strong>¡Bien!</strong> Hotel eliminado correctamente.
-				<a href="./delVariable.php?controlador=./verHoteles.php" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+				<strong>¡Bien!</strong> La valoración se ha eliminado correctamente.
+				<a href="./delVariable.php?controlador=./cargarValoraciones.php?idHotel=<?=base64_encode($hotel->getId())?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
 					} else {
 			?>
 
-			<div class="alert alert-success text-center mt-5" role="alert">
-				<strong>Vaya...</strong> El hotel .
-				<a href="./delVariable.php?controlador=./verHoteles.php" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> La valoración no se ha podido eliminar, ponte en contacto con el administrador de la base de datos.
+				<a href="./delVariable.php?controlador=./cargarValoraciones.php?idHotel=<?=base64_encode($hotel->getId())?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
@@ -122,7 +122,7 @@
 								<?php
 									} else {
 								?>
-									<p class='text-center'>No hay valoraciones del hotel <?=$hotel->getNombre()?> por el momento.</p>
+									<p class='text-center'>No hay valoraciones del hotel <b><?=$hotel->getNombre()?></b> por el momento.</p>
 								<?php
 									}
 								?>
@@ -136,6 +136,7 @@
 							?>
 
 							<tr>
+								<input type="hidden" value="<?=$valoraciones->getId()?>" class="identificador">
 								<td><?=$valoraciones->getDescripcion()?></td>
 								<td><?=$valoraciones->getPuntuacion()?></td>
 								<td><?=$valoraciones->getFecha()?></td>
@@ -161,10 +162,10 @@
 						</div>
 
 						<form method="post" action="./eliminarValoracion.php" class="form-signin" id="accion">
-							<input type="hidden" class="identificador" name="id" value="">
+							<input type="hidden" class="identificador" name="idValoracion" value="">
 							<div class="modal-body">
 								<div class="form-label-group">
-									<p>¿Está seguro de que desea eliminar la valoración <b><span class="valor"></span></b>?</p>
+									<p>¿Está seguro de que desea eliminar la valoración?</p>
 								</div>
 							</div>
 
@@ -172,6 +173,7 @@
 								<input type="button" data-dismiss="modal" class="btn btn-primary" value="Cancelar">
 								<input type="submit" class="btn btn-danger" value="Eliminar">
 							</div>
+							<input type="hidden" name="idHotel" value="<?=base64_encode($hotel->getId())?>">
 						</form>
 					</div>
 				</div>

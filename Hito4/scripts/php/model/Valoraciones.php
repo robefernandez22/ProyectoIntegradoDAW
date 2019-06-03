@@ -46,11 +46,11 @@
 			return $this->usuarios_correo;
 		}
 
-		public static function getValoraciones() {
+		public static function getValoraciones($idHotel) {
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "SELECT * FROM valoraciones";
+			$sql = "SELECT * FROM valoraciones WHERE hoteles_id = '$idHotel'";
 			
 			$resultado = $conexion->query($sql);
 
@@ -63,11 +63,11 @@
 
 		}
 
-		public static function eliminarValoracion($id) {
+		public static function eliminarValoracion($idValoracion) {
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "DELETE FROM valoraciones WHERE id = '$id'";
+			$sql = "DELETE FROM valoraciones WHERE id = '$idValoracion'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;

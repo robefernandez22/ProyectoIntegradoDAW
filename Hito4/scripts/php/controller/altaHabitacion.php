@@ -34,7 +34,7 @@
 		$hotelId = base64_encode($_POST['hotelId']);
 		header("Location: ./verHabitaciones.php?idHotel=$hotelId");
 	} else {
-		echo "Ha ocurrido algún error.";
+		header("Location: ./verHabitaciones.php?idHotel=$hotelId");
 	}
 
 ?>

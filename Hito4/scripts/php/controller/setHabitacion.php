@@ -29,6 +29,7 @@
 	}
 
 	$habitacion = Habitaciones::actualizarHabitacion($_POST["id"], $_POST["descripcion"], $num_camas, $_POST["num_habitacion"], $_POST["num_planta"], $_POST["precio_noche"], $television, $vistas);
-	header("Location: ./verHabitaciones.php?id=<?=".base64_encode($_POST['hotelId'])."?>");
+	$idHotel = base64_encode($_POST['hotelId']);
+	header("Location: ./verHabitaciones.php?idHotel=$idHotel&actualizacion=$habitacion");
 
 ?>

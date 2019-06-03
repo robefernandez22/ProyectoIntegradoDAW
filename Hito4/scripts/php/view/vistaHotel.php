@@ -92,6 +92,35 @@
 			</div>
 
 			<?php
+					} else {
+			?>
+
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> Los datos no se han podido actualizar, consulta con el administrador de la base de datos.
+				<a href="./delVariable.php?controlador=./buscarHotel.php?id=<?=base64_encode($hotel->getId())?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					}
+				} elseif (isset($_GET["deleteImage"])) {
+					if ($_GET["deleteImage"] == 1) {
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Imagen eliminada correctamente.
+				<a href="./delVariable.php?controlador=./buscarHotel.php?id=<?=base64_encode($hotel->getId())?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					} else {
+			?>
+
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> La imagen no se ha podido eliminar, consulta con el administrador de la base de datos.
+				<a href="./delVariable.php?controlador=./buscarHotel.php?id=<?=base64_encode($hotel->getId())?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
 					}
 				}
 			?>
@@ -100,7 +129,7 @@
 				<h3 class="text-center mt-5">Modificando hotel <strong><?=$hotel->getNombre()?></strong></h3>
 			</header>
 
-			<form method="post" action="./setHotel.php">
+			<form method="post" action="./setHotel.php" enctype="multipart/form-data">
 				<section class="row justify-content-center mt-5">
 					<div class="col-md-4">
 						<div class="list-group">
@@ -209,15 +238,12 @@
 											foreach ($hotel->getImagenes() as $key => $image) {
 									?>
 
-									<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-										<a href="<?=$image?>" rel="gallery">
+									<div class="col-md-2">
+										<a class="image" href="<?=$image?>">
 											<img src="<?=$image?>" width="70" height="70">
 										</a>
+										<a href="./deleteImage.php?idImage=<?=base64_encode($image)?>&idHotel=<?=base64_encode($hotel->getId())?>" class="text-center">Eliminar</a>
 									</div>
-									
-									<!-- <img class="d-block w-100" src="<?php echo $image;?>">
-									<a href="./eliminarImagen.php?id=<?=$image?>&hotelId=<?=$hotel->getId()?>">Eliminar imagen</a> -->
-
 									<?php
 											}
 										}

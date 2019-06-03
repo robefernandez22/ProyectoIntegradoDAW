@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$("#galeria a").fancybox({
+	$("#galeria a.image").fancybox({
 
 		/* Color del fondo cuando se abra la imagen */
 		overlayColor: "#797e79",

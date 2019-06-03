@@ -75,6 +75,50 @@
 				</nav>
 			</header>
 
+			<?php
+				if (isset($_GET["deleteRoom"])) {
+					if ($_GET["deleteRoom"] == 1) {
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Habitación eliminada correctamente.
+				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=deleteRoom" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					} else {
+			?>
+
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> La habitación no se ha podido eliminar, consulte con el administrador de la base de datos.
+				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=deleteRoom" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					}
+				} elseif (isset($_GET["actualizacion"])) {
+					if ($_GET["actualizacion"] == 1) {
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Habitación actualizada correctamente.
+				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=actualizacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					} else {
+			?>
+
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> No has modificado ningún dato.
+				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=actualizacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					}
+				}
+			?>
+
 			<header class="row justify-content-center mt-5">
 				<h3 class="text-center text-capitalize mt-5">Habitaciones del hotel <b><?=$hotel->getNombre()?></b></h3>
 			</header>
@@ -94,6 +138,7 @@
 								?>
 
 								<th scope="col">Descripción</th>
+								<th scope="col">Precio/Noche</th>
 								<th scope="col">Número de habitación</th>
 								<th scope="col">Número de planta</th>
 								<th scope="col" colspan="2">Opciones</th>
@@ -114,10 +159,10 @@
 							?>
 
 							<tr>
-								<input type="hidden" name="id" class="valor" value="<?=$habitaciones->getId()?>">
 								<input type="hidden" name="id" class="identificador" value="<?=$habitaciones->getId()?>">
 								<td></td>
 								<td><?=$habitaciones->getDescripcion()?></td>
+								<td><?=$habitaciones->getPrecioNoche()?></td>
 								<td><?=$habitaciones->getNumHabitacion()?></td>
 								<td><?=$habitaciones->getNumPlanta()?></td>
 								<td>
@@ -147,11 +192,11 @@
 						</div>
 
 						<form method="post" action="./eliminarHabitacion.php" class="form-signin" id="accion">
-							<input type="hidden" name="id" value="">
+							<input type="hidden" class="identificador" name="id" value="">
 							<input type="hidden" name="hotelId" value="<?=$habitaciones->getHotelId()?>">
 							<div class="modal-body">
 								<div class="form-label-group">
-									<p>¿Está seguro/a de que desea eliminar la habitación con el ID <b><span class="identificador"></span></b>?</p>
+									<p>¿Está seguro/a de que desea eliminar la habitación?</p>
 								</div>
 							</div>
 

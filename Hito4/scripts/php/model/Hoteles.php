@@ -214,6 +214,17 @@
 
 		}
 
+		public static function eliminarImagen($id) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "DELETE FROM imagenes_hoteles WHERE img_path LIKE '$id'";
+
+			$resultado = $conexion->exec($sql);
+			return $resultado;
+
+		}
+
 	}
 
 ?>
