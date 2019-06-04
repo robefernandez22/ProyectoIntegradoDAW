@@ -11,7 +11,7 @@ $(document).ready(function() {
 		$("input#password").val(Base64.decode(getCookie("password")));
 		$("#recordar").attr("checked", "true")
 
-	}
+	}	
 
 	// Función necesaria para habilitar los elementos tooltip de Bootstrap
 	$("[data-toggle='tooltip']").tooltip({

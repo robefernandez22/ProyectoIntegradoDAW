@@ -65,7 +65,7 @@
 						</ul>
 					</div>
 
-					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['usuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 

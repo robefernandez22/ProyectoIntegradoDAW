@@ -100,7 +100,7 @@
 						?>
 					</div>
 
-					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['usuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
@@ -117,7 +117,7 @@
 
 			<div class="alert alert-success text-center mt-5" role="alert">
 				<strong>¡Bien!</strong> Datos actualizados correctamente.
-				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['usuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
@@ -126,7 +126,7 @@
 
 			<div class="alert alert-warning text-center mt-5" role="alert">
 				<strong>Vaya...</strong> No has actualizado ningún dato.
-				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['usuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
@@ -137,7 +137,7 @@
 
 			<div class="alert alert-success text-center mt-5" role="alert">
 				<strong>¡Bien!</strong> Tu contraseña se ha actualizado correctamente.
-				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['usuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
@@ -146,7 +146,7 @@
 
 			<div class="alert alert-warning text-center mt-5" role="alert">
 				<strong>Vaya...</strong> Tu contraseña no se ha podido actualizar correctamente, contacte con el administrador de la base de datos.
-				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['usuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php

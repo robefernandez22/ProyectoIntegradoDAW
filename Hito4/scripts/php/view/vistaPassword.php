@@ -82,7 +82,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las valoraciones de nuestros clientes!">Valoraciones</a>
 							</li>
 
 							<li class="nav-item dropdown">
@@ -100,7 +100,7 @@
 						?>
 					</div>
 
-					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['usuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
@@ -117,7 +117,7 @@
 
 			<div class="alert alert-success text-center mt-5" role="alert">
 				<strong>¡Bien!</strong> Datos actualizados correctamente.
-				<a href="./delVariable.php?controlador=./setPassword.php?id=<?=base64_encode($_SESSION['correoUsuario'])?>" aria-hidden="true">&times;</a>
+				<a href="./delVariable.php?controlador=./setPassword.php?id=<?=base64_encode($_SESSION['usuario'])?>" aria-hidden="true">&times;</a>
 			</div>
 
 			<?php
@@ -132,18 +132,22 @@
 			<section class="row justify-content-center mt-5">
 				<form class="form-signin" method="post" action="./setPassword.php">
 					<div class="form-label-group">
-						<input type="email" id="correo" name="correo" class="form-control-plaintext" placeholder="Correo electrónico" value="<?php echo $usuario->getCorreo();?>" readonly>
+						<input type="email" id="correo" name="correo" class="form-control-plaintext" placeholder="Correo electrónico" value="<?=$usuario->getCorreo()?>" readonly>
 						<label for="correo">Correo electrónico</label>
 					</div>
 
 					<div class="form-label-group">
 						<input type="password" id="passwordActual" name="passwordActual" class="form-control" placeholder="Contraseña actual" autofocus>
-						<label for="passwordActual">Contraseña actual</label>
+						<label for="passwordActual"><span class="obligatorio">*</span> Contraseña actual</label>
 					</div>
 
 					<div class="form-label-group">
 						<input type="password" id="passwordNueva" name="passwordNueva" class="form-control" placeholder="Contraseña nueva">
-						<label for="passwordNueva">Contraseña nueva</label>
+						<label for="passwordNueva"><span class="obligatorio">*</span> Contraseña nueva</label>
+					</div>
+
+					<div class="form-group">
+						<a href="">¿Has olvidado tu contraseña?</a>
 					</div>
 
 					<div class="form-group">
@@ -152,7 +156,21 @@
 							<input type="button" class="btn btn-warning" value="Cancelar">
 						</a>
 					</div>
-					<input type="hidden" name="redireccion" value="./<?=$_GET['controlador']?>">
+					<?php
+						if ($usuario->getCorreo() != $_SESSION["usuario"]) {
+					?>
+					
+						<input type="hidden" name="redireccion" value="./<?=$_GET['controlador']?>">
+					
+					<?php
+						} else {
+					?>
+
+						<input type="hidden" name="index" value="./cerrarSesion.php">
+
+					<?php
+						}
+					?>
 				</form>
 			</section>
 		</main>

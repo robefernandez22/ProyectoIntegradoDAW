@@ -54,17 +54,18 @@ VALUES (NULL, 'Hotel Zenit Barcelona', 'Ejemplo de descripción del Hotel 5', 'B
 
 /* Creación de la tabla IMAGENES_HOTELES */
 CREATE TABLE IMAGENES_HOTELES (
+    id            INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
     img_path      VARCHAR(200) NOT NULL PRIMARY KEY,
     hoteles_id    INTEGER NOT NULL,
     FOREIGN KEY (hoteles_id) REFERENCES hoteles (id) ON DELETE CASCADE
 );
 
 /* Inserción en la tabla IMAGENES_HOTELES */
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel1.jpg', '1');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel2.jpg', '2');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel3.jpg', '3');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel4.jpg', '4');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`IMG_PATH`, `HOTELES_ID`) VALUES ('..\\..\\..\\images\\hotel5.jpg', '5');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel1.jpg', '1');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel2.jpg', '2');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel3.jpg', '3');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel4.jpg', '4');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel5.jpg', '5');
 
 /* Creación de la tabla HABITACIONES */
 CREATE TABLE HABITACIONES (

@@ -3,16 +3,7 @@
 	session_start();
 	require_once "../model/Usuario.php";
 
-	$fila = 0;
-	$correo = "";
-
-	if (isset($_SESSION["correo"])) {
-		$fila = Usuario::buscarUsuario($_SESSION["correo"]);
-		$correo = $_SESSION["correo"];
-	} else {
-		$fila = Usuario::buscarUsuario($_POST["correo"]);
-		$correo = $_POST["correo"];
-	}
+	$fila = Usuario::buscarUsuario($_POST["correo"]);
 
 	if ($fila == 0) {
 
@@ -20,14 +11,7 @@
 
 	} else {
 
-		if (isset($_SESSION["password"])) {
-			$fila = Usuario::verificarUsuario($correo, base64_encode($_SESSION["password"]));			
-		} else {
-			$fila = Usuario::verificarUsuario($correo, base64_encode($_POST["password"]));
-		}
-
-		unset($_SESSION["password"]);
-		unset($_SESSION["correo"]);
+		$fila = Usuario::verificarUsuario($_POST["correo"], base64_encode($_POST["password"]));
 
 		if ($fila == 0) {
 
@@ -36,9 +20,7 @@
 		} else {
 
 			$usuario = new Usuario($fila);
-			$_SESSION["nombreUsuario"] = $usuario->getNombre();
-			$_SESSION["correoUsuario"] = $correo;
-			$_SESSION["tipoUsuario"] = $usuario->getTipo();
+			$_SESSION["usuario"] = $usuario->getCorreo();
 
 			if ($usuario->getTipo() == "Usuario") {
 

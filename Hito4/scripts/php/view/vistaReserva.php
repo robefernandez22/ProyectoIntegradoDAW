@@ -60,7 +60,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Valoraciones</a>
 							</li>
 
 							<li class="nav-item dropdown">
@@ -77,7 +77,7 @@
 					<!-- Botones para abrir la ventana de login y de registro -->
 					<form class="form-inline">
 						<?php
-							if (!isset($_SESSION["nombreUsuario"])) {
+							if (!isset($_SESSION["usuario"])) {
 						?>
 						<a href="#" data-toggle="tooltip" data-html="true" title="¡Inicia sesión y haz tu reserva!">
 							<input class="btn btn-primary btn-sm mr-2" data-toggle="modal" data-target="#entrar" type="button" value="Entrar">
@@ -89,7 +89,7 @@
 						<?php
 							} else {
 						?>
-						<a href="../controller/setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?=$_SESSION['nombreUsuario']?>!">
+						<a href="../controller/setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?=$_SESSION['usuario']?>!">
 							<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 						</a>
 
@@ -102,6 +102,58 @@
 					</form>
 				</nav>
 			</header>
+
+			<section class="row justify-content-center mt-5">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Fecha de entrada</th>
+									<th scope="col">Fecha de salida</th>
+									<th scope="col">Número de personas</th>
+									<th scope="col">Destino</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>
+										<div class="form-group">
+											<input type="date" id="fecha_entrada" name="fecha_entrada" class="form-control">
+										</div>
+									</td>
+
+									<td>
+										<div class="form-group">
+											<input type="date" id="fecha_salida" name="fecha_salida" class="form-control">
+										</div>
+									</td>
+
+									<td>
+										<div class="form-group">
+											<input type="number" min="1" id="num_personas" name="num_personas" class="form-control">
+										</div>
+									</td>
+
+									<td>
+										<div class="form-group">
+											<input type="text" id="destino" name="destino" class="form-control">
+										</div>
+									</td>
+
+									<td>
+										<div class="form-group">
+											<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
 
 			<!-- Ventana modal para hacer login -->
 			<section class="modal" id="entrar">

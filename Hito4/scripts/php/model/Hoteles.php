@@ -149,7 +149,7 @@
 
 			$imagenes = [];
 			while ($registros = $resultado->fetch()) {
-				$imagenes[] = $registros["img_path"];
+				$imagenes[] = $registros;
 			}
 
 			return $imagenes;
@@ -234,7 +234,7 @@
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "DELETE FROM imagenes_hoteles WHERE img_path LIKE '$id'";
+			$sql = "DELETE FROM imagenes_hoteles WHERE id LIKE '$id'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;

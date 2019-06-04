@@ -69,7 +69,7 @@
 						</ul>
 					</div>
 
-					<a href="../controller/setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="../controller/setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['usuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
@@ -84,7 +84,7 @@
 			?>
 
 			<div class="alert alert-success text-center mt-5" role="alert">
-				<strong>¡Bien!</strong> Has iniciado sesión correctamente. Bienvenido/a <b><?=$_SESSION["correoUsuario"]?></b>
+				<strong>¡Bien!</strong> Has iniciado sesión correctamente. Bienvenido/a <b><?=$_SESSION["usuario"]?></b>
 				<a href="../controller/delVariable.php?controlador=../view/vistaAdmin.php&variable=login" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
@@ -92,93 +92,25 @@
 				}
 			?>
 
-			<!-- Ventana modal para hacer login -->
-			<section class="modal" id="entrar">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header bg-primary text-white">
-							<div class="modal-title">
-								Inicia sesión
-							</div>
-
-							<span data-dismiss="modal">X</span>
-						</div>
-
-						<form method="post" action="./scripts/php/controller/verificarUsuario.php">
-							<div class="modal-body">
-								<div class="form-group">
-									<label>Email:</label>
-									<input type="email" name="correo" class="form-control" autofocus required>
-								</div>
-
-								<div class="form-group">
-									<label>Contraseña:</label>
-									<input type="password" name="password" class="form-control" required>
-								</div>
-
-								<div class="form-group">
-									<label>Recordar</label>
-									<input type="checkbox" name="recordar">
-								</div>
-							</div>
-
-							<div class="modal-footer text-right">
-								<input type="submit" name="entrar" class="btn btn-primary" value="Entrar">
-							</div>
-						</form>
-					</div>
+			<div class="jumbotron">
+				<div class="container">
+					<h3 class="display-4">Bienvenido/a al panel de administración de Hoteles ESE <b><?=$_SESSION["usuario"]?></b>.</h3>
+					<p>EAT, SLEEP AND ENJOY <b>/</b> COME, DUERME Y DISFRUTA</p>
+					<p>En este panel de administración, podrás:</p>
+					<ol>
+						<li>Ver todos las reservas que se han hecho, modificarlas, eliminarlas y añadir nuevas reservas clickando en el apartado de <b>Reservas</b> del menú superior.</li>
+						<li>Ver todos los usuarios existentes, modificarlos, eliminarlos y añadir nuevos usuarios clickando en el apartado de <b>Usuarios</b> del menú superior.</li>
+						<li>Ver todos los hoteles existentes, modificarlos, eliminarlos y añadir nuevos hoteles clickando en el apartado de <b>Hoteles</b> del menú superior.</li>
+						<li>Y también podrás modificar tus propios datos clickando en el <b>icono de usuario</b>, en la parte <b>superior derecha</b>.</li>
+					</ol>
 				</div>
-			</section>
+			</div>
 
-			<!-- Ventana modal para registrarse -->
-			<section class="modal" id="registro">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header bg-warning text-white">
-							<div class="modal-title">
-								Registro
-							</div>
-
-							<span data-dismiss="modal">X</span>
-						</div>
-
-						<form method="post" action="./scripts/php/controller/altaUsuario.php">
-							<div class="modal-body">
-								<div class="form-group">
-									<label>Nombre:</label>
-									<input type="text" name="nombre" class="form-control" autofocus>
-								</div>
-
-								<div class="form-group">
-									<label>Apellidos:</label>
-									<input type="text" name="apellidos" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label>Correo Electrónico:</label>
-									<input type="email" name="correo" class="form-control">
-								</div>
-
-								<div class="form-group">
-									<label>Contraseña:</label>
-									<input type="password" name="password" class="form-control">
-								</div>
-
-								<!-- El usuario que se registre aquí siempre será de tipo usuario,
-								nunca de tipo administrador o por el estilo, por lo que mandamos el tipo
-								en un campo oculto -->
-								<input type="hidden" name="tipo" value="U">
-							</div>
-
-							<div class="modal-footer text-right">
-								<input type="submit" name="registro" class="btn btn-warning" value="Registrarse">
-							</div>
-						</form>
-					</div>
+			<footer class="text-muted">
+				<div class="container text-center">
+					<p>Hoteles ESE &copy; 2019</p>
 				</div>
-			</section>
+			</footer>
 		</main>
-
 	</body>
-
 </html>

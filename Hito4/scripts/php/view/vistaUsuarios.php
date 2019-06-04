@@ -52,11 +52,11 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar reservas realizadas y/o canceladas">Reservas</a>
+								<a href="./cargarReservas.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar reservas realizadas y/o canceladas">Reservas</a>
 							</li>
 
 							<li class="nav-item active">
-								<a href="../controller/verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Crea, busca, elimina y modifica usuarios">Usuarios</a>
+								<a href="./verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Crea, busca, elimina y modifica usuarios">Usuarios</a>
 							</li>
 
 							<li class="nav-item">
@@ -65,7 +65,7 @@
 						</ul>
 					</div>
 
-					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['nombreUsuario'];?>!">
+					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['usuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
 
@@ -196,7 +196,7 @@
 							?>
 								<tr>
 									<form class="form-signin" method="post" action="./setDatos.php">
-										<input type="hidden" class="valor identificador" name="correo" value="<?=$usuarios->getCorreo()?>">
+										<input type="hidden" class="identificador valor" name="correo" value="<?=$usuarios->getCorreo()?>">
 										<td></td>
 										<td>
 											<?=$usuarios->getCorreo()?>
@@ -250,7 +250,7 @@
 							<input type="hidden" class="identificador" name="correo" value="">
 							<div class="modal-body">
 								<div class="form-label-group">
-									<p>¿Está seguro de que desea eliminar al usuario con el correo <b><span class="identificador"></span></b>?</p>
+									<p>¿Está seguro de que desea eliminar al usuario con el correo <b><span class="valor"></span></b>?</p>
 								</div>
 							</div>
 
