@@ -23,6 +23,8 @@
 		<script src="./lib/popper.min.js"></script>
 		<!-- Bootstrap Script -->
 		<script src="./lib/bootstrap.min.js"></script>
+		<!-- Script Base64 -->
+		<script src="./lib/base64.js"></script>
 		<!-- Script principal -->
 		<script src="./scripts/js/main.js"></script>
 
