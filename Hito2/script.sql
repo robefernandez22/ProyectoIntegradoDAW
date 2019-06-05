@@ -61,11 +61,11 @@ CREATE TABLE IMAGENES_HOTELES (
 );
 
 /* Inserción en la tabla IMAGENES_HOTELES */
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel1.jpg', '1');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel2.jpg', '2');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel3.jpg', '3');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel4.jpg', '4');
-INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '..\\..\\..\\images\\hotel5.jpg', '5');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '../../../images/hotel1.jpg', '1');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '../../../images/hotel2.jpg', '2');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '../../../images/hotel3.jpg', '3');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '../../../images/hotel4.jpg', '4');
+INSERT INTO `HOTELES_ESE`.`IMAGENES_HOTELES`(`ID`, `IMG_PATH`, `HOTELES_ID`) VALUES (NULL, '../../../images/hotel5.jpg', '5');
 
 /* Creación de la tabla HABITACIONES */
 CREATE TABLE HABITACIONES (
