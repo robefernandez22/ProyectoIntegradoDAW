@@ -58,6 +58,25 @@ $(document).ready(function() {
 
 	});
 
+	$("select[name='filtro']").change(function() {
+
+		$("select").hide();
+		$("input").hide();
+		$("select[name='filtro']").show();
+		$("input[value='Eliminar']").show();
+		$("input[value='Modificar']").show();
+		$("input[value='Añadir']").show();
+
+		if ($(this).val() == "usuario") {
+			$("input#correo").show();
+		} else if ($(this).val() == "hotel") {
+			$("select#hoteles").show();
+		} else if ($(this).val() == "fecha_reserva" || $(this).val() == "fecha_entrada" || $(this).val() == "fecha_salida") {
+			$("select[name='orden']").show();
+		}
+
+	});
+
 });
 
 // Función para guardar/modificar cookies
