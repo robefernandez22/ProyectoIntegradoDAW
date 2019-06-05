@@ -55,7 +55,7 @@ VALUES (NULL, 'Hotel Zenit Barcelona', 'Ejemplo de descripción del Hotel 5', 'B
 /* Creación de la tabla IMAGENES_HOTELES */
 CREATE TABLE IMAGENES_HOTELES (
     id            INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    img_path      VARCHAR(200) NOT NULL PRIMARY KEY,
+    img_path      VARCHAR(200) NOT NULL,
     hoteles_id    INTEGER NOT NULL,
     FOREIGN KEY (hoteles_id) REFERENCES hoteles (id) ON DELETE CASCADE
 );
