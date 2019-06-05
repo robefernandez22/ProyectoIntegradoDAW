@@ -16,9 +16,7 @@ $(document).ready(function() {
 		/* Velocidad a la que se pasan las imágenes */
 		changeSpeed: 1000,
 		/* Velocidad a la que entra la imagen cuando se pulsa en ella */
-		speedIn: 1000,
-		/*  */
-		easingIn: "easeInSine"
+		speedIn: 1000
 
 	});
 

@@ -5,6 +5,8 @@ $(document).ready(function() {
 
 		$("div.alert").addClass("show");
 
+	/* Si las cookies de correo y password son diferentes a los valores por defecto, mostramos
+	los valores de esas cookies en cada campo correspondiente decodificando en Base 64 */
 	} else if (getCookie("correo") != "correo" && getCookie("password") != "password") {
 
 		$("input#inputEmail").val(Base64.decode(getCookie("correo")));
@@ -15,18 +17,23 @@ $(document).ready(function() {
 
 	// Función necesaria para habilitar los elementos tooltip de Bootstrap
 	$("[data-toggle='tooltip']").tooltip({
+
 		container: 'body'
+
 	});
 
-	// Comprobamos si el usuario aceptó las cookies, de ser así no volvemos a mostrar el aviso de estas
+	/* Comprobamos si el usuario aceptó las cookies, de ser así guardamos las cookies correo
+	y password con valores por defecto */
 	$("span#cookies").click(function() {
 		setCookie("correo", "correo");
 		setCookie("password", "password");
 	});
 
-	// Cuando se envie el formulario, verificamos si tiene activado el check de recordar
+	// Cada vez que el checkbox de recordar cambie, comprobaremos si está checkeado o no
 	$("#recordar").change(function() {
 
+		/* Si está checkeado, guardamos las cookies correo y password con los valores
+		correspondientes y codificados en Base 64 */
 		if ($(this).is(":checked")) {
 
 			setCookie("correo", Base64.encode($("input#inputEmail").val()));
@@ -34,6 +41,7 @@ $(document).ready(function() {
 
 		} else {
 
+			/* Si no está checkeado, guardamos las cookies con los valores por defecto */
 			setCookie("correo", "correo");
 			setCookie("password", "password");
 
@@ -41,6 +49,8 @@ $(document).ready(function() {
 
 	});
 
+	/* Esta función es para que cuando se quiera eliminar un hotel, usuario, etc..
+	podamos coger ciertos valores necesarios para eliminar el registro en concreto */
 	$("input[value='Eliminar']").click(function() {
 
 		$("span.valor").text($(this).parent().parent().find("input.valor").val());
@@ -50,6 +60,7 @@ $(document).ready(function() {
 
 });
 
+// Función para guardar/modificar cookies
 function setCookie(cname, cvalue) {
 
 	var d = new Date();
@@ -59,6 +70,7 @@ function setCookie(cname, cvalue) {
 
 }
 
+// Función para obtener cookies
 function getCookie(cname) {
 
 	var name = cname + "=";
