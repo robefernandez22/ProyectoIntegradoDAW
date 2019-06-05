@@ -31,8 +31,8 @@
 
 			if ($_FILES["imagen"]["name"] != "") {
 				$nombre_img = $_FILES["imagen"]["name"];
-				$ruta = "../../../images/".$nombre_img;
-				move_uploaded_file($_FILES["imagen"]["tmp_name"], "../../../images/" . $_FILES["imagen"]["name"]);
+				$ruta = "..\..\..\images\\".$nombre_img;
+				move_uploaded_file($_FILES["imagen"]["tmp_name"], "..\..\..\images\\" . $_FILES["imagen"]["name"]);
 				$actualizacion = Hoteles::insertarImagen($_POST["id"], $ruta);
 			}
 

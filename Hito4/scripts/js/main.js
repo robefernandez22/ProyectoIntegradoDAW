@@ -58,23 +58,27 @@ $(document).ready(function() {
 
 	});
 
-	$("select[name='filtro']").change(function() {
+	// Función para hacer el filtrado con el texto introducido en el input con la clase filtro
+	$('input.filtro').keyup(function() {
+	    var rex = new RegExp($(this).val(), 'i');
 
-		$("select").hide();
-		$("input").hide();
-		$("select[name='filtro']").show();
-		$("input[value='Eliminar']").show();
-		$("input[value='Modificar']").show();
-		$("input[value='Añadir']").show();
+        $('.contenidobusqueda tr').hide();
 
-		if ($(this).val() == "usuario") {
-			$("input#correo").show();
-		} else if ($(this).val() == "hotel") {
-			$("select#hoteles").show();
-		} else if ($(this).val() == "fecha_reserva" || $(this).val() == "fecha_entrada" || $(this).val() == "fecha_salida") {
-			$("select[name='orden']").show();
-		}
+        $('.contenidobusqueda tr').filter(function () {
+            return rex.test($(this).text());
+        }).show();   
+    });
 
+	// Función para hacer el filtrado con el valor del select o input de tipo date cada vez que cambia
+	$('.filtro').change(function () {
+
+		var rex = new RegExp($(this).val(), 'i');
+
+		$('.contenidobusqueda tr').hide();
+
+		$('.contenidobusqueda tr').filter(function () {
+			return rex.test($(this).text());
+		}).show();
 	});
 
 });

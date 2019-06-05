@@ -101,8 +101,17 @@
 				}
 			?>
 
-			<header class="row justify-content-center mt-5">
-				<h3 class="text-center text-capitalize mt-5">Crea, elimina y modifica hoteles</h3>
+			<header class="row justify-content-center mt-5 mb-4">
+				<div class="col-md-12">
+					<h3 class="text-center text-capitalize mt-5">Crea, elimina y modifica hoteles</h3>
+
+					<form class="form-signin">
+						<div class="form-group">
+							<p class="text-center"><b>Filtra</b> con un <b>nombre, una ciudad o dirección</b></p>
+							<input type="text" class="form-control filtro" autofocus>
+						</div>
+					</form>
+				</div>
 			</header>
 
 			<section class="row justify-content-center mt-5">
@@ -133,7 +142,7 @@
 							</tr>
 						</thead>
 
-						<tbody>
+						<tbody class="contenidobusqueda">
 
 							<?php
 								foreach ($data as $hoteles) {

@@ -7,7 +7,7 @@
 	$imagenes = [];
 	$hoteles = [];
 	foreach ($data as $key => $value) {
-		$corte = explode("..\\", $value['img_path']);
+		$corte = explode("../", $value['img_path']);
 		$imagenes[] = $corte[3];
 		$hoteles[] = $value["hoteles_id"];
 	}

@@ -81,50 +81,25 @@
 				<div class="col-md-12">
 					<h3 class="text-center text-capitalize mt-5">Crea, elimina y modifica reservas</h3>
 
-					<form method="post" id="filtrado" action="./cargarReservas.php">
-						<div class="row">
-							<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-6">
+							<form class="form-signin">
 								<div class="form-group">
-									<label><b>Filtrar</b></label>
-									<select class="form-control" name="filtro" required>
-										<option value=""></option>
-										<option value="usuario">Usuario</option>
-										<option value="hotel">Hotel</option>
-										<option value="fecha_reserva">Fecha de reserva</option>
-										<option value="fecha_entrada">Fecha de entrada</option>
-										<option value="fecha_salida">Fecha de salida</option>
-									</select>
+									<p class="text-center"><b>Filtra</b> con un <b>correo u hotel:</b></p>
+									<input type="text" class="form-control filtro" autofocus>
 								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group" id="valor">
-									<label style="visibility: hidden;">text</label>
-									<input type="email" id="correo" name="correo" class="form-control" placeholder="Correo" style="display: none;">
-
-									<select class="form-control" id="hoteles" name="hoteles" style="display: none;">
-										<?php
-											foreach ($hoteles as $value) {
-										?>
-											<option value="<?=$value->getId()?>"><?=$value->getNombre()?></option>
-										<?php
-											}
-										?>
-									</select>
-
-									<select class="form-control" name="orden" style="display: none;">
-										<option value="ASC">Ascendente</option>
-										<option value="DESC">Descendente</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-1">
-								<div class="form-group">
-									<label style="visibility: hidden;">text</label><br>
-									<button type="submit" class="btn btn-success" name="aplicar">Aplicar</button>
-								</div>
-							</div>
+							</form>
 						</div>
-					</form>
+
+						<div class="col-md-6">
+							<form class="form-signin">
+								<div class="form-group">
+									<p class="text-center"><b>Filtra</b> introduciendo cualquier <b>fecha:</b></p>
+									<input type="date" class="form-control filtro">
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
 			</header>
 
@@ -157,7 +132,7 @@
 								</tr>
 							</thead>
 
-							<tbody>
+							<tbody class="contenidobusqueda">
 							<?php
 								foreach ($data as $reservas) {
 							?>
