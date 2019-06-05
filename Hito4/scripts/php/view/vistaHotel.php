@@ -23,6 +23,8 @@
 		<script src="../../../lib/popper.min.js"></script>
 		<!-- Bootstrap Script -->
 		<script src="../../../lib/bootstrap.min.js"></script>
+		<!-- Script Base64 -->
+		<script src="../../../lib/base64.js"></script>
 		<!-- Script principal -->
 		<script src="../../js/main.js"></script>
 
@@ -239,10 +241,10 @@
 									?>
 
 									<div class="col-md-2">
-										<a class="image" href="<?=$image?>">
-											<img src="<?=$image?>" width="70" height="70">
+										<a class="image" href="<?=$image['img_path']?>">
+											<img src="<?=$image['img_path']?>" width="70" height="70">
 										</a>
-										<a href="./deleteImage.php?idImage=<?=base64_encode($image)?>&idHotel=<?=base64_encode($hotel->getId())?>" class="text-center">Eliminar</a>
+										<a href="./deleteImage.php?idImage=<?=base64_encode($image['id'])?>&idHotel=<?=base64_encode($hotel->getId())?>" class="text-center">Eliminar</a>
 									</div>
 									<?php
 											}

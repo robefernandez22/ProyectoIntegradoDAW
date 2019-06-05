@@ -133,7 +133,7 @@
 
 			$imagenes = [];
 			while ($registros = $resultado->fetch()) {
-				$imagenes[] = $registros["img_path"];
+				$imagenes[] = $registros;
 			}
 
 			return $imagenes;

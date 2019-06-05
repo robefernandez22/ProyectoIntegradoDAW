@@ -23,6 +23,8 @@
 		<script src="../../../lib/popper.min.js"></script>
 		<!-- Bootstrap Script -->
 		<script src="../../../lib/bootstrap.min.js"></script>
+		<!-- Script Base64 -->
+		<script src="../../../lib/base64.js"></script>
 		<!-- Script principal -->
 		<script src="../../js/main.js"></script>
 	</head>
@@ -75,8 +77,55 @@
 				</nav>
 			</header>
 
-			<header class="row justify-content-center mt-5">
-				<h3 class="text-center text-capitalize mt-5">Crea, elimina y modifica reservas</h3>
+			<header class="row justify-content-center mt-5 mb-4">
+				<div class="col-md-12">
+					<h3 class="text-center text-capitalize mt-5">Crea, elimina y modifica reservas</h3>
+
+					<form method="post" id="filtrado" action="./cargarReservas.php">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label><b>Filtrar</b></label>
+									<select class="form-control" name="filtro" required>
+										<option value=""></option>
+										<option value="usuario">Usuario</option>
+										<option value="hotel">Hotel</option>
+										<option value="fecha_reserva">Fecha de reserva</option>
+										<option value="fecha_entrada">Fecha de entrada</option>
+										<option value="fecha_salida">Fecha de salida</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group" id="valor">
+									<label style="visibility: hidden;">text</label>
+									<input type="email" id="correo" name="correo" class="form-control" placeholder="Correo" style="display: none;">
+
+									<select class="form-control" id="hoteles" name="hoteles" style="display: none;">
+										<?php
+											foreach ($hoteles as $value) {
+										?>
+											<option value="<?=$value->getId()?>"><?=$value->getNombre()?></option>
+										<?php
+											}
+										?>
+									</select>
+
+									<select class="form-control" name="orden" style="display: none;">
+										<option value="ASC">Ascendente</option>
+										<option value="DESC">Descendente</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-1">
+								<div class="form-group">
+									<label style="visibility: hidden;">text</label><br>
+									<button type="submit" class="btn btn-success" name="aplicar">Aplicar</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
 			</header>
 
 			<section class="row justify-content-center mt-5">
@@ -85,7 +134,9 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th scope="col"><input class="btn btn-primary btn-sm mr-2 text-left" data-toggle="modal" data-target="#aniadir" type="button" value="Añadir"></th>
+									<th scope="col">
+										<input class="btn btn-primary btn-sm mr-2 text-left" data-toggle="modal" data-target="#aniadir" type="button" value="Añadir">
+									</th>
 
 									<?php
 										if ($data != null) {
@@ -93,8 +144,6 @@
 
 									<th scope="col">Usuario</th>
 									<th scope="col">Hotel</th>
-									<th scope="col">Número de personas</th>
-									<th scope="col">Pensión</th>
 									<th scope="col">Fecha de reserva</th>
 									<th scope="col">Fecha de entrada</th>
 									<th scope="col">Fecha de salida</th>
@@ -121,12 +170,6 @@
 										<?=$reservas->getNombreHotel()?>
 									</td>
 									<td>
-										<?=$reservas->getNumPersonas()?>
-									</td>
-									<td>
-										<?=$reservas->getDescPension()?>
-									</td>
-									<td>
 										<?=$reservas->getFechaReserva()?>
 									</td>
 									<td>
@@ -136,7 +179,7 @@
 										<?=$reservas->getFechaSalida()?>
 									</td>
 									<td>
-										<a href="./buscarHabitacion.php?idHabitacion=<?=base64_encode($habitaciones->getId())?>">
+										<a href="">
 											<input class="btn btn-warning btn-sm mr-2 text-left" data-toggle="modal" data-target="#modificar" type="button" value="Modificar">
 										</a>
 									</td>

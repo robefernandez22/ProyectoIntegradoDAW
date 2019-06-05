@@ -118,6 +118,134 @@
 
 		}
 
+		public static function getReservasUsuario($correo) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT R.ID, U.CORREO, R.FECHA_RESERVA, R.FECHA_ENTRADA, R.FECHA_SALIDA, R.NUM_PERSONAS, 
+			HO.NOMBRE, HA.DESCRIPCION, HA.NUM_HABITACION, HA.NUM_PLANTA, HA.PRECIO_NOCHE, HA.NUM_CAMAS, TP.DESCRIPCION, TP.PRECIO
+			FROM USUARIOS U, RESERVAS R, HOTELES HO, HABITACIONES HA, TIPOS_PENSIONES TP, RESERVAS_HABITACIONES RH
+			WHERE U.CORREO LIKE R.USUARIOS_CORREO
+            AND U.CORREO LIKE '$correo'
+			AND R.ID = RH.RESERVAS_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HA.ID = RH.HABITACIONES_ID
+			AND TP.ID = R.TIPOS_PENSIONES_ID";
+			
+			$resultado = $conexion->query($sql);
+
+			$reservas = [];
+			while ($registros = $resultado->fetch()) {
+				$reservas[] = new Reservas($registros);
+			}
+
+			return $reservas;
+
+		}
+
+		public static function getReservasHotel($id) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT R.ID, U.CORREO, R.FECHA_RESERVA, R.FECHA_ENTRADA, R.FECHA_SALIDA, R.NUM_PERSONAS, 
+			HO.NOMBRE, HA.DESCRIPCION, HA.NUM_HABITACION, HA.NUM_PLANTA, HA.PRECIO_NOCHE, HA.NUM_CAMAS, TP.DESCRIPCION, TP.PRECIO
+			FROM USUARIOS U, RESERVAS R, HOTELES HO, HABITACIONES HA, TIPOS_PENSIONES TP, RESERVAS_HABITACIONES RH
+			WHERE U.CORREO LIKE R.USUARIOS_CORREO
+			AND R.ID = RH.RESERVAS_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HO.ID = '$id'
+			AND HA.ID = RH.HABITACIONES_ID
+			AND TP.ID = R.TIPOS_PENSIONES_ID";
+			
+			$resultado = $conexion->query($sql);
+
+			$reservas = [];
+			while ($registros = $resultado->fetch()) {
+				$reservas[] = new Reservas($registros);
+			}
+
+			return $reservas;
+
+		}
+
+		public static function getReservasFechaReserva($orden) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT R.ID, U.CORREO, R.FECHA_RESERVA, R.FECHA_ENTRADA, R.FECHA_SALIDA, R.NUM_PERSONAS, 
+			HO.NOMBRE, HA.DESCRIPCION, HA.NUM_HABITACION, HA.NUM_PLANTA, HA.PRECIO_NOCHE, HA.NUM_CAMAS, TP.DESCRIPCION, TP.PRECIO
+			FROM USUARIOS U, RESERVAS R, HOTELES HO, HABITACIONES HA, TIPOS_PENSIONES TP, RESERVAS_HABITACIONES RH
+			WHERE U.CORREO LIKE R.USUARIOS_CORREO
+			AND R.ID = RH.RESERVAS_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HA.ID = RH.HABITACIONES_ID
+			AND TP.ID = R.TIPOS_PENSIONES_ID
+			ORDER BY R.FECHA_RESERVA $orden";
+			
+			$resultado = $conexion->query($sql);
+
+			$reservas = [];
+			while ($registros = $resultado->fetch()) {
+				$reservas[] = new Reservas($registros);
+			}
+
+			return $reservas;
+
+		}
+
+		public static function getReservasFechaEntrada($orden) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT R.ID, U.CORREO, R.FECHA_RESERVA, R.FECHA_ENTRADA, R.FECHA_SALIDA, R.NUM_PERSONAS, 
+			HO.NOMBRE, HA.DESCRIPCION, HA.NUM_HABITACION, HA.NUM_PLANTA, HA.PRECIO_NOCHE, HA.NUM_CAMAS, TP.DESCRIPCION, TP.PRECIO
+			FROM USUARIOS U, RESERVAS R, HOTELES HO, HABITACIONES HA, TIPOS_PENSIONES TP, RESERVAS_HABITACIONES RH
+			WHERE U.CORREO LIKE R.USUARIOS_CORREO
+			AND R.ID = RH.RESERVAS_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HA.ID = RH.HABITACIONES_ID
+			AND TP.ID = R.TIPOS_PENSIONES_ID
+			ORDER BY R.FECHA_ENTRADA $orden";
+			
+			$resultado = $conexion->query($sql);
+
+			$reservas = [];
+			while ($registros = $resultado->fetch()) {
+				$reservas[] = new Reservas($registros);
+			}
+
+			return $reservas;
+
+		}
+
+		public static function getReservasFechaSalida($orden) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT R.ID, U.CORREO, R.FECHA_RESERVA, R.FECHA_ENTRADA, R.FECHA_SALIDA, R.NUM_PERSONAS, 
+			HO.NOMBRE, HA.DESCRIPCION, HA.NUM_HABITACION, HA.NUM_PLANTA, HA.PRECIO_NOCHE, HA.NUM_CAMAS, TP.DESCRIPCION, TP.PRECIO
+			FROM USUARIOS U, RESERVAS R, HOTELES HO, HABITACIONES HA, TIPOS_PENSIONES TP, RESERVAS_HABITACIONES RH
+			WHERE U.CORREO LIKE R.USUARIOS_CORREO
+			AND R.ID = RH.RESERVAS_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HO.ID = TP.HOTELES_ID
+			AND HA.ID = RH.HABITACIONES_ID
+			AND TP.ID = R.TIPOS_PENSIONES_ID
+			ORDER BY R.FECHA_SALIDA $orden";
+			
+			$resultado = $conexion->query($sql);
+
+			$reservas = [];
+			while ($registros = $resultado->fetch()) {
+				$reservas[] = new Reservas($registros);
+			}
+
+			return $reservas;
+
+		}
+
 		public function getPension() {
 			
 			$conexion = Conexion::conexionBD();
