@@ -250,24 +250,26 @@
 									<label for="estrellas"><span class="obligatorio">*</span>Estrellas</label>
 								</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="garaje" name="garaje" id="garaje">
-									<label class="form-check-label" for="garaje">Garaje</label>
-								</div>
+								<div class="form-label-group">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="garaje" name="garaje" id="garaje">
+										<label class="form-check-label" for="garaje">Garaje</label>
+									</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="piscina" name="piscina" id="piscina">
-									<label class="form-check-label" for="piscina">Piscina</label>
-								</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="piscina" name="piscina" id="piscina">
+										<label class="form-check-label" for="piscina">Piscina</label>
+									</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="aire" name="aire" id="aire">
-									<label class="form-check-label" for="aire">Aire Acondicionado</label>
-								</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="aire" name="aire" id="aire">
+										<label class="form-check-label" for="aire">Aire Acondicionado</label>
+									</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="wifi" name="wifi" id="wifi">
-									<label class="form-check-label" for="wifi">Wi-Fi</label>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="wifi" name="wifi" id="wifi">
+										<label class="form-check-label" for="wifi">Wi-Fi</label>
+									</div>
 								</div>
 							</div>
 

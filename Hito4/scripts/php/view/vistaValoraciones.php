@@ -99,11 +99,39 @@
 			<?php
 					}
 				}
+
+				if ($data != null) {
 			?>
 
-			<header class="row justify-content-center mt-5">
-				<h3 class="text-center mt-5">Valoraciones del hotel <b><?=$hotel->getNombre()?></b></h3>
+			<header class="row justify-content-center mt-5 mb-4">
+				<div class="col-md-12">
+					<h3 class="text-center mt-5">Valoraciones del hotel <b><?=$hotel->getNombre()?></b></h3>
+
+					<div class="row">
+						<div class="col-md-6">
+							<form class="form-signin">
+								<div class="form-group">
+									<p class="text-center"><b>Filtra</b> con un <b>usuario o descripción:</b></p>
+									<input type="text" class="form-control filtro" autofocus>
+								</div>
+							</form>
+						</div>
+
+						<div class="col-md-6">
+							<form class="form-signin">
+								<div class="form-group">
+									<p class="text-center"><b>Filtra</b> introduciendo cualquier <b>fecha:</b></p>
+									<input type="date" class="form-control filtro">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 			</header>
+
+			<?php
+				}
+			?>
 
 			<section class="row justify-content-center mt-5">
 				<div class="col-md-12">
@@ -131,7 +159,7 @@
 							</tr>
 						</thead>
 
-						<tbody>
+						<tbody class="contenidobusqueda">
 
 							<?php
 								foreach ($data as $valoraciones) {

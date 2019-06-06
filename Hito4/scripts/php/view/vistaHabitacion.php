@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="../../../style/main.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../../../lib/floating-labels.css">
 
 		<!-- Librería jQuery -->
 		<script src="../../../lib/jquery-3.4.0.min.js"></script>
@@ -124,14 +125,16 @@
 							</div>
 
 							<div class="tab-pane fade show" id="extras">
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="television" name="television" id="television" <?php if($habitacion->getTelevision() == "S"){echo "checked";}?>>
-									<label class="form-check-label" for="television">Televisión</label>
-								</div>
+								<div class="form-label-group">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="television" name="television" id="television" <?php if($habitacion->getTelevision() == "S"){echo "checked";}?>>
+										<label class="form-check-label" for="television">Televisión</label>
+									</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="vistas" name="vistas" id="vistas" <?php if($habitacion->getVistas() == "S"){echo "checked";}?>>
-									<label class="form-check-label" for="vistas">Vistas</label>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="vistas" name="vistas" id="vistas" <?php if($habitacion->getVistas() == "S"){echo "checked";}?>>
+										<label class="form-check-label" for="vistas">Vistas</label>
+									</div>
 								</div>
 							</div>
 						</div>
