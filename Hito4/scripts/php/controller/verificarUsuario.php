@@ -21,6 +21,7 @@
 
 			$usuario = new Usuario($fila);
 			$_SESSION["usuario"] = $usuario->getCorreo();
+			$_SESSION["tipo"] = $usuario->getTipo();
 
 			if ($usuario->getTipo() == "Usuario") {
 

@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Título de la página -->
-		<title>Administración - Hoteles</title>
+		<title>Administración - Valoraciones</title>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="favicon/ico" href="../../../images/favicon.ico">
 
@@ -54,19 +54,19 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar reservas realizadas y/o canceladas">Reservas</a>
+								<a href="./cargarReservas.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar reservas realizadas y/o canceladas">Reservas</a>
 							</li>
 
 							<li class="nav-item">
-								<a href="../controller/verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Crea, busca, elimina y modifica usuarios">Usuarios</a>
+								<a href="./verUsuarios.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar usuarios">Usuarios</a>
 							</li>
 
 							<li class="nav-item">
-								<a href="./verHoteles.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Crea, busca, elimina y modifica usuarios">Hoteles</a>
+								<a href="./verHoteles.php" class="nav-link" data-toggle="tooltip" data-html="true" title="Ver, modificar o borrar hoteles">Hoteles</a>
 							</li>
 						</ul>
 					</div>
-
+						
 					<a href="./setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?php echo $_SESSION['usuario'];?>!">
 						<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
 					</a>
@@ -74,6 +74,7 @@
 					<a href="./cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
 						<img src="../../../images/salir.svg" width="50" height="55">
 					</a>
+					
 				</nav>
 			</header>
 
@@ -99,8 +100,6 @@
 			<?php
 					}
 				}
-
-				if ($data != null) {
 			?>
 
 			<header class="row justify-content-center mt-5 mb-4">
@@ -128,10 +127,6 @@
 					</div>
 				</div>
 			</header>
-
-			<?php
-				}
-			?>
 
 			<section class="row justify-content-center mt-5">
 				<div class="col-md-12">
