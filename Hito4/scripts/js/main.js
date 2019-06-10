@@ -119,7 +119,7 @@ function checkInline(elemento) {
 				var expresion = /^[\w.-]+\@+\w+\.+\w+$/;
 				if (!expresion.test(elemento.val())) {
 
-					$(elemento).after("<span class='aviso'>Recuerde, el correo electrónico debe contener '@dominio.ejemplo'</span>");
+					$(elemento).after("<span class='aviso'>Recuerde, el correo electrónico debe contener '@ejemplo.ej'</span>");
 					mostrarSpan();
 
 				} else {

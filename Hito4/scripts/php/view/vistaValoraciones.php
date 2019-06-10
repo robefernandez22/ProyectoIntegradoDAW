@@ -100,6 +100,8 @@
 			<?php
 					}
 				}
+
+				if ($data != null) {
 			?>
 
 			<header class="row justify-content-center mt-5 mb-4">
@@ -134,48 +136,49 @@
 						<table class="table">
 							<thead>
 								<tr>
+									<th scope="col">Descripción</th>
+									<th scope="col">Puntuación</th>
+									<th scope="col">Fecha</th>
+									<th scope="col">Usuario</th>
+									<th scope="col">Opción</th>
+								</tr>
+							</thead>
+
+							<tbody class="contenidobusqueda">
+
 								<?php
-									if ($data != null) {
+									foreach ($data as $valoraciones) {
 								?>
 
-								<th scope="col">Descripción</th>
-								<th scope="col">Puntuación</th>
-								<th scope="col">Fecha</th>
-								<th scope="col">Usuario</th>
-								<th scope="col">Opción</th>
+								<tr>
+									<input type="hidden" value="<?=$valoraciones->getId()?>" class="identificador">
+									<td><?=$valoraciones->getDescripcion()?></td>
+									<td><?=$valoraciones->getPuntuacion()?></td>
+									<td><?=$valoraciones->getFecha()?></td>
+									<td><?=$valoraciones->getUsuariosCorreo()?></td>
+									<td><input class="btn btn-danger btn-sm mr-2 text-left" data-toggle="modal" data-target="#eliminar" type="button" value="Eliminar"></td>
+								</tr>
 
-								<?php
-									} else {
-								?>
-									<p class='text-center'>No hay valoraciones del hotel <b><?=$hotel->getNombre()?></b> por el momento.</p>
 								<?php
 									}
 								?>
-							</tr>
-						</thead>
-
-						<tbody class="contenidobusqueda">
-
-							<?php
-								foreach ($data as $valoraciones) {
-							?>
-
-							<tr>
-								<input type="hidden" value="<?=$valoraciones->getId()?>" class="identificador">
-								<td><?=$valoraciones->getDescripcion()?></td>
-								<td><?=$valoraciones->getPuntuacion()?></td>
-								<td><?=$valoraciones->getFecha()?></td>
-								<td><?=$valoraciones->getUsuariosCorreo()?></td>
-								<td><input class="btn btn-danger btn-sm mr-2 text-left" data-toggle="modal" data-target="#eliminar" type="button" value="Eliminar"></td>
-							</tr>
-
-							<?php
-								}
-							?>
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</section>
+
+			<?php
+				} else {
+			?>
+
+			<header class="row justify-content-center mt-5 mb-4">
+				<h3 class="text-center mt-5">No hay valoraciones de <b><?=$hotel->getNombre()?></b> por el momento.</h3>
+			</header>
+
+			<?php
+				}
+			?>
 
 			<!-- Ventana modal para eliminar valoraciones -->
 			<section class="modal" id="eliminar">

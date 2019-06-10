@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Título de la página -->
-		<title>Reservar</title>
+		<title>Hoteles ESE - Reservar</title>
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="favicon/ico" href="./images/favicon.ico">
 
@@ -93,12 +93,12 @@
 						<?php
 							} else {
 						?>
-						<a href="../controller/setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?=$_SESSION['usuario']?>!">
-							<img src="../../../images/usuario.png" width="50" height="50" id="usuario">
+						<a href="./scripts/php/controller/setUsuario.php" data-toggle="tooltip" data-html="true" title="¡Hola <?=$_SESSION['usuario']?>!">
+							<img src="./images/usuario.png" width="50" height="50" id="usuario">
 						</a>
 
-						<a href="../controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
-							<img src="../../../images/salir.svg" width="50" height="50">
+						<a href="./scripts/php/controller/cerrarSesion.php" data-toggle="tooltip" data-html="true" title="Cerrar sesión">
+							<img src="./images/salir.svg" width="50" height="50">
 						</a>
 						<?php
 							}
@@ -178,8 +178,26 @@
 										<p class="card-text"><?=$hotel->getDescripcion()?></p>
 										<hr>
 										<div class="d-flex justify-content-between align-items-center">
-											<small class="text-muted">¡Sólo <?=$hotel->getNumHabitacionesDisponibles()?> habitaciones disponibles!</small>
-											
+											<?php
+												$hab_disponibles = $hotel->getNumHabitacionesDisponibles();
+												if ($hab_disponibles == 0) {
+													$hab_disponibles = $hotel->getHabitaciones();
+												}
+
+												if ($hab_disponibles < 2) {
+											?>
+
+											<small class="text-muted"><?=$hab_disponibles?> habitación disponible en este momento.</small>
+
+											<?php
+												} else {
+											?>
+
+											<small class="text-muted"><?=$hab_disponibles?> habitaciones disponibles en este momento.</small>
+
+											<?php
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -209,13 +227,13 @@
 						<form method="post" action="../controller/verificarUsuario.php" class="form-signin" id="inicio">
 							<div class="modal-body">
 								<div class="form-label-group">
-									<input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
-									<label for="inputEmail"><span class="obligatorio">*</span>Dirección de correo electrónico</label>
+									<input type="email" id="correo" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
+									<label for="correo"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
-									<label for="password"><span class="obligatorio">*</span>Contraseña</label>
+									<label for="password"><span class="obligatorio">*</span> Contraseña</label>
 								</div>
 
 								<div class="form-group">
@@ -246,22 +264,22 @@
 							<div class="modal-body">
 								<div class="form-label-group">
 									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autofocus>
-									<label for="nombre"><span class="obligatorio">*</span>Nombre</label>
+									<label for="nombre"><span class="obligatorio">*</span> Nombre</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos">
-									<label for="apellidos"><span class="obligatorio">*</span>Apellidos</label>
+									<label for="apellidos"><span class="obligatorio">*</span> Apellidos</label>
 								</div>
 
 								<div class="form-label-group">
-									<input type="email" id="inputEmail1" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
-									<label for="inputEmail1"><span class="obligatorio">*</span>Dirección de correo electrónico</label>
+									<input type="email" id="correo1" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
+									<label for="correo1"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="password" id="password1" name="password" class="form-control" placeholder="Contraseña">
-									<label for="password1"><span class="obligatorio">*</span>Contraseña</label>
+									<label for="password1"><span class="obligatorio">*</span> Contraseña</label>
 								</div>
 
 								<!-- El usuario que se registre aquí siempre será de tipo usuario,

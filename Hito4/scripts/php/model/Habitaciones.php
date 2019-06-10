@@ -13,6 +13,7 @@
 		private $precio_noche;
 		private $television;
 		private $vistas;
+		private $aire;
 
 		function __construct($fila) {
 
@@ -25,6 +26,7 @@
 			$this->precio_noche = $fila["precio_noche"];
 			$this->television = $fila["television"];
 			$this->vistas = $fila["vistas"];
+			$this->aire = $fila["aire"];
 
 		}
 
@@ -82,6 +84,28 @@
 
 		}
 
+		public function getAire() {
+
+			return $this->aire;
+
+		}
+
+		public function getImagenes() {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT * FROM imagenes_habitaciones WHERE habitaciones_id = '$this->id'";
+			$resultado = $conexion->query($sql);
+
+			$imagenes = [];
+			while ($registros = $resultado->fetch()) {
+				$imagenes[] = $registros;
+			}
+
+			return $imagenes;
+
+		}
+
 		public static function buscarHabitacion($id) {
 
 			$conexion = Conexion::conexionBD();
@@ -123,22 +147,22 @@
 
 		}
 
-		public static function insertarHabitacion($id, $hoteles_id, $descripcion, $num_camas, $num_habitacion, $num_planta, $precio_noche, $television, $vistas) {
+		public static function insertarHabitacion($id, $hoteles_id, $descripcion, $num_camas, $num_habitacion, $num_planta, $precio_noche, $television, $vistas, $aire) {
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "INSERT INTO habitaciones (id, hoteles_id, descripcion, num_camas, num_habitacion, num_planta, precio_noche, television, vistas) VALUES (NULL, '$hoteles_id', '$descripcion', '$num_camas', '$num_habitacion', '$num_planta', '$precio_noche', '$television', '$vistas')";
+			$sql = "INSERT INTO habitaciones (id, hoteles_id, descripcion, num_camas, num_habitacion, num_planta, precio_noche, television, vistas, aire) VALUES (NULL, '$hoteles_id', '$descripcion', '$num_camas', '$num_habitacion', '$num_planta', '$precio_noche', '$television', '$vistas', '$aire')";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;
 
 		}
 
-		public static function actualizarHabitacion($id, $descripcion, $num_camas, $num_habitacion, $num_planta, $precio_noche, $television, $vistas) {
+		public static function actualizarHabitacion($id, $descripcion, $num_camas, $num_habitacion, $num_planta, $precio_noche, $television, $vistas, $aire) {
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "UPDATE habitaciones SET descripcion = '$descripcion', num_camas = '$num_camas', num_habitacion = '$num_habitacion', num_planta = '$num_planta', precio_noche = '$precio_noche', television = '$television', vistas = '$vistas' WHERE id = '$id'";
+			$sql = "UPDATE habitaciones SET descripcion = '$descripcion', num_camas = '$num_camas', num_habitacion = '$num_habitacion', num_planta = '$num_planta', precio_noche = '$precio_noche', television = '$television', vistas = '$vistas', aire = '$aire' WHERE id = '$id'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;
@@ -149,7 +173,7 @@
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "DELETE FROM habitaciones WHERE id = '".$id."'";
+			$sql = "DELETE FROM habitaciones WHERE id = '$id'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;

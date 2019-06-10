@@ -98,35 +98,6 @@
 
 			<?php
 					}
-				} elseif (isset($_GET["actualizacion"])) {
-					if ($_GET["actualizacion"] == 1) {
-			?>
-
-			<div class="alert alert-success text-center mt-5" role="alert">
-				<strong>¡Bien!</strong> Habitación actualizada correctamente.
-				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=actualizacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
-			</div>
-
-			<?php
-					} elseif($_GET["actualizacion"] == 0) {
-			?>
-
-			<div class="alert alert-warning text-center mt-5" role="alert">
-				<strong>Vaya...</strong> No has modificado ningún dato.
-				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=actualizacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
-			</div>
-
-			<?php
-					} elseif($_GET["actualizacion"] == -1) {
-			?>
-
-			<div class="alert alert-warning text-center mt-5" role="alert">
-				<strong>Vaya...</strong> La habitación no se ha podido modificar. Ya existe una habitación con el mismo número.
-				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=actualizacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
-			</div>
-
-			<?php
-					}
 				} elseif (isset($_GET["newRoom"])) {
 					if ($_GET["newRoom"] == 1) {
 			?>
@@ -151,7 +122,7 @@
 			?>
 
 			<header class="row justify-content-center mt-5">
-				<h3 class="text-center text-capitalize mt-5">Habitaciones del hotel <b><?=$hotel->getNombre()?></b></h3>
+				<h3 class="text-center mt-5">Habitaciones del hotel <b><?=$hotel->getNombre()?></b></h3>
 			</header>
 
 			<section class="row justify-content-center mt-5">
@@ -253,7 +224,7 @@
 							<input type="hidden" name="hotelId" value="<?=$habitaciones->getHotelId()?>">
 							<div class="modal-body">
 								<div class="form-group">
-									<label for="descripcion">Descripción</label>
+									<label for="descripcion">Descripción:</label>
 									<select multiple class="form-control" id="descripcion" name="descripcion">
 										<option value="Individual">Individual</option>
 										<option value="Doble">Doble</option>
@@ -263,27 +234,35 @@
 
 								<div class="form-label-group">
 									<input type="number" id="numHabitacion" name="numHabitacion" class="form-control" placeholder="Número de la habitación" min="1" required>
-									<label for="numHabitacion"><span class="obligatorio">*</span>Número de la habitación</label>
+									<label for="numHabitacion"><span class="obligatorio">*</span> Número de la habitación</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="number" id="numPlanta" name="numPlanta" class="form-control" placeholder="Planta en la que se encuentra la habitación" required>
-									<label for="numPlanta"><span class="obligatorio">*</span>Planta en la que se encuentra la habitación</label>
+									<label for="numPlanta"><span class="obligatorio">*</span> Planta en la que se encuentra la habitación</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="number" id="precioNoche" name="precioNoche" class="form-control" placeholder="Precio de cada noche" min="1" required>
-									<label for="precioNoche"><span class="obligatorio">*</span>Precio de cada noche</label>
+									<label for="precioNoche"><span class="obligatorio">*</span> Precio de cada noche</label>
 								</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="television" name="television" id="television">
-									<label class="form-check-label" for="television">Televisión</label>
-								</div>
+								<label>Extras:</label>
+								<div class="form-label-group">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="television" name="television" id="television">
+										<label class="form-check-label" for="television">Televisión</label>
+									</div>
 
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" value="vistas" name="vistas" id="vistas">
-									<label class="form-check-label" for="vistas">Vistas</label>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="vistas" name="vistas" id="vistas">
+										<label class="form-check-label" for="vistas">Vistas</label>
+									</div>
+
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" value="aire" name="aire" id="aire">
+										<label class="form-check-label" for="aire">Aire Acondicionado</label>
+									</div>
 								</div>
 							</div>
 

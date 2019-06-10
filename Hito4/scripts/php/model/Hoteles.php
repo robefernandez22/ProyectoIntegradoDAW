@@ -15,7 +15,6 @@
 		private $estrellas;
 		private $garaje;
 		private $piscina;
-		private $aire_acondicionado;
 		private $wifi;
 
 		function __construct($fila) {
@@ -30,7 +29,6 @@
 			$this->estrellas = $fila["estrellas"];
 			$this->garaje = $fila["garaje"];
 			$this->piscina = $fila["piscina"];
-			$this->aire_acondicionado = $fila["aire_acondicionado"];
 			$this->wifi = $fila["wifi"];
 
 		}
@@ -95,12 +93,6 @@
 
 		}
 
-		public function getAire() {
-
-			return $this->aire_acondicionado;
-
-		}
-
 		public function getWifi() {
 
 			return $this->wifi;
@@ -117,7 +109,7 @@
 			
 			$conexion = Conexion::conexionBD();
 
-			$sql = "SELECT COUNT(*) FROM habitaciones WHERE hoteles_id = '".$this->id."'";
+			$sql = "SELECT COUNT(*) FROM habitaciones WHERE hoteles_id = '$this->id'";
 
 			$resultado = $conexion->query($sql);
 			$fila = $resultado->fetch();
@@ -143,17 +135,11 @@
 		public function getNumHabitacionesDisponibles() {
 
 			$conexion = Conexion::conexionBD();
-
-			$sql = "SELECT HO.NOMBRE, HA.DESCRIPCION, HA.PRECIO_NOCHE
-					FROM HOTELES HO, HABITACIONES HA
-					WHERE HO.ID = HA.HOTELES_ID
-					AND HO.ID = '$this->id'
-					AND HA.ID NOT IN (SELECT HABITACIONES_ID
-					                 FROM RESERVAS_HABITACIONES)";
-
-			$resultado = $conexion->query($sql);
-			
 			$contador = 0;
+
+			$sql = "SELECT * FROM reservas WHERE fecha_entrada > (SELECT CURDATE())";
+			$resultado = $conexion->query($sql);
+				
 			while ($registros = $resultado->fetch()) {
 				$contador++;
 			}
@@ -207,11 +193,11 @@
 
 		}
 
-		public static function insertarHotel($nombre, $descripcion, $ciudad, $calle, $numero, $cod_postal, $estrellas, $garaje, $piscina, $aire_acondicionado, $wifi) {
+		public static function insertarHotel($nombre, $descripcion, $ciudad, $calle, $numero, $cod_postal, $estrellas, $garaje, $piscina, $wifi) {
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "INSERT INTO hoteles (id, nombre, descripcion, ciudad, calle, numero, cod_postal, estrellas, garaje, piscina, aire_acondicionado, wifi) VALUES (NULL, '$nombre', '$descripcion', '$ciudad', '$calle', '$numero', '$cod_postal', '$estrellas', '$garaje', '$piscina', '$aire_acondicionado', '$wifi')";
+			$sql = "INSERT INTO hoteles (id, nombre, descripcion, ciudad, calle, numero, cod_postal, estrellas, garaje, piscina, wifi) VALUES (NULL, '$nombre', '$descripcion', '$ciudad', '$calle', '$numero', '$cod_postal', '$estrellas', '$garaje', '$piscina', '$wifi')";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;
@@ -230,11 +216,11 @@
 
 		}
 
-		public static function actualizarHotel($id, $nombre, $descripcion, $ciudad, $calle, $numero, $cod_postal, $estrellas, $garaje, $piscina, $aire_acondicionado, $wifi) {
+		public static function actualizarHotel($id, $nombre, $descripcion, $ciudad, $calle, $numero, $cod_postal, $estrellas, $garaje, $piscina, $wifi) {
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "UPDATE hoteles SET nombre='$nombre', descripcion='$descripcion', ciudad='$ciudad', calle='$calle', numero='$numero', cod_postal='$cod_postal', estrellas='$estrellas', garaje='$garaje', piscina='$piscina', aire_acondicionado='$aire_acondicionado', wifi='$wifi' WHERE id = '$id'";
+			$sql = "UPDATE hoteles SET nombre='$nombre', descripcion='$descripcion', ciudad='$ciudad', calle='$calle', numero='$numero', cod_postal='$cod_postal', estrellas='$estrellas', garaje='$garaje', piscina='$piscina', wifi='$wifi' WHERE id = '$id'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;

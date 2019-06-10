@@ -103,7 +103,7 @@
 
 			<header class="row justify-content-center mt-5 mb-4">
 				<div class="col-md-12">
-					<h3 class="text-center text-capitalize mt-5">Crea, elimina y modifica hoteles</h3>
+					<h3 class="text-center mt-5">Crea, elimina y modifica hoteles</h3>
 
 					<form class="form-signin">
 						<div class="form-group">
@@ -218,7 +218,7 @@
 							<div class="modal-body">
 								<div class="form-label-group">
 									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autofocus>
-									<label for="nombre"><span class="obligatorio">*</span>Nombre</label>
+									<label for="nombre"><span class="obligatorio">*</span> Nombre</label>
 								</div>
 
 								<div class="form-label-group">
@@ -227,27 +227,27 @@
 
 								<div class="form-label-group">
 									<input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ciudad del hotel" autofocus required>
-									<label for="ciudad"><span class="obligatorio">*</span>Ciudad del hotel</label>
+									<label for="ciudad"><span class="obligatorio">*</span> Ciudad del hotel</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="text" id="calle" name="calle" class="form-control" placeholder="Calle del hotel">
-									<label for="calle"><span class="obligatorio">*</span>Calle del hotel</label>
+									<label for="calle"><span class="obligatorio">*</span> Calle del hotel</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="number" min="1" id="numero" name="numero" class="form-control" placeholder="Número de la calle del hotel">
-									<label for="numero"><span class="obligatorio">*</span>Número de la calle del hotel</label>
+									<label for="numero"><span class="obligatorio">*</span> Número de la calle del hotel</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="number" min="1" id="codPostal" name="codPostal" class="form-control" placeholder="Código postal">
-									<label for="codPostal"><span class="obligatorio">*</span>Código postal</label>
+									<label for="codPostal"><span class="obligatorio">*</span> Código postal</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="number" min="1" max="5" id="estrellas" name="estrellas" class="form-control" placeholder="Estrellas">
-									<label for="estrellas"><span class="obligatorio">*</span>Estrellas</label>
+									<label for="estrellas"><span class="obligatorio">*</span> Estrellas</label>
 								</div>
 
 								<div class="form-label-group">

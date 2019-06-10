@@ -128,7 +128,7 @@
 			?>
 
 			<header class="row justify-content-center">
-				<h3 class="text-center mt-5">Modificando hotel <strong><?=$hotel->getNombre()?></strong></h3>
+				<h3 class="text-center mt-5">Modificando <strong><?=$hotel->getNombre()?></strong></h3>
 			</header>
 
 			<form method="post" action="./setHotel.php" enctype="multipart/form-data">
@@ -153,7 +153,7 @@
 							<div class="tab-pane fade show active" id="nombre">
 								<div class="form-label-group">
 									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" value="<?=$hotel->getNombre()?>">
-									<label for="nombre">Nombre</label>
+									<label for="nombre"><span class="obligatorio">*</span> Nombre</label>
 								</div>
 							</div>
 
@@ -166,35 +166,35 @@
 							<div class="tab-pane fade show" id="ciudad">
 								<div class="form-label-group">
 									<input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ciudad" value="<?=$hotel->getCiudad()?>">
-									<label for="ciudad">Ciudad</label>
+									<label for="ciudad"><span class="obligatorio">*</span> Ciudad</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="calle">
 								<div class="form-label-group">
 									<input type="text" id="calle" name="calle" class="form-control" placeholder="Calle" value="<?=$hotel->getCalle()?>">
-									<label for="calle">Calle</label>
+									<label for="calle"><span class="obligatorio">*</span> Calle</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="numero">
 								<div class="form-label-group">
 									<input type="number" id="numero" name="numero" class="form-control" placeholder="Número" value="<?=$hotel->getNumero()?>">
-									<label for="numero">Número</label>
+									<label for="numero"><span class="obligatorio">*</span> Número</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="codPostal">
 								<div class="form-label-group">
 									<input type="number" id="codPostal" name="codPostal" placeholder="Código Postal" class="form-control" value="<?=$hotel->getCodPostal()?>">
-									<label for="codPostal">Código Postal</label>
+									<label for="codPostal"><span class="obligatorio">*</span> Código Postal</label>
 								</div>
 							</div>
 
 							<div class="tab-pane fade show" id="estrellas">
 								<div class="form-label-group">
 									<input type="number" id="estrellas" name="estrellas" placeholder="Estrellas" class="form-control" value="<?=$hotel->getEstrellas()?>">
-									<label for="estrellas">Estrellas</label>
+									<label for="estrellas"><span class="obligatorio">*</span> Estrellas</label>
 								</div>
 							</div>
 
@@ -208,12 +208,7 @@
 									<div class="form-check">
 										<input type="checkbox" class="form-check-input" value="piscina" name="piscina" id="piscina" <?php if($hotel->getPiscina() == "S"){echo "checked";}?>>
 										<label class="form-check-label" for="piscina">Piscina</label>
-									</div>
-
-									<div class="form-check">
-										<input type="checkbox" class="form-check-input" value="aire" name="aire" id="aire" <?php if($hotel->getAire() == "S"){echo "checked";}?>>
-										<label class="form-check-label" for="aire">Aire Acondicionado</label>
-									</div>
+									</div>									
 
 									<div class="form-check">
 										<input type="checkbox" class="form-check-input" value="wifi" name="wifi" id="wifi" <?php if($hotel->getWifi() == "S"){echo "checked";}?>>

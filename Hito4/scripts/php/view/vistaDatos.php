@@ -84,7 +84,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Opiniones</a>
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las valoraciones de nuestros clientes!">Valoraciones</a>
 							</li>
 
 							<li class="nav-item dropdown">
@@ -157,7 +157,7 @@
 			?>
 
 			<header class="row justify-content-center mt-5">
-				<h3 class="text-center text-capitalize mt-5">Tus datos</h3>
+				<h3 class="text-center mt-5">Tus datos</h3>
 			</header>
 
 			<section class="row justify-content-center mt-5">
@@ -170,12 +170,12 @@
 
 					<div class="form-label-group">
 						<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" value="<?=$usuario->getNombre()?>">
-						<label for="nombre">Nombre</label>
+						<label for="nombre"><span class="obligatorio">*</span> Nombre</label>
 					</div>
 
 					<div class="form-label-group">
 						<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" value="<?=$usuario->getApellidos()?>">
-						<label for="apellidos">Apellidos</label>
+						<label for="apellidos"><span class="obligatorio">*</span> Apellidos</label>
 					</div>
 
 					<div class="form-group">

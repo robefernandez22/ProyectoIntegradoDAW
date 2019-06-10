@@ -8,6 +8,7 @@
 
 		$television = "N";
 		$vistas = "N";
+		$aire = "N";
 		$num_camas = 0;
 
 		if (isset($_POST["television"])) {
@@ -32,7 +33,7 @@
 				break;
 		}
 
-		$habitacion = Habitaciones::actualizarHabitacion($_POST["id"], $_POST["descripcion"], $num_camas, $_POST["numHabitacion"], $_POST["num_planta"], $_POST["precio_noche"], $television, $vistas);
+		$habitacion = Habitaciones::actualizarHabitacion($_POST["id"], $_POST["descripcion"], $num_camas, $_POST["numHabitacion"], $_POST["numPlanta"], $_POST["precioNoche"], $television, $vistas);
 
 	} else {
 
@@ -40,7 +41,7 @@
 
 	}
 
-	$idHotel = base64_encode($_POST['hotelId']);
-	header("Location: ./verHabitaciones.php?idHotel=$idHotel&actualizacion=$habitacion");
+	$idHabitacion = base64_encode($_POST['id']);
+	header("Location: ./buscarHabitacion.php?idHabitacion=$idHabitacion&actualizacion=$habitacion");
 
 ?>

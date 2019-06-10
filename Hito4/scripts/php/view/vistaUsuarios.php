@@ -164,7 +164,7 @@
 
 			<header class="row justify-content-center mt-5 mb-4">
 				<div class="col-md-12">
-					<h3 class="text-center text-capitalize mt-5">Crea, elimina y modifica usuarios</h3>
+					<h3 class="text-center mt-5">Crea, elimina y modifica usuarios</h3>
 
 					<form class="form-signin">
 						<div class="form-group">
@@ -215,10 +215,14 @@
 											<?=$usuarios->getCorreo()?>
 										</td>
 										<td>
-											<input type="text" name="nombre" class="form-control" value="<?=$usuarios->getNombre()?>">
+											<div class="form-group">
+												<input type="text" name="nombre" class="form-control" value="<?=$usuarios->getNombre()?>" placeholder="Nombre">
+											</div>
 										</td>
 										<td>
-											<input type="text" name="apellidos" class="form-control" value="<?=$usuarios->getApellidos()?>">
+											<div class="form-group">
+												<input type="text" name="apellidos" class="form-control" value="<?=$usuarios->getApellidos()?>" placeholder="Apellidos">
+											</div>
 										</td>
 										<td>
 											<div class="form-check">
@@ -289,28 +293,28 @@
 							<div class="modal-body">
 								<div class="form-label-group">
 									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autofocus>
-									<label for="nombre"><span class="obligatorio">*</span>Nombre</label>
+									<label for="nombre"><span class="obligatorio">*</span> Nombre</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos">
-									<label for="apellidos"><span class="obligatorio">*</span>Apellidos</label>
+									<label for="apellidos"><span class="obligatorio">*</span> Apellidos</label>
 								</div>
 
 								<div class="form-label-group">
-									<input type="email" id="inputEmail1" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
-									<label for="inputEmail1"><span class="obligatorio">*</span>Dirección de correo electrónico</label>
+									<input type="email" id="correo" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
+									<label for="correo"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
 								</div>
 
 								<div class="form-label-group">
-									<input type="password" id="password1" name="password" class="form-control" placeholder="Contraseña">
-									<label for="password1"><span class="obligatorio">*</span>Contraseña</label>
+									<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña">
+									<label for="password"><span class="obligatorio">*</span> Contraseña</label>
 								</div>
 
 								<div class="form-group">
-									<label><span class="obligatorio">*</span>Tipo</label><br>
-									<input type="radio" name="tipo" value="U"><label>Usuario</label><br>
-									<input type="radio" name="tipo" value="A"><label>Administrador</label>
+									<label><span class="obligatorio">*</span> Tipo</label><br>
+									<input type="radio" name="tipo" value="U"> <label>Usuario</label><br>
+									<input type="radio" name="tipo" value="A"> <label>Administrador</label>
 								</div>
 							</div>
 

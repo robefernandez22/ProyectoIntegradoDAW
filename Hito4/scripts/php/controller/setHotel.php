@@ -5,7 +5,6 @@
 	$garaje = "N";
 	$piscina = "N";
 	$wifi = "N";
-	$aire = "N";
 
 	if (isset($_POST["garaje"])) {
 		$garaje = "S";
@@ -19,13 +18,9 @@
 		$wifi = "S";
 	}
 
-	if (isset($_POST["aire"])) {
-		$aire = "S";
-	}
-
 	try {
 
-		$actualizacion = Hoteles::actualizarHotel($_POST["id"], $_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $aire, $wifi);
+		$actualizacion = Hoteles::actualizarHotel($_POST["id"], $_POST["nombre"], $_POST["descripcion"], $_POST["ciudad"], $_POST["calle"], $_POST["numero"], $_POST["codPostal"], $_POST["estrellas"], $garaje, $piscina, $wifi);
 
 		if (isset($_FILES["imagen"]["name"])) {
 

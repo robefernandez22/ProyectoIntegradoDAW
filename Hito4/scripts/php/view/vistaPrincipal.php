@@ -155,7 +155,16 @@
 			</div>
 
 			<?php
-				} 
+				} elseif (isset($_GET["tipo"])) {
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Has actualizado correctamente tus datos, pero, cambiaste tu rol de usuario, así que por seguridad debes iniciar sesión de nuevo.
+				<a href="./scripts/php/controller/delVariable.php?controlador=../../../index.php&variable=tipo" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+				}
 			?>
 
 			<div class="jumbotron">
@@ -209,8 +218,8 @@
 						<form method="post" action="./scripts/php/controller/verificarUsuario.php" class="form-signin" id="inicio">
 							<div class="modal-body">
 								<div class="form-label-group">
-									<input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
-									<label for="inputEmail"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
+									<input type="email" id="correo" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
+									<label for="correo"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
 								</div>
 
 								<div class="form-label-group">
@@ -255,8 +264,8 @@
 								</div>
 
 								<div class="form-label-group">
-									<input type="email" id="inputEmail1" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
-									<label for="inputEmail1"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
+									<input type="email" id="correo1" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
+									<label for="correo1"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
 								</div>
 
 								<div class="form-label-group">
