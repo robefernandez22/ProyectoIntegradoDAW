@@ -86,7 +86,7 @@
 					<div class="col-md-4">
 						<div class="list-group">
 							<a class="list-group-item list-group-item-action active" data-toggle="list" data-target="#descripcion">Descripción</a>
-							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#num_habitacion">Número de habitación</a>
+							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#numHabitacion">Número de habitación</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#num_planta">Número de planta</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#precio_noche">Precio de cada noche</a>
 							<a class="list-group-item list-group-item-action" data-toggle="list" data-target="#extras">Extras</a>
@@ -106,9 +106,9 @@
 								</div>
 							</div>
 
-							<div class="tab-pane fade show" id="num_habitacion">
+							<div class="tab-pane fade show" id="numHabitacion">
 								<div class="form-group">
-									<input type="number" name="num_habitacion" class="form-control" value="<?php echo $habitacion->getNumHabitacion();?>">
+									<input type="number" name="numHabitacion" class="form-control" value="<?php echo $habitacion->getNumHabitacion();?>">
 								</div>
 							</div>
 

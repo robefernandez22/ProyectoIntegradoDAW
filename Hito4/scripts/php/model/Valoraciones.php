@@ -50,7 +50,15 @@
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "SELECT * FROM valoraciones WHERE hoteles_id = '$idHotel'";
+			if ($idHotel != 0) {
+			
+				$sql = "SELECT * FROM valoraciones WHERE hoteles_id = '$idHotel'";
+
+			} else {
+
+				$sql = "SELECT * FROM valoraciones";
+
+			}
 			
 			$resultado = $conexion->query($sql);
 

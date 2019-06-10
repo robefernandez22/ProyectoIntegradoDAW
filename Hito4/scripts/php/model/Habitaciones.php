@@ -86,7 +86,19 @@
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "SELECT * FROM habitaciones WHERE id LIKE '".$id."'";
+			$sql = "SELECT * FROM habitaciones WHERE id LIKE '$id'";
+
+			$resultado = $conexion->query($sql);
+			$fila = $resultado->fetch();
+			return $fila;
+
+		}
+
+		public static function buscarHabitacionRepetida($hotelId, $numHabitacion) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT * FROM habitaciones WHERE hoteles_id = '$hotelId' AND num_habitacion = '$numHabitacion'";
 
 			$resultado = $conexion->query($sql);
 			$fila = $resultado->fetch();

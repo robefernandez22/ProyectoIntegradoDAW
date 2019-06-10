@@ -162,7 +162,7 @@
 				<div class="container">
 					<h3 class="display-4"><b>Hoteles ESE.</b> La cadena de hoteles líder en España.</h3>
 					<p>EAT, SLEEP AND ENJOY <b>/</b> COME, DUERME Y DISFRUTA</p>
-					<p>Porque sabemos que quieres comer, pero comer bien, dormir, y hacerlo tranquilo, y sobre todo pasarlo bien. Por todo eso y mucho más, para nosotros el cliente es lo primero, TÚ eres lo primero. Por eso, nuestros hoteles no son sólo hoteles en los que estar de paso, nuestros hoteles son TU casa, son TU hogar.</p>
+					<p>Porque sabemos que quieres comer, pero comer bien, dormir, y hacerlo tranquilo, y sobre todo pasarlo bien. Por todo eso y mucho más, para nosotros el cliente es lo primero, TÚ eres lo primero. Por eso, nuestros hoteles no son sólo lugares en los que estar de paso, nuestros hoteles son TU casa, son TU hogar.</p>
 				</div>
 			</div>
 
@@ -210,12 +210,12 @@
 							<div class="modal-body">
 								<div class="form-label-group">
 									<input type="email" id="inputEmail" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
-									<label for="inputEmail"><span class="obligatorio">*</span>Dirección de correo electrónico</label>
+									<label for="inputEmail"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required>
-									<label for="password"><span class="obligatorio">*</span>Contraseña</label>
+									<label for="password"><span class="obligatorio">*</span> Contraseña</label>
 								</div>
 
 								<div class="form-group">
@@ -246,22 +246,22 @@
 							<div class="modal-body">
 								<div class="form-label-group">
 									<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" autofocus>
-									<label for="nombre"><span class="obligatorio">*</span>Nombre</label>
+									<label for="nombre"><span class="obligatorio">*</span> Nombre</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos">
-									<label for="apellidos"><span class="obligatorio">*</span>Apellidos</label>
+									<label for="apellidos"><span class="obligatorio">*</span> Apellidos</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="email" id="inputEmail1" name="correo" class="form-control" placeholder="Dirección de correo electrónico" autofocus required>
-									<label for="inputEmail1"><span class="obligatorio">*</span>Dirección de correo electrónico</label>
+									<label for="inputEmail1"><span class="obligatorio">*</span> Dirección de correo electrónico</label>
 								</div>
 
 								<div class="form-label-group">
 									<input type="password" id="password1" name="password" class="form-control" placeholder="Contraseña">
-									<label for="password1"><span class="obligatorio">*</span>Contraseña</label>
+									<label for="password1"><span class="obligatorio">*</span> Contraseña</label>
 								</div>
 
 								<!-- El usuario que se registre aquí siempre será de tipo usuario,

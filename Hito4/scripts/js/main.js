@@ -81,7 +81,78 @@ $(document).ready(function() {
 		}).show();
 	});
 
+	/* VALIDACIÓN DE FORMULARIO */
+	$("input").on("keyup", function(e) {
+
+		if (e.keyCode != 9) { // Tabulador
+
+			checkInline($(this));
+
+		}
+	
+	}).on("blur", function() {
+	
+		checkInline($(this));
+	
+	});
+
 });
+
+function checkInline(elemento) {
+
+	var nameElement = elemento.attr("name");
+	quitarSpan(elemento);
+	var bandera = true;
+
+	switch(nameElement) {
+
+		case "correo":
+
+			if (elemento.val().length == 0) {
+
+				$(elemento).after("<span class='aviso'>Introduzca un correo</span>");
+				mostrarSpan();
+				bandera = false;
+
+			} else {
+
+				var expresion = /^[\w.-]+\@+\w+\.+\w+$/;
+				if (!expresion.test(elemento.val())) {
+
+					$(elemento).after("<span class='aviso'>Recuerde, el correo electrónico debe contener '@dominio.ejemplo'</span>");
+					mostrarSpan();
+
+				} else {
+
+					quitarSpan(elemento);
+
+				}
+
+			}
+
+		break;
+
+	}
+
+	return bandera;
+
+}
+
+function mostrarSpan() {
+
+	$("span.aviso").css("display", "none");
+	// $("span.aviso").stop().slideDown(1000);
+	$("span.aviso").css("display", "block");
+
+}
+
+function quitarSpan(elemento) {
+
+	$("span.aviso").css("display", "none");
+	// $("span.aviso").stop().slideUp(1000);
+	$(elemento).next("span").remove();
+
+}
 
 // Función para guardar/modificar cookies
 function setCookie(cname, cvalue) {

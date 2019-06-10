@@ -108,12 +108,41 @@
 			</div>
 
 			<?php
-					} else {
+					} elseif($_GET["actualizacion"] == 0) {
 			?>
 
 			<div class="alert alert-warning text-center mt-5" role="alert">
 				<strong>Vaya...</strong> No has modificado ningún dato.
 				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=actualizacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					} elseif($_GET["actualizacion"] == -1) {
+			?>
+
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> La habitación no se ha podido modificar. Ya existe una habitación con el mismo número.
+				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=actualizacion" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					}
+				} elseif (isset($_GET["newRoom"])) {
+					if ($_GET["newRoom"] == 1) {
+			?>
+
+			<div class="alert alert-success text-center mt-5" role="alert">
+				<strong>¡Bien!</strong> Habitación añadida correctamente.
+				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=newRoom" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
+			</div>
+
+			<?php
+					} else {
+			?>
+
+			<div class="alert alert-warning text-center mt-5" role="alert">
+				<strong>Vaya...</strong> La habitación no se ha podido añadir. Ya existe una habitación con el mismo número.
+				<a href="./delVariable.php?controlador=./verHabitaciones.php?idHotel=<?=base64_encode($hotel->getId())?>&variable=newRoom" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
 			</div>
 
 			<?php
