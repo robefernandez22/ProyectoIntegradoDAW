@@ -12,6 +12,10 @@
 		$hoteles[] = $value["hoteles_id"];
 	}
 
-	include "./scripts/php/view/vistaPrincipal.php";
+	if (isset($_GET["reserva"])) {
+		include "./scripts/php/view/vistaReserva.php";
+	} else {
+		include "./scripts/php/view/vistaPrincipal.php";
+	}
 
 ?>

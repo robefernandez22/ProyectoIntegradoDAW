@@ -68,7 +68,7 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="./scripts/php/view/vistaReserva.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
+								<a href="./index.php?reserva" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
 							</li>
 
 							<li class="nav-item">
@@ -171,8 +171,8 @@
 					<div class="row" id="galeria">
 						<?php
 							foreach ($imagenes as $key => $images) {
-							$datos = Hoteles::buscarHotel($hoteles[$key]);
-							$hotel = new Hoteles($datos);
+								$datos = Hoteles::buscarHotel($hoteles[$key]);
+								$hotel = new Hoteles($datos);
 						?>
 							<div class="col-md-6">
 								<div class="card mb-4 box-shadow">

@@ -1,7 +1,3 @@
-<?php
-	session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,24 +9,30 @@
 		<!-- Título de la página -->
 		<title>Reservar</title>
 		<!-- Favicon -->
-		<link rel="shortcut icon" type="favicon/ico" href="../../../images/favicon.ico">
+		<link rel="shortcut icon" type="favicon/ico" href="./images/favicon.ico">
 
 		<!-- CSS principal -->
-		<link rel="stylesheet" type="text/css" href="../../../style/main.css">
-		<!-- CSS Bootstrap -->
-		<link rel="stylesheet" type="text/css" href="../../../lib/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../../../lib/floating-labels.css">
+		<link rel="stylesheet" type="text/css" href="./style/main.css">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" type="text/css" href="./lib/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./lib/floating-labels.css">
 
 		<!-- Librería jQuery -->
-		<script src="../../../lib/jquery-3.4.0.min.js"></script>
+		<script src="./lib/jquery-3.4.0.min.js"></script>
 		<!-- Popper Script. Librería necesaria para que funcionen los elementos tooltip de Bootstrap -->
-		<script src="../../../lib/popper.min.js"></script>
+		<script src="./lib/popper.min.js"></script>
 		<!-- Bootstrap Script -->
-		<script src="../../../lib/bootstrap.min.js"></script>
+		<script src="./lib/bootstrap.min.js"></script>
 		<!-- Script Base64 -->
-		<script src="../../../lib/base64.js"></script>
+		<script src="./lib/base64.js"></script>
 		<!-- Script principal -->
-		<script src="../../js/main.js"></script>
+		<script src="./scripts/js/main.js"></script>
+
+		<!-- Librerías necesarias para FancyBox -->
+		<script src="./lib/fancybox/jquery.fancybox.min.js"></script>
+		<link rel="stylesheet" href="./lib/fancybox/jquery.fancybox.min.css" type="text/css" media="screen">
+		<!-- Script para galeria de imágenes -->
+		<script src="./scripts/js/galeria.js"></script>
 	</head>
 
 	<body>
@@ -42,7 +44,7 @@
 				<!-- Menú -->
 				<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">					
 					<!-- Logotipo -->
-					<img src="../../../images/logo.jpg" width="120" height="55">
+					<img src="./images/logo.jpg" width="120" height="55">
 
 					<!-- Botón que desplegará el menú cuando este no se vea debido al tamaño del dispositivo
 					en el que se esté viendo -->
@@ -54,11 +56,11 @@
 					<div class="collapse navbar-collapse" id="menu">
 						<ul class="navbar-nav">
 							<li class="nav-item">
-								<a href="../../../index.php" class="nav-link">Inicio</a>
+								<a href="./index.php" class="nav-link">Inicio</a>
 							</li>
 
 							<li class="nav-item active">
-								<a href="./vistaReserva.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
+								<a href="./cargarReservas.php?client" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
 							</li>
 
 							<li class="nav-item">
@@ -156,6 +158,44 @@
 					</div>
 				</div>
 			</section>
+
+			<div class="album py-5 bg-light">
+				<div class="container">
+					<div class="row" id="galeria">
+						<?php
+							foreach ($imagenes as $key => $images) {
+								$datos = Hoteles::buscarHotel($hoteles[$key]);
+								$hotel = new Hoteles($datos);
+						?>
+							<div class="col-md-6">
+								<div class="card mb-4 box-shadow">
+									<a class="image" href="<?=$images?>">
+										<img class="card-img-top" style="height: 340px;" src="<?=$images?>">
+									</a>
+									<div class="card-body">
+										<h3 class="card-text"><?=$hotel->getNombre()?></h3>
+										<hr>
+										<p class="card-text"><?=$hotel->getDescripcion()?></p>
+										<hr>
+										<div class="d-flex justify-content-between align-items-center">
+											<small class="text-muted">¡Sólo <?=$hotel->getNumHabitacionesDisponibles()?> habitaciones disponibles!</small>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						<?php
+							}
+						?>
+					</div>
+				</div>
+			</div>
+
+			<footer class="text-muted">
+				<div class="container text-center">
+					<p>Hoteles ESE &copy; 2019</p>
+				</div>
+			</footer>
 
 			<!-- Ventana modal para hacer login -->
 			<section class="modal" id="entrar">

@@ -128,7 +128,7 @@
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "SELECT * FROM imagenes_hoteles WHERE hoteles_id = '".$this->id."'";
+			$sql = "SELECT * FROM imagenes_hoteles WHERE hoteles_id = '$this->id'";
 			$resultado = $conexion->query($sql);
 
 			$imagenes = [];
@@ -137,6 +137,28 @@
 			}
 
 			return $imagenes;
+
+		}
+
+		public function getNumHabitacionesDisponibles() {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT HO.NOMBRE, HA.DESCRIPCION, HA.PRECIO_NOCHE
+					FROM HOTELES HO, HABITACIONES HA
+					WHERE HO.ID = HA.HOTELES_ID
+					AND HO.ID = '$this->id'
+					AND HA.ID NOT IN (SELECT HABITACIONES_ID
+					                 FROM RESERVAS_HABITACIONES)";
+
+			$resultado = $conexion->query($sql);
+			
+			$contador = 0;
+			while ($registros = $resultado->fetch()) {
+				$contador++;
+			}
+
+			return $contador;
 
 		}
 
