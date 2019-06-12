@@ -12,10 +12,8 @@
 		$hoteles[] = $value["hoteles_id"];
 	}
 
-	if (isset($_GET["reserva"])) {
-		include "./scripts/php/view/vistaReserva.php";
-	} else {
-		include "./scripts/php/view/vistaPrincipal.php";
-	}
+	$ciudades = Hoteles::getCiudades();
+
+	include "./scripts/php/view/vistaPrincipal.php";
 
 ?>

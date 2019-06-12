@@ -68,20 +68,15 @@
 							</li>
 
 							<li class="nav-item">
-								<a href="./index.php?reserva" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Haz tu reserva a medida!">Reservar</a>
-							</li>
-
-							<li class="nav-item">
 								<a href="./scripts/php/controller/cargarValoraciones.php" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce las opiniones de nuestros clientes!">Valoraciones</a>
 							</li>
 
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown">Nosotros</a>
+							<li class="nav-item">
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
+							</li>
 
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Conoce la historia de Hoteles ESE!">Conócenos</a>
-									<a class="dropdown-item" href="" data-toggle="tooltip" data-html="true" data-placement="right" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
-								</div>
+							<li class="nav-item">
+								<a href="" class="nav-link" data-toggle="tooltip" data-html="true" title="¡Contáctanos y trabaja con nosotros!">Trabaja con nosotros</a>
 							</li>
 						</ul>
 					</div>
@@ -175,6 +170,77 @@
 				</div>
 			</div>
 
+			<section class="row justify-content-center">
+				<div class="col-md-12">
+					<h3 class="text-center mt-5">¡Haz ya tu reserva!</h3>
+
+					<div class="table-responsive mt-5">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Fecha de entrada</th>
+									<th scope="col">Fecha de salida</th>
+									<th scope="col">Número de personas</th>
+									<th scope="col">Destino</th>
+									<th scope="col"></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>
+										<div class="form-group">
+											<input type="date" id="fecha_entrada" name="fecha_entrada" class="form-control">
+										</div>
+									</td>
+
+									<td>
+										<div class="form-group">
+											<input type="date" id="fecha_salida" name="fecha_salida" class="form-control">
+										</div>
+									</td>
+
+									<td>
+										<div class="form-group">
+											<select class="form-control">
+												<option value="">Selecciona un número de personas</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+											</select>
+										</div>
+									</td>
+
+									<td>
+										<div class="form-group">
+											<select class="form-control">
+												<option value="">Selecciona una ciudad de destino</option>
+											<?php
+												foreach ($ciudades as $value) {
+											?>
+
+												<option value="<?=$value['ciudad']?>"><?=$value['ciudad']?></option>
+
+											<?php
+												}
+											?>
+											</select>
+										</div>
+									</td>
+
+									<td>
+										<div class="form-group">
+											<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+
 			<div class="album py-5 bg-light">
 				<div class="container">
 					<div class="row" id="galeria">
@@ -189,7 +255,35 @@
 										<img class="card-img-top" style="height: 340px;" src="<?=$images?>">
 									</a>
 									<div class="card-body">
-										<p class="card-text"><?=$hotel->getNombre()?></p>
+										<h3 class="card-text"><?=$hotel->getNombre()?></h3>
+										<hr>
+										<p class="card-text"><?=$hotel->getDescripcion()?></p>
+										<hr>
+										<div class="d-flex justify-content-between align-items-center">
+											<?php
+												$hab_disponibles = $hotel->getNumHabitacionesDisponibles();
+												if ($hab_disponibles == 0) {
+													$hab_disponibles = $hotel->getHabitaciones();
+												}
+
+												if ($hab_disponibles < 2) {
+											?>
+
+											<small class="text-muted"><?=$hab_disponibles?> habitación disponible en este momento.</small>
+
+											<?php
+												} else {
+											?>
+
+											<small class="text-muted"><?=$hab_disponibles?> habitaciones disponibles en este momento.</small>
+
+											<?php
+												}
+											?>
+											<div class="btn-group">
+												<button type="submit" class="btn btn-sm btn-outline-secondary">Reservar</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

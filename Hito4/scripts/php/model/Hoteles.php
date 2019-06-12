@@ -105,6 +105,22 @@
 
 		}
 
+		public static function getCiudades() {
+
+			$conexion = Conexion::conexionBD();			
+
+			$sql = "SELECT DISTINCT ciudad FROM hoteles";
+			$resultado = $conexion->query($sql);
+
+			$ciudades = [];
+			while ($registros = $resultado->fetch()) {
+				$ciudades[] = $registros;
+			}
+
+			return $ciudades;
+
+		}
+
 		public function getHabitaciones() {
 			
 			$conexion = Conexion::conexionBD();
