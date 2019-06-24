@@ -105,6 +105,49 @@
 
 		}
 
+		public static function getHotelesParametros($fechaEntrada, $fechaSalida, $numPersonas, $ciudad) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT HA.ID
+					FROM HOTELES HO, HABITACIONES HA
+					WHERE HO.ID = HA.HOTELES_ID
+					AND HA.DESCRIPCION LIKE '$numPersonas'
+					AND HA.ID NOT IN (SELECT RH.HABITACIONES_ID
+					                   FROM RESERVAS_HABITACIONES RH, RESERVAS R
+					                   WHERE RH.RESERVAS_ID = R.ID
+					                   AND R.FECHA_ENTRADA >= '$fechaEntrada'
+					                   AND R.FECHA_SALIDA <= '$fechaSalida')
+					AND HO.ID IN (SELECT ID
+					             FROM HOTELES
+					             WHERE CIUDAD LIKE '$ciudad')";
+
+			$resultado = $conexion->query($sql);
+			$habitaciones = [];
+			while ($registros = $resultado->fetch()) {
+				$habitaciones[] = $registros;
+			}
+
+			return $habitaciones;
+
+		}
+
+		public static function getPensiones($hotelId) {
+
+			$conexion = Conexion::conexionBD();
+
+			$sql = "SELECT * FROM TIPOS_PENSIONES WHERE HOTELES_ID = '$hotelId'";
+
+			$resultado = $conexion->query($sql);
+			$pensiones = [];
+			while ($registros = $resultado->fetch()) {
+				$pensiones[] = $registros;
+			}
+
+			return $pensiones;
+
+		}
+
 		public static function getCiudades() {
 
 			$conexion = Conexion::conexionBD();			
@@ -247,7 +290,7 @@
 
 			$conexion = Conexion::conexionBD();
 
-			$sql = "DELETE FROM hoteles WHERE id = '".$id."'";
+			$sql = "DELETE FROM hoteles WHERE id = '$id'";
 
 			$resultado = $conexion->exec($sql);
 			return $resultado;

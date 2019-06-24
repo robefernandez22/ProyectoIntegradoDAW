@@ -49,7 +49,7 @@
 					<!-- Diferentes opciones del menú -->
 					<div class="collapse navbar-collapse" id="menu">
 						<?php
-							if ($usuario->getTipo() == "Administrador") {	
+							if ($usuario->getTipo() == "Administrador") {
 						?>
 
 						<ul class="navbar-nav">
@@ -133,59 +133,106 @@
 
 			<?php
 					}
-				} elseif (isset($_GET["password"])) {
-					if ($_GET["password"] == 1) {
+				} elseif (isset($_GET["reserva"])) {
+					if ($_GET["reserva"] == 1) {
 			?>
 
-			<div class="alert alert-success text-center mt-5" role="alert">
-				<strong>¡Bien!</strong> Tu contraseña se ha actualizado correctamente.
-				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['usuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
-			</div>
+			<!-- MOSTRAMOS QUE LA RESERVA SE HIZO CORRECTAMENTE -->
 
 			<?php
 					} else {
 			?>
 
-			<div class="alert alert-warning text-center mt-5" role="alert">
-				<strong>Vaya...</strong> Tu contraseña no se ha podido actualizar correctamente, contacte con el administrador de la base de datos.
-				<a href="./delVariable.php?controlador=./setUsuario.php?id=<?=base64_encode($_SESSION['usuario'])?>" class="float-right" aria-hidden="true"><h3>&times;</h3></a>
-			</div>
+			<!-- MOSTRAMOS QUE HUBO ALGÚN PROBLEMA AL HACER LA RESERVA -->
 
 			<?php
 					}
 				}
-			?>
-
-			<header class="row justify-content-center mt-5">
-				<h3 class="text-center mt-5">Tus datos</h3>
-			</header>
+			?>			
 
 			<section class="row justify-content-center mt-5">
-				<form class="form-signin" method="post" action="./setDatos.php">
-					<input type="hidden" name="redireccion" value="vistaDatos.php">
-					<div class="form-label-group">
-						<input type="email" id="correo" name="correo" class="form-control-plaintext" placeholder="Correo electrónico" value="<?=$usuario->getCorreo()?>" readonly>
-						<label for="correo">Correo electrónico</label>
-					</div>
+				<div class="col-md-12">
 
-					<div class="form-label-group">
-						<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" value="<?=$usuario->getNombre()?>">
-						<label for="nombre"><span class="obligatorio">*</span> Nombre</label>
-					</div>
+					<header class="row justify-content-center">
+						<h3 class="text-center mt-5">Tus datos</h3>
+					</header>
+					
+					<form class="form-signin" method="post" action="./setDatos.php">
+						<input type="hidden" name="redireccion" value="vistaDatos.php">
+						<div class="form-label-group">
+							<input type="email" id="correo" name="correo" class="form-control-plaintext" placeholder="Correo electrónico" value="<?=$usuario->getCorreo()?>" readonly>
+							<label for="correo">Correo electrónico</label>
+						</div>
 
-					<div class="form-label-group">
-						<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" value="<?=$usuario->getApellidos()?>">
-						<label for="apellidos"><span class="obligatorio">*</span> Apellidos</label>
-					</div>
+						<div class="form-label-group">
+							<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" value="<?=$usuario->getNombre()?>">
+							<label for="nombre"><span class="obligatorio">*</span> Nombre</label>
+						</div>
 
-					<div class="form-group">
-						<a href="./setPassword.php?id=<?=base64_encode($usuario->getCorreo())?>&controlador=setUsuario.php">Cambiar contraseña</a>
-					</div>
+						<div class="form-label-group">
+							<input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" value="<?=$usuario->getApellidos()?>">
+							<label for="apellidos"><span class="obligatorio">*</span> Apellidos</label>
+						</div>
 
-					<div class="form-group">
-						<input type="submit" name="setDatos" class="btn btn-success" value="Guardar">
+						<div class="form-group">
+							<a href="./setPassword.php?id=<?=base64_encode($usuario->getCorreo())?>&controlador=setUsuario.php">Cambiar contraseña</a>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" name="setDatos" class="btn btn-success" value="Guardar">
+						</div>
+					</form>
+				</div>
+
+				<div class="col-md-12">
+					<header class="row justify-content-center">
+						<h3 class="text-center mt-5">Tus reservas</h3>
+					</header>
+
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Hotel</th>
+									<th>Fecha de Reserva</th>
+									<th>Fecha de Entrada</th>
+									<th>Fecha de Salida</th>
+									<th colspan="2">Opciones</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<?php
+									foreach ($datos as $reservas) {
+								?>
+
+								<tr>
+									<td>
+										<?=$reservas->getNombreHotel()?>
+									</td>
+									<td>
+										<?=$reservas->getFechaReserva()?>
+									</td>
+									<td>
+										<?=$reservas->getFechaEntrada()?>
+									</td>
+									<td>
+										<?=$reservas->getFechaSalida()?>
+									</td>
+									<td>
+										<a href="detallesReserva.php&id=<?=$reservas->getId()?>">Más detalles</a>
+									</td>
+									<td>
+										<input class="btn btn-warning btn-sm mr-2 text-left" data-toggle="modal" data-target="cancelar" type="button" value="Cancelar">
+									</td>
+								</tr>
+								<?php
+									}
+								?>
+							</tbody>
+						</table>
 					</div>
-				</form>
+				</div>
 			</section>
 		</main>
 	</body>

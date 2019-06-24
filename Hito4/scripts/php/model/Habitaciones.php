@@ -90,6 +90,22 @@
 
 		}
 
+		public function getExtras() {
+
+			$extras = "";
+
+			if ($this->getTelevision() == "S") {
+				$extras = "Televisión";
+			} elseif ($this->getVistas() == "S") {
+				$extras += ", Vistas";
+			} elseif ($this->getAire() == "S") {
+				$extras += ", Aire Acondicionado";
+			}
+
+			return $extras;
+
+		}
+
 		public function getImagenes() {
 
 			$conexion = Conexion::conexionBD();

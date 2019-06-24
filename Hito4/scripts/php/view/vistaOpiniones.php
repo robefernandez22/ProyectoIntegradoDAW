@@ -120,7 +120,7 @@
 
 									<tr>
 										<td>
-											<select class="form-control" required>
+											<select class="form-control" required name="hoteles">
 												<option value="">Selecciona un hotel</option>
 												<?php
 													foreach ($hoteles as $value) {

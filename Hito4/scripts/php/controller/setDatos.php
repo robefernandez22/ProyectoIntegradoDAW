@@ -11,7 +11,7 @@
 		// Actualizaciones echas por los administradores
 		$actualizacion = Usuario::actualizarUsuario($_POST["correo"], $_POST["nombre"], $_POST["apellidos"], $_POST["tipo"]);
 
-		/* Si la variable de sesion usuario es igualal correo del usuario que modifica sus datos,
+		/* Si la variable de sesion usuario es igual al correo del usuario que modifica sus datos,
 		evaluamos si el tipo de usuario ha cambiado, para así hacerle iniciar sesión de nuevo */
 		if ($_SESSION["usuario"] == $_POST["correo"]) {
 
@@ -27,6 +27,8 @@
 				header("Location: ./verUsuarios.php?actualizacion=".$actualizacion);
 			}
 
+		} else {
+			header("Location: ./verUsuarios.php?actualizacion=".$actualizacion);
 		}
 
 	}

@@ -127,7 +127,6 @@
 								foreach ($data as $reservas) {
 							?>
 								<tr>
-									<td></td>
 									<td>
 										<?=$reservas->getUsuariosCorreo()?>
 									</td>

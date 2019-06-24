@@ -50,7 +50,7 @@
 			<!-- Cabecera de la página -->
 			<header class="row">
 				<!-- Menú -->
-				<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">					
+				<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 					<!-- Logotipo -->
 					<img src="./images/logo.jpg" width="120" height="55">
 
@@ -162,17 +162,18 @@
 				}
 			?>
 
-			<div class="jumbotron">
+			<!-- <div class="jumbotron">
 				<div class="container">
 					<h3 class="display-4"><b>Hoteles ESE.</b> La cadena de hoteles líder en España.</h3>
 					<p>EAT, SLEEP AND ENJOY <b>/</b> COME, DUERME Y DISFRUTA</p>
 					<p>Porque sabemos que quieres comer, pero comer bien, dormir, y hacerlo tranquilo, y sobre todo pasarlo bien. Por todo eso y mucho más, para nosotros el cliente es lo primero, TÚ eres lo primero. Por eso, nuestros hoteles no son sólo lugares en los que estar de paso, nuestros hoteles son TU casa, son TU hogar.</p>
+					<p>Mira abajo nuestros alojamientos y reserva donde quieras. ¡Vamos que nos lo quitan de las manos!</p>
 				</div>
-			</div>
+			</div> -->
 
 			<section class="row justify-content-center">
 				<div class="col-md-12">
-					<h3 class="text-center mt-5">¡Haz ya tu reserva!</h3>
+					<h3 class="text-center mt-5">¡Haz ya tu reserva en <b>Hoteles ESE</b>!</h3>
 
 					<div class="table-responsive mt-5">
 						<table class="table">
@@ -186,56 +187,59 @@
 								</tr>
 							</thead>
 
-							<tbody>
-								<tr>
-									<td>
-										<div class="form-group">
-											<input type="date" id="fecha_entrada" name="fecha_entrada" class="form-control">
-										</div>
-									</td>
+							<form method="post" action="./scripts/php/controller/procesoReserva.php">
+								<input type="hidden" name="buscar" value="">
+								<tbody>
+									<tr>
+										<td>
+											<div class="form-group">
+												<input type="date" id="fechaEntrada" name="fechaEntrada" class="form-control" required>
+											</div>
+										</td>
 
-									<td>
-										<div class="form-group">
-											<input type="date" id="fecha_salida" name="fecha_salida" class="form-control">
-										</div>
-									</td>
+										<td>
+											<div class="form-group">
+												<input type="date" id="fechaSalida" name="fechaSalida" class="form-control" required>
+											</div>
+										</td>
 
-									<td>
-										<div class="form-group">
-											<select class="form-control">
-												<option value="">Selecciona un número de personas</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-											</select>
-										</div>
-									</td>
+										<td>
+											<div class="form-group">
+												<select class="form-control" name="numPersonas" required>
+													<option value="">Selecciona un número de personas</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+												</select>
+											</div>
+										</td>
 
-									<td>
-										<div class="form-group">
-											<select class="form-control">
-												<option value="">Selecciona una ciudad de destino</option>
-											<?php
-												foreach ($ciudades as $value) {
-											?>
+										<td>
+											<div class="form-group">
+												<select class="form-control" name="ciudad" required>
+													<option value="">Selecciona una ciudad de destino</option>
+												<?php
+													foreach ($ciudades as $value) {
+												?>
 
-												<option value="<?=$value['ciudad']?>"><?=$value['ciudad']?></option>
+													<option value="<?=$value['ciudad']?>"><?=$value['ciudad']?></option>
 
-											<?php
-												}
-											?>
-											</select>
-										</div>
-									</td>
+												<?php
+													}
+												?>
+												</select>
+											</div>
+										</td>
 
-									<td>
-										<div class="form-group">
-											<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-										</div>
-									</td>
-								</tr>
-							</tbody>
+										<td>
+											<div class="form-group">
+												<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</form>
 						</table>
 					</div>
 				</div>
